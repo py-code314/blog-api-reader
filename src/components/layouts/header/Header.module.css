@@ -1,0 +1,16 @@
+.header {
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-block-end: 1px solid var(--clr-black, black);
+}
+
+.title {
+  flex: 2;
+  font-family: var(--ff-title), serif;
+  font-size: var(--fs-40, 2.5rem);
+  color: var(--clr-accent-1, firebrick );
+}
+
+
