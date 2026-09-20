@@ -202,7 +202,7 @@ a {
 
   /* color
   ========= */
-  --clr-gray-1: #ffffff;
+  --clr-gray-1: #F2F2F2;
   --clr-gray-2: #eeeeee;
   --clr-gray-3: #d5d5d5;
   --clr-gray-7: #6f6f6f;
@@ -222,4 +222,11 @@ a {
 
   /* Box shadow */
   
+}
+
+/* Page styles  */
+#root {
+  min-height: 100svh;
+  font-family: var(--ff-primary), sans-serif;
+  font-size: var(--fs-18, 1.125rem);
 }

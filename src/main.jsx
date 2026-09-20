@@ -8,18 +8,13 @@ import { createRoot } from 'react-dom/client'
 import { createBrowserRouter } from 'react-router'
 /* -------------------- Routes -------------------- */
 import routes from './routes/routes.jsx'
-// import App from './App.jsx'
 
-// createRoot(document.getElementById('root')).render(
-//   <StrictMode>
-//     <App />
-//   </StrictMode>,
-// )
+const root = document.getElementById('root')
 
 // Create router
 const router = createBrowserRouter(routes)
 
-createRoot(document.getElementById('root')).render(
+createRoot(root).render(
   <StrictMode>
     <RouterProvider router={router} />
   </StrictMode>,

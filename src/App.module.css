@@ -1,0 +1,27 @@
+.page {
+  min-height: 100svh;
+  background-color: var(--clr-gray-1, lightgray);
+  padding: var(--space-16, 1rem);
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  gap: var(--space-32, 2rem);
+  grid-template-areas:
+    'header  header'
+    'sidebar  main'
+    'footer  footer';
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: var(--space-200, 12.5rem) 1fr;
+}
+
+.header {
+  grid-area: header;
+}
+
+.sidebar {
+  grid-area: sidebar;
+}
+
+.footer {
+  grid-area: footer;
+}
