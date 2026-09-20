@@ -2,7 +2,7 @@
 import styles from './Header.module.css'
 /* -------------------- Components -------------------- */
 import { Link } from 'react-router'
-// import NavBar from '../navbar/Navbar'
+import Navbar from '../navbar/Navbar'
 
 /* Component for header */
 const Header = () => {
@@ -13,8 +13,7 @@ const Header = () => {
       <Link to={`/home`}>
         <h1 className={styles.title}>SCRIBLR</h1>
       </Link>
-      {/* <NavBar /> */}
-      <div className={styles.navbar}>Navbar</div>
+      <Navbar/>
     </header>
   )
 }
