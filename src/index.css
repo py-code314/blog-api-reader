@@ -134,3 +134,92 @@ a {
   font-style: italic;
   font-display: swap;
 }
+
+/* CSS variables */
+:root {
+  /* Core units
+  ============== */
+  --base-unit: 0.25rem;
+  --base-half-unit: calc(var(--base-unit) / 2);
+
+  /* Typography
+  ============== */
+  /* Fonts */
+  --ff-primary: 'Quattrocento Sans Regular';
+  --ff-secondary: 'Quattrocento Sans Bold';
+  --ff-title: 'Cinzel Bold';
+
+  /* Font sizes */
+  --font-base-unit: var(--base-unit);
+
+  --fs-8: calc(var(--font-base-unit) * 2);
+  --fs-10: calc(var(--font-base-unit) * 2.5);
+  --fs-12: calc(var(--font-base-unit) * 3);
+  --fs-14: calc(var(--font-base-unit) * 3.5);
+  --fs-16: calc(var(--font-base-unit) * 4);
+  --fs-18: calc(var(--font-base-unit) * 4.5);
+  --fs-20: calc(var(--font-base-unit) * 5);
+  --fs-24: calc(var(--font-base-unit) * 6);
+  --fs-32: calc(var(--font-base-unit) * 8);
+  --fs-40: calc(var(--font-base-unit) * 10);
+  --fs-48: calc(var(--font-base-unit) * 12);
+
+  /* Font weights */
+  --fw-medium: 500;
+  --fw-bold: 700;
+
+  /* Space
+  ========= */
+  --space-base-unit: var(--base-unit);
+  --space-2: calc(var(--space-base-unit) / 2);
+  --space-4: var(--space-base-unit);
+  --space-6: calc(var(--space-base-unit) * 1.5);
+  --space-8: calc(var(--space-base-unit) * 2);
+  --space-10: calc(var(--space-base-unit) * 2.5);
+  --space-12: calc(var(--space-base-unit) * 3);
+  --space-16: calc(var(--space-base-unit) * 4);
+  --space-20: calc(var(--space-base-unit) * 5);
+  --space-24: calc(var(--space-base-unit) * 6);
+  --space-32: calc(var(--space-base-unit) * 8);
+  --space-40: calc(var(--space-base-unit) * 10);
+  --space-48: calc(var(--space-base-unit) * 12);
+  --space-56: calc(var(--space-base-unit) * 14);
+  --space-60: calc(var(--space-base-unit) * 15);
+  --space-64: calc(var(--space-base-unit) * 16);
+  --space-80: calc(var(--space-base-unit) * 20);
+  --space-96: calc(var(--space-base-unit) * 24);
+  --space-128: calc(var(--space-base-unit) * 32);
+  --space-144: calc(var(--space-base-unit) * 36);
+  --space-160: calc(var(--space-base-unit) * 40);
+  --space-200: calc(var(--space-base-unit) * 50);
+  --space-280: calc(var(--space-base-unit) * 70);
+  --space-300: calc(var(--space-base-unit) * 75);
+  --space-400: calc(var(--space-base-unit) * 100);
+  --space-500: calc(var(--space-base-unit) * 125);
+  --space-600: calc(var(--space-base-unit) * 150);
+  --space-700: calc(var(--space-base-unit) * 175);
+  --space-1200: calc(var(--space-base-unit) * 300);
+
+  /* color
+  ========= */
+  --clr-gray-1: #ffffff;
+  --clr-gray-2: #eeeeee;
+  --clr-gray-3: #d5d5d5;
+  --clr-gray-7: #6f6f6f;
+  --clr-white: #fff;
+  --clr-black: #000;
+  --clr-red: #ff0000;
+
+  /* Border
+  ========== */
+  /* Border radius */
+  --radius-base-unit: 0.3125rem;
+  --radius-small: calc(var(--radius-base-unit) * 1);
+  --radius-medium: calc(var(--radius-base-unit) * 2);
+  --radius-large: calc(var(--radius-base-unit) * 4);
+  --radius-x-large: calc(var(--radius-base-unit) * 8);
+  --radius-round: 50%;
+
+  /* Box shadow */
+  
+}
