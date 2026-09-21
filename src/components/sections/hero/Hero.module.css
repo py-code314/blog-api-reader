@@ -1,0 +1,47 @@
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-20, 1.25rem);
+  height: var(--space-300, 18.75rem);
+  padding: var(--space-32, 2rem);
+  border: 1px solid var(--clr-black, black);
+}
+
+.content,
+.imgContainer {
+  width: 50%;
+  height: 236px;
+}
+
+.content {
+  display: grid;
+  gap: var(--space-16, 1rem);
+  align-content: center;
+}
+
+.heading {
+  font-family: var(--ff-title), serif;
+}
+
+.description {
+  line-height: 1.4;
+}
+
+.postsLink {
+  background-color: var(--clr-accent-2, royalblue);
+  color: white;
+  padding: var(--space-10, 0.625rem) var(--space-16, 1rem);
+  border-radius: var(--radius-small, 00.3125rem);
+  font-family: var(--ff-secondary), sans-serif;
+  display: flex;
+  align-items: center;
+  gap: var(--space-16, 1rem);
+  justify-self: start;
+}
+
+.dogImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
