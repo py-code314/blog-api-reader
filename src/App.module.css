@@ -1,6 +1,5 @@
 .page {
   min-height: 100svh;
-  background-color: var(--clr-gray-1, lightgray);
   padding: var(--space-16, 1rem);
   max-width: 1200px;
   margin: auto;
