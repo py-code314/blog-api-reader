@@ -25,4 +25,9 @@
   font-family: var(--ff-secondary), sans-serif;
 }
 
+/* Placeholders have regular font weight  */
+.inactiveLink {
+  font-family: var(--ff-primary), sans-serif;
+}
+
 
