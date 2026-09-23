@@ -29,7 +29,7 @@ const Sidebar = () => {
                   width={32}
                   height={32}
                 />
-                <span>Posts</span>
+                <span className={styles.label}>Posts</span>
               </Link>
             </li>
             <li className={styles.navItem}>
@@ -42,7 +42,7 @@ const Sidebar = () => {
                   width={32}
                   height={32}
                 />
-                <span>Authors</span>
+                <span className={styles.label}>Authors</span>
               </Link>
             </li>
             <li className={styles.navItem}>
@@ -55,7 +55,7 @@ const Sidebar = () => {
                   width={32}
                   height={32}
                 />
-                <span>Categories</span>
+                <span className={styles.label}>Categories</span>
               </Link>
             </li>
             {/* Tags link  */}
@@ -68,7 +68,7 @@ const Sidebar = () => {
                   width={32}
                   height={32}
                 />
-                <span>Tags</span>
+                <span className={styles.label}>Tags</span>
               </Link>
             </li>
           </ul>
@@ -77,7 +77,6 @@ const Sidebar = () => {
           <ul className={styles.navList}>
             {/* Profile  */}
             <li className={`${styles.navItem} ${styles.inactiveLink}`}>
-            {/* // TODO: Replace it with a bigger icon  */}
                 <img
                   className={styles.profileIcon}
                   src={profileIcon}
@@ -85,7 +84,7 @@ const Sidebar = () => {
                   width={32}
                   height={32}
                 />
-                <span>Profile</span>
+                <span className={styles.label}>Profile</span>
             
             </li>
             {/* Settings  */}
@@ -97,7 +96,7 @@ const Sidebar = () => {
                   width={32}
                   height={32}
                 />
-                <span>Settings</span>
+                <span className={styles.label}>Settings</span>
             </li>
             {/* Help  */}
             <li className={`${styles.navItem} ${styles.inactiveLink}`}>
@@ -108,7 +107,7 @@ const Sidebar = () => {
                   width={32}
                   height={32}
                 />
-                <span>Help</span>
+                <span className={styles.label}>Help</span>
             </li>
           </ul>
         </nav>

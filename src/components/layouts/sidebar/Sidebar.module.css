@@ -14,8 +14,6 @@
   gap: var(--space-12, 00.75rem);
 }
 
-/* TODO: Increase font size for labels */
-
 .link,
 .inactiveLink {
   padding: var(--space-6, 0.375rem) var(--space-8, 0.5rem);
@@ -30,6 +28,10 @@
 /* Placeholders have regular font weight  */
 .inactiveLink {
   font-family: var(--ff-primary), sans-serif;
+}
+
+.label {
+  text-transform: uppercase;
 }
 
 
