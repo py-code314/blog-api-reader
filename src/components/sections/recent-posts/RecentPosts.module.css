@@ -1,3 +1,36 @@
+
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid lightblue;
+  border-right-color: orange;
+  animation: l2 1s infinite linear;
+}
+@keyframes l2 {to{transform: rotate(1turn)}}
+
+.errorWrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16, 1rem);
+}
+
+.errorImage {
+  width: 70px;
+  height: 70px;
+}
+
+.errorIcon {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.statusCode {
+  font-family: var(--ff-secondary), serif;
+  font-size: var(--fs-20);
+}
+
 .recentPosts {
   padding: var(--space-32, 2rem);
   border: 1px solid var(--clr-black, black);

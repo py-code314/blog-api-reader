@@ -2,6 +2,7 @@
 import styles from './RecentPosts.module.css'
 /* -------------------- Icons -------------------- */
 import readMoreIcon from '../../../assets/icons/icon-chevron-right.svg'
+import errorIcon from '../../../assets/icons/icon-error.svg'
 /* -------------------- Hooks -------------------- */
 import { useFetchData } from '../../../hooks/useFetchData.js'
 /* -------------------- Components -------------------- */
@@ -19,14 +20,52 @@ const RecentPosts = () => {
   // Show loading spinner while fetching the data
   if (isLoading)
     return (
-      <div className={styles.loaderWrapper}>
-        {/* <div className={styles.loader}></div> */}
-        <div>Loading...</div>
-      </div>
+      <section className={styles.recentPosts}>
+        <h2 className={styles.heading}>Recent Posts</h2>
+        <div className={styles.loader}></div>
+      </section>
     )
 
   // Show error message upon failure to fetch the data
-  if (error) return <div>Error: {error}</div>
+  if (error)
+    return (
+      <div className={styles.recentPosts}>
+        <h2 className={styles.heading}>Recent Posts</h2>
+        <div className={styles.errorWrapper}>
+          <div className={styles.errorImage}>
+            <img
+              className={styles.errorIcon}
+              src={errorIcon}
+              alt=""
+              width={70}
+              height={70}
+            />
+          </div>
+
+          {/* Show error message based on response status code */}
+          <div className={styles.errorContent}>
+            {error.status === 404 ? (
+              <>
+                <span className={styles.statusCode}>{error.status}</span>
+                <p>Resource not found.</p>
+              </>
+            ) : error.status === 403 ? (
+              <>
+                <span className={styles.statusCode}>{error.status}</span>
+                <p>Access denied.</p>
+              </>
+            ) : error.status === 500 ? (
+              <>
+                <span className={styles.statusCode}>{error.status}</span>
+                <p>Server error.</p>
+              </>
+            ) : (
+              <p>An unexpected error occurred: {error.message}.</p>
+            )}
+          </div>
+        </div>
+      </div>
+    )
 
   return (
     <>

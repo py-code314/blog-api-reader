@@ -77,7 +77,7 @@ const Sidebar = () => {
           <ul className={styles.navList}>
             {/* Profile  */}
             <li className={`${styles.navItem} ${styles.inactiveLink}`}>
-            
+            {/* // TODO: Replace it with a bigger icon  */}
                 <img
                   className={styles.profileIcon}
                   src={profileIcon}
