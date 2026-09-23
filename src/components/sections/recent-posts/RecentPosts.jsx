@@ -1,8 +1,7 @@
 /* -------------------- Styles -------------------- */
 import styles from './RecentPosts.module.css'
 /* -------------------- Icons -------------------- */
-// import errorIcon from '../../../assets/icons/icon-error-1.svg'
-import readMoreIcon from '../../../assets/icons/icon-chevron-right-1.svg'
+import readMoreIcon from '../../../assets/icons/icon-chevron-right.svg'
 /* -------------------- Hooks -------------------- */
 import { useFetchData } from '../../../hooks/useFetchData.js'
 /* -------------------- Components -------------------- */
@@ -31,17 +30,16 @@ const RecentPosts = () => {
 
   return (
     <>
-      {/* <div>Recent posts</div> */}
       <section className={styles.recentPosts}>
         <h2 className={styles.heading}>Recent Posts</h2>
-        <ul className={styles.list}>
-          {data?.posts.length === 0 ? (
-            <p>No posts to show yet.</p>
-          ) : (
-            data?.posts.map((post) => (
-              <li className={styles.post} key={post.id}>
+        {data?.posts.length === 0 ? (
+          <p>🔴 No posts to show yet.</p>
+        ) : (
+          <ul className={styles.list}>
+            {data?.posts.map((post) => (
+              <li className={styles.card} key={post.id}>
                 <div className={styles.imgContainer}></div>
-                <div>
+                <div className={styles.post}>
                   <h3>{post.title}</h3>
                   {/* Use <div> here because first element in 'post.content' is <p> and a <p> element can not be a descendant of another <p> */}
                   <div className={styles.content}>{parse(post.content)}</div>
@@ -50,13 +48,13 @@ const RecentPosts = () => {
                     className={styles.readMoreLink}
                     to={`/posts/${post.id}`}>
                     Read more
-                    <img src={readMoreIcon} alt="" width={20} height={20} />
+                    <img src={readMoreIcon} alt="" width={18} height={18} />
                   </Link>
                 </div>
               </li>
-            ))
-          )}
-        </ul>
+            ))}
+          </ul>
+        )}
       </section>
     </>
   )

@@ -1,3 +1,6 @@
 .home {
   grid-area: main;
+  display: grid;
+  gap: var(--space-32, 2rem);
+  align-content: start;
 }

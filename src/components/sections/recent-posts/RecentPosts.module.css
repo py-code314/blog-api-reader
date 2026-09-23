@@ -1,0 +1,73 @@
+.recentPosts {
+  padding: var(--space-32, 2rem);
+  border: 1px solid var(--clr-black, black);
+  display: grid;
+  gap: var(--space-16, 1rem);
+}
+
+.heading {
+  font-family: var(--ff-title), serif;
+}
+
+.list {
+  height: var(--space-430, 26.875rem);
+  display: flex;
+  gap: var(--space-24, 1.5rem);
+}
+
+.card {
+  flex: 1;
+  height: 100%;
+  display: grid;
+  grid-template-rows: var(--space-200, 12.5rem) 1fr;
+  gap: var(--space-16, 1rem);
+  border-radius: var(--radius-small, 00.3125rem);
+  padding: var(--space-16, 1rem);
+  background-color: var(--clr-white, white);
+  background-color: var(--clr-gray-1, ghostwhite);
+  box-shadow: var(
+    --shadow-1,
+    rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px
+  );
+  transition: transform 250ms;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+.imgContainer {
+  border: 1px solid var(--clr-black, black);
+  border-radius: var(--radius-small, 00.3125rem);
+  background-color: var(--clr-white, white);
+}
+
+/* Limit content to 3 lines */
+.content {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  margin-block-end: 8px;
+}
+
+.post {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: var(--space-4, 00.25rem);
+}
+
+.readMoreLink {
+  color: var(--clr-accent-1, firebrick);
+  padding: var(--space-10, 0.625rem) var(--space-16, 1rem);
+  border: 1px solid var(--clr-accent-1, firebrick);
+  border-radius: var(--radius-small, 00.3125rem);
+  font-family: var(--ff-secondary), sans-serif;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4, 00.25rem);
+  justify-self: start;
+}
