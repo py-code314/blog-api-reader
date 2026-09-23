@@ -24,14 +24,9 @@
   font-family: var(--ff-title), serif;
 }
 
-.description {
-  line-height: 1.4;
-}
-
-/* TODO: Add box-shadow */
 .postsLink {
   background-color: var(--clr-accent-2, royalblue);
-  color: white;
+  color: var(--clr-white, white);
   padding: var(--space-10, 0.625rem) var(--space-16, 1rem);
   border-radius: var(--radius-small, 00.3125rem);
   font-family: var(--ff-secondary), sans-serif;
@@ -39,6 +34,16 @@
   align-items: center;
   gap: var(--space-16, 1rem);
   justify-self: start;
+  box-shadow: var(
+    --shadow-2,
+    rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px
+  );
+  transition: background-color 0.6s ease;
+}
+
+.postsLink:hover {
+  background-color: #005cbd;
 }
 
 .dogImg {

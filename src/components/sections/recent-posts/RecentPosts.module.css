@@ -9,28 +9,6 @@
 }
 @keyframes l2 {to{transform: rotate(1turn)}}
 
-/* .errorWrapper {
-  display: flex;
-  align-items: center;
-  gap: var(--space-16, 1rem);
-}
-
-.errorImage {
-  width: 70px;
-  height: 70px;
-}
-
-.errorIcon {
-  object-fit: cover;
-  height: 100%;
-  width: 100%;
-}
-
-.statusCode {
-  font-family: var(--ff-secondary), serif;
-  font-size: var(--fs-20);
-} */
-
 .recentPosts {
   padding: var(--space-32, 2rem);
   border: 1px solid var(--clr-black, black);
@@ -56,7 +34,6 @@
   gap: var(--space-16, 1rem);
   border-radius: var(--radius-small, 00.3125rem);
   padding: var(--space-16, 1rem);
-  background-color: var(--clr-white, white);
   background-color: var(--clr-gray-1, ghostwhite);
   box-shadow: var(
     --shadow-1,
