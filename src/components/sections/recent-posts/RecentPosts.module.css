@@ -9,7 +9,7 @@
 }
 @keyframes l2 {to{transform: rotate(1turn)}}
 
-.errorWrapper {
+/* .errorWrapper {
   display: flex;
   align-items: center;
   gap: var(--space-16, 1rem);
@@ -29,7 +29,7 @@
 .statusCode {
   font-family: var(--ff-secondary), serif;
   font-size: var(--fs-20);
-}
+} */
 
 .recentPosts {
   padding: var(--space-32, 2rem);

@@ -1,0 +1,21 @@
+.errorWrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16, 1rem);
+}
+
+.errorImage {
+  width: 70px;
+  height: 70px;
+}
+
+.errorIcon {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.statusCode {
+  font-family: var(--ff-secondary), serif;
+  font-size: var(--fs-20);
+}
