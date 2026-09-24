@@ -1,7 +1,6 @@
 .sidebar {
-  grid-area: sidebar;
   border-right: 1px solid var(--clr-black, black);
-  padding: var(--space-16, 1rem);
+  width: var(--space-250, 15.625rem);
 }
 
 .navbar {
@@ -33,5 +32,3 @@
 .label {
   text-transform: uppercase;
 }
-
-

@@ -1,19 +1,12 @@
-/* TODO: Increase sidebar width  */
+
 .page {
   min-height: 100svh;
-  padding: var(--space-16, 1rem);
+  padding: var(--space-16, 1rem) 0;
   max-width: 1200px;
   margin: auto;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: var(--space-32, 2rem);
-  grid-template-areas:
-    'header  header'
-    'sidebar  main'
-    'footer  footer';
-  grid-template-rows: auto 1fr auto;
-  grid-template-columns: var(--space-200, 12.5rem) 1fr;
+  
 }
 
-.sidebar {
-  grid-area: sidebar;
-}

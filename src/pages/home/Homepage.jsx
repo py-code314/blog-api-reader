@@ -8,13 +8,13 @@ import RecentPosts from '../../components/sections/recent-posts/RecentPosts'
 /* Component to display homepage */
 const Homepage = () => {
   return (
-    <>
-      <Sidebar/>
-      <main className={styles.home}>
+    <div className={styles.home}>
+      <Sidebar />
+      <main className={styles.main}>
         <Hero />
         <RecentPosts />
       </main>
-    </>
+    </div>
   )
 }
 

@@ -193,6 +193,7 @@ a {
   --space-144: calc(var(--space-base-unit) * 36);
   --space-160: calc(var(--space-base-unit) * 40);
   --space-200: calc(var(--space-base-unit) * 50);
+  --space-250: calc(var(--space-base-unit) * 62.5);
   --space-280: calc(var(--space-base-unit) * 70);
   --space-300: calc(var(--space-base-unit) * 75);
   --space-400: calc(var(--space-base-unit) * 100);
