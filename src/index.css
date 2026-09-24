@@ -218,16 +218,18 @@ a {
   /* Border
   ========== */
   /* Border radius */
-  --radius-base-unit: 0.3125rem;
-  --radius-small: calc(var(--radius-base-unit) * 1);
-  --radius-medium: calc(var(--radius-base-unit) * 2);
-  --radius-large: calc(var(--radius-base-unit) * 4);
-  --radius-x-large: calc(var(--radius-base-unit) * 8);
+  --radius-base-unit: 5px;
+  --radius-5: calc(var(--radius-base-unit) * 1);
+  --radius-10: calc(var(--radius-base-unit) * 2);
+  --radius-20: calc(var(--radius-base-unit) * 4);
+  --radius-40: calc(var(--radius-base-unit) * 8);
   --radius-round: 50%;
 
   /* Box shadow */
   --shadow-1: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
   --shadow-2: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+  --shadow-3: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
 /* Page styles  */

@@ -13,22 +13,35 @@ import { Link } from 'react-router'
 const SignupPage = () => {
   return (
     <main className={styles.main}>
-      <h2>Create account</h2>
-      <p>Join our 100% free blog network</p>
-      {/* <SignupForm/> */}
-      <div>SignupForm</div>
-      <div className={styles.imgContainer}>
-        <img src={booksImage} alt="" width={100} height={200} />
+      <div className={styles.signup}>
+        <div className={styles.signupWrapper}>
+          <div className={styles.headingContainer}>
+            <h2>Create account</h2>
+            <p className={styles.textSmall}>Join our 100% free blog network</p>
+          </div>
+          {/* <SignupForm/> */}
+          <div className={styles.formContainer}>
+            <div>SignupForm</div>
+            <p className={styles.textSmall}>
+              Already have an account? {' '}
+              <Link className={styles.linkLogin} to={'/login'}>
+                Login
+              </Link>
+            </p>
+          </div>
+          <p className={`${styles.textSmall} ${styles.textTerms}`}>
+            By creating an account, you agree to our{' '}
+            <span className={styles.terms}>terms of use</span>
+          </p>
+        </div>
+        <div className={styles.imgContainer}>
+          <img
+            className={styles.booksImage}
+            src={booksImage}
+            alt=""
+          />
+        </div>
       </div>
-      <p>
-        Already have an account?
-        <Link className={styles.linkLogin} to={'/login'}>
-          Login
-        </Link>
-      </p>
-      <p>
-        By creating an account, you agree to our <span>terms of use</span>
-      </p>
     </main>
   )
 }
