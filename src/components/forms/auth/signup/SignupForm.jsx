@@ -10,13 +10,13 @@ import { useRef, useEffect, useState } from 'react'
 import Button from '../../../core/button/Button'
 /* -------------------- Functions -------------------- */
 import {
-    validateNameInput,
+  validateNameInput,
   validateEmailInput,
   validatePasswordInput,
   validateConfirmPasswordInput,
-//   displayEmptyInputErrors,
-//   registerUser,
-//   displaySignupServerErrors,
+  displayEmptyInputErrors,
+  //   registerUser,
+  //   displaySignupServerErrors,
 } from '../../../../utils/auth/index.js'
 
 const SignupForm = () => {
@@ -66,20 +66,18 @@ const SignupForm = () => {
   }, [])
 
   // Handle form fields
-   const handleNameChange = (e) => {
-     const name = e.target.value
-     setSignupFormData((prevFormData) => ({
-       ...prevFormData,
-       name,
-     }))
+  const handleNameChange = (e) => {
+    const name = e.target.value
+    setSignupFormData((prevFormData) => ({
+      ...prevFormData,
+      name,
+    }))
 
-     validateNameInput(name, setValidFormData, setErrorMessages)
-   }
-  
+    validateNameInput(name, setValidFormData, setErrorMessages)
+  }
+
   const handleEmailChange = (e) => {
     const email = e.target.value
-    // const emailRegExp =
-    //   /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/
 
     setSignupFormData((prevFormData) => ({
       ...prevFormData,
@@ -87,24 +85,17 @@ const SignupForm = () => {
     }))
 
     validateEmailInput(email, setValidFormData, setErrorMessages)
-    // validateEmailInput(email, setValidFormData, setErrorMessages, emailRegExp)
   }
 
   const handlePasswordChange = (e) => {
     const password = e.target.value
-    // const passwordRegExp =
-    //   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/
 
     setSignupFormData((prevFormData) => ({
       ...prevFormData,
       password,
     }))
 
-    validatePasswordInput(
-      password,
-      setValidFormData,
-      setErrorMessages
-    )
+    validatePasswordInput(password, setValidFormData, setErrorMessages)
   }
 
   const handleConfirmPasswordChange = (e) => {
@@ -123,12 +114,30 @@ const SignupForm = () => {
     )
   }
 
- 
+  const validateForm = () => {
+    displayEmptyInputErrors(signupFormData, setValidFormData, setErrorMessages)
 
-  // const validateForm = () => {}
+    if (
+      validFormData.email === true &&
+      validFormData.password === true &&
+      validFormData.confirmPassword === true &&
+      validFormData.name !== false
+    ) {
+      return true
+    } else {
+      return false
+    }
+  }
 
   // Handle form submission
-  const handleFormSubmit = async (e) => {}
+  const handleFormSubmit = async (e) => {
+    e.preventDefault()
+    setIsFormSubmitted(true)
+    setSignupErrorMsg('')
+
+    const isValid = validateForm()
+    console.log('🚀 ~ handleFormSubmit ~ isValid:', isValid)
+  }
 
   return (
     <div className={styles.signupForm}>
