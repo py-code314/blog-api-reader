@@ -1,7 +1,7 @@
 /* -------------------- Styles -------------------- */
 import styles from './ErrorMessage.module.css'
 /* -------------------- Icons -------------------- */
-import errorIcon from '../../../assets/icons/icon-error.svg'
+import errorIcon from '../../../assets/icons/icon-error-1.svg'
 
 /* Component to display error message when fetching data fails */
 const ErrorMessage = ({ error }) => {

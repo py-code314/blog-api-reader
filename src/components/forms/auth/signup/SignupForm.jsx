@@ -1,23 +1,23 @@
 /* -------------------- Styles -------------------- */
 import styles from './SignupForm.module.css'
 /* -------------------- Icons -------------------- */
-import checkIcon from '../../../../assets/icons/icon-check-1.svg'
-import errorIcon from '../../../../assets/icons/icon-error-11.svg'
+import checkIcon from '../../../../assets/icons/icon-check.svg'
+import errorIcon from '../../../../assets/icons/icon-error-2.svg'
 /* -------------------- Hooks -------------------- */
 import { useRef, useEffect, useState } from 'react'
 
 /* -------------------- Components -------------------- */
 import Button from '../../../core/button/Button'
 /* -------------------- Functions -------------------- */
-// import {
-//   validateEmailInput,
-//   validatePasswordInput,
-//   validateConfirmPasswordInput,
-//   validateNameInput,
+import {
+    validateNameInput,
+  validateEmailInput,
+  validatePasswordInput,
+  validateConfirmPasswordInput,
 //   displayEmptyInputErrors,
 //   registerUser,
 //   displaySignupServerErrors,
-// } from '../../../../utils/signup/index.js'
+} from '../../../../utils/auth/index.js'
 
 const SignupForm = () => {
   const nameInputRef = useRef(null)
@@ -66,35 +66,45 @@ const SignupForm = () => {
   }, [])
 
   // Handle form fields
+   const handleNameChange = (e) => {
+     const name = e.target.value
+     setSignupFormData((prevFormData) => ({
+       ...prevFormData,
+       name,
+     }))
+
+     validateNameInput(name, setValidFormData, setErrorMessages)
+   }
+  
   const handleEmailChange = (e) => {
     const email = e.target.value
-    const emailRegExp =
-      /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/
+    // const emailRegExp =
+    //   /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/
 
     setSignupFormData((prevFormData) => ({
       ...prevFormData,
       email,
     }))
 
+    validateEmailInput(email, setValidFormData, setErrorMessages)
     // validateEmailInput(email, setValidFormData, setErrorMessages, emailRegExp)
   }
 
   const handlePasswordChange = (e) => {
     const password = e.target.value
-    const passwordRegExp =
-      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/
+    // const passwordRegExp =
+    //   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$/
 
     setSignupFormData((prevFormData) => ({
       ...prevFormData,
       password,
     }))
 
-    // validatePasswordInput(
-    //   password,
-    //   setValidFormData,
-    //   setErrorMessages,
-    //   passwordRegExp,
-    // )
+    validatePasswordInput(
+      password,
+      setValidFormData,
+      setErrorMessages
+    )
   }
 
   const handleConfirmPasswordChange = (e) => {
@@ -105,23 +115,15 @@ const SignupForm = () => {
       confirmPassword,
     }))
 
-    // validateConfirmPasswordInput(
-    //   confirmPassword,
-    //   setValidFormData,
-    //   setErrorMessages,
-    //   password,
-    // )
+    validateConfirmPasswordInput(
+      confirmPassword,
+      setValidFormData,
+      setErrorMessages,
+      password,
+    )
   }
 
-  const handleNameChange = (e) => {
-    const name = e.target.value
-    setSignupFormData((prevFormData) => ({
-      ...prevFormData,
-      name,
-    }))
-
-    // validateNameInput(name, setValidFormData, setErrorMessages)
-  }
+ 
 
   // const validateForm = () => {}
 
@@ -143,6 +145,9 @@ const SignupForm = () => {
           <label htmlFor="name" className={styles.formLabel}>
             Full Name (required)
           </label>
+          <p className={styles.formHint} id="name-hint">
+            Name must contain at least 2 letters and only spaces or hyphens
+          </p>
 
           <div className={styles.formValid}>
             <input
@@ -162,8 +167,8 @@ const SignupForm = () => {
                 aria-hidden="true"
                 src={checkIcon}
                 alt=""
-                width={40}
-                height={40}
+                width={25}
+                height={25}
               />
             )}
           </div>
@@ -215,8 +220,8 @@ const SignupForm = () => {
                 aria-hidden="true"
                 src={checkIcon}
                 alt=""
-                width={40}
-                height={40}
+                width={25}
+                height={25}
               />
             )}
           </div>
@@ -269,8 +274,8 @@ const SignupForm = () => {
                 aria-hidden="true"
                 src={checkIcon}
                 alt=""
-                width={40}
-                height={40}
+                width={25}
+                height={25}
               />
             )}
           </div>
@@ -317,8 +322,8 @@ const SignupForm = () => {
                 aria-hidden="true"
                 src={checkIcon}
                 alt=""
-                width={40}
-                height={40}
+                width={25}
+                height={25}
               />
             )}
           </div>
