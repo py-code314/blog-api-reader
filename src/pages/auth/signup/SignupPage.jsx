@@ -5,7 +5,7 @@ import booksImage from '../../../assets/images/books.jpg'
 /* -------------------- Hooks -------------------- */
 // import { useState } from 'react'
 /* -------------------- Components -------------------- */
-// import SignupForm from '../../forms/auth/signup-form/SignupForm'
+import SignupForm from '../../../components/forms/auth/signup/SignupForm'
 
 import { Link } from 'react-router'
 
@@ -15,31 +15,30 @@ const SignupPage = () => {
     <main className={styles.main}>
       <div className={styles.signup}>
         <div className={styles.signupWrapper}>
+          {/* Heading section  */}
           <div className={styles.headingContainer}>
             <h2>Create account</h2>
             <p className={styles.textSmall}>Join our 100% free blog network</p>
           </div>
-          {/* <SignupForm/> */}
+          {/* Signup form  */}
           <div className={styles.formContainer}>
-            <div>SignupForm</div>
+            <SignupForm />
             <p className={styles.textSmall}>
-              Already have an account? {' '}
+              Already have an account?{' '}
               <Link className={styles.linkLogin} to={'/login'}>
                 Login
               </Link>
             </p>
           </div>
+          {/* Legal notice  */}
           <p className={`${styles.textSmall} ${styles.textTerms}`}>
             By creating an account, you agree to our{' '}
             <span className={styles.terms}>terms of use</span>
           </p>
         </div>
+        {/* Signup image  */}
         <div className={styles.imgContainer}>
-          <img
-            className={styles.booksImage}
-            src={booksImage}
-            alt=""
-          />
+          <img className={styles.booksImage} src={booksImage} alt="" />
         </div>
       </div>
     </main>

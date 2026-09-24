@@ -8,10 +8,10 @@ import Navbar from '../navbar/Navbar'
 const Header = () => {
   return (
     <header className={styles.header}>
-      <title>Sciblr</title>
+      <title>Textura</title>
       {/* Title */}
       <Link to={`/home`}>
-        <h1 className={styles.title}>SCRIBLR</h1>
+        <h1 className={styles.title}>Textura</h1>
       </Link>
       <Navbar/>
     </header>
