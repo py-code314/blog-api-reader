@@ -163,6 +163,7 @@ a {
   --fs-32: calc(var(--font-base-unit) * 8);
   --fs-40: calc(var(--font-base-unit) * 10);
   --fs-48: calc(var(--font-base-unit) * 12);
+  --fs-64: calc(var(--space-base-unit) * 16);
 
   /* Font weights */
   --fw-medium: 500;
