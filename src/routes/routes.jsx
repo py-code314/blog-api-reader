@@ -1,7 +1,8 @@
 /* -------------------- Components -------------------- */
 import App from '../App'
-import Home from '../pages/home/Home'
+import Homepage from '../pages/home/Homepage'
 import ErrorPage from '../pages/error/ErrorPage'
+import SignupPage from '../pages/auth/signup/SignupPage'
 
 /* Array of routes */
 const routes = [
@@ -10,8 +11,9 @@ const routes = [
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
-      { index: true, element: <Home /> },
-      { path: 'home', element: <Home /> },
+      { index: true, element: <Homepage /> },
+      { path: 'home', element: <Homepage /> },
+      { path: 'signup', element: <SignupPage /> },
     ],
   },
 ]
