@@ -4,7 +4,7 @@ import styles from './SignupForm.module.css'
 import checkIcon from '../../../../assets/icons/icon-check.svg'
 import errorIcon from '../../../../assets/icons/icon-error-2.svg'
 /* -------------------- Hooks -------------------- */
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect, useState, useNavigate } from 'react'
 
 /* -------------------- Components -------------------- */
 import Button from '../../../core/button/Button'
@@ -15,41 +15,41 @@ import {
   validatePasswordInput,
   validateConfirmPasswordInput,
   displayEmptyInputErrors,
-  //   registerUser,
-  //   displaySignupServerErrors,
-} from '../../../../utils/auth/index.js'
+  registerUser,
+  displayServerValidationErrors,
+} from '../../../../utils/auth/signup/index.js'
 
 const SignupForm = () => {
   const nameInputRef = useRef(null)
 
   // State variables
   const defaultSignupFormData = {
+    name: '',
     email: '',
     password: '',
     confirmPassword: '',
-    name: '',
   }
   const [signupFormData, setSignupFormData] = useState(defaultSignupFormData)
 
   const defaultValidFormData = {
+    name: null,
     email: null,
     password: null,
     confirmPassword: null,
-    name: null,
   }
   const [validFormData, setValidFormData] = useState(defaultValidFormData)
 
   const defaultErrorMessages = {
+    name: '',
     email: '',
     password: '',
     confirmPassword: '',
-    name: '',
   }
   const [errorMessages, setErrorMessages] = useState(defaultErrorMessages)
 
   const [signupErrorMsg, setSignupErrorMsg] = useState('')
   const [isFormSubmitted, setIsFormSubmitted] = useState(false)
-  // const isModalOpen = activeModal === 'signup'
+  // TODO: Add 'isSuccess' state
 
   useEffect(() => {
     if (nameInputRef.current) {
@@ -135,9 +135,83 @@ const SignupForm = () => {
     setIsFormSubmitted(true)
     setSignupErrorMsg('')
 
+    // const isValid = true
     const isValid = validateForm()
-    console.log('🚀 ~ handleFormSubmit ~ isValid:', isValid)
+    // console.log('🚀 ~ handleFormSubmit ~ isValid:', isValid)
+
+    if (!isValid) {
+      setIsFormSubmitted(false)
+      return
+    }
+
+    try {
+      // Send sign-up data to server
+
+      const response = await registerUser(signupFormData)
+      // console.log('🚀 ~ handleFormSubmit ~ response:', response)
+
+      // This will be error object or data from backend
+      const data = await response.json()
+      console.log('🚀 ~ handleFormSubmit ~ data:', data)
+
+      if (!response.ok) {
+        setIsFormSubmitted(false)
+
+        if (response.status === 400 && data?.errors?.length > 0) {
+          displayServerValidationErrors(
+            data.errors,
+            setValidFormData,
+            setErrorMessages,
+          )
+          setSignupErrorMsg(
+            data.errorMessage || 'Check form fields and try again.',
+          )
+        } else if (response.status === 400) {
+          setSignupErrorMsg(
+            data?.errorMessage ||
+              'Bad request. Please check input and try again.',
+          )
+        } else if (response.status >= 500) {
+          setSignupErrorMsg(
+            data?.errorMessage || 'Server error. Please try again.',
+          )
+        } else {
+          setSignupErrorMsg(
+            data?.errorMessage || 'Signup failed. Please try again.',
+          )
+        }
+
+        return
+      }
+
+      // Successful submission
+      if (data && data.success) {
+        // Reset state
+        setIsFormSubmitted(false)
+        setSignupFormData(defaultSignupFormData)
+        setValidFormData(defaultValidFormData)
+        setErrorMessages(defaultErrorMessages)
+        // TODO: Show 'Signup successful' message on the screen with link to Login
+      } else {
+        setIsFormSubmitted(false)
+        setSignupErrorMsg(
+          data?.errorMessage || 'Signup failed. Please try again.',
+        )
+      }
+    } catch (error) {
+      // Network errors, DNS errors or other system errors are caught here
+      console.error('Error:', error)
+      setIsFormSubmitted(false)
+
+      setSignupErrorMsg(
+        'A network or unexpected error occurred. Please try again.',
+      )
+    } finally {
+      setIsFormSubmitted(false)
+    }
   }
+
+ 
 
   return (
     <div className={styles.signupForm}>
@@ -362,7 +436,7 @@ const SignupForm = () => {
           title="Signup"
           type="submit"
           disabled={isFormSubmitted}>
-          {isFormSubmitted ? 'Submitting...' : 'Submit'}
+          {isFormSubmitted ? 'Submitting...' : 'Sign up'}
         </Button>
       </form>
     </div>
