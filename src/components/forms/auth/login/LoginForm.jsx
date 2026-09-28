@@ -14,6 +14,7 @@ import {
   validateEmailInput,
   validatePasswordInput,
 } from '../../../../utils/auth/signup/index.js'
+import { displayEmptyInputErrors } from '../../../../utils/auth/login/index.js'
 
 /* Login form component */
 const LoginForm = () => {
@@ -70,9 +71,33 @@ const LoginForm = () => {
     validatePasswordInput(password, setValidFormData, setErrorMsgs)
   }
 
+  const validateForm = () => {
+      displayEmptyInputErrors(loginFormData, setValidFormData, setErrorMsgs)
+  
+      if (
+        validFormData.email === true &&
+        validFormData.password === true 
+      ) {
+        return true
+      } else {
+        return false
+      }
+    }
+
   // Handle form submission
   const handleFormSubmit = async (e) => {
     e.preventDefault()
+    setIsFormSubmitted(true)
+    setLoginErrorMsg('')
+
+    // const isValid = true
+    const isValid = validateForm()
+    console.log('🚀 ~ handleFormSubmit ~ isValid:', isValid)
+
+    if (!isValid) {
+      setIsFormSubmitted(false)
+      return
+    }
   }
 
   return (

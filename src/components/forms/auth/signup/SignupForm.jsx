@@ -114,7 +114,7 @@ const SignupForm = () => {
       validFormData.email === true &&
       validFormData.password === true &&
       validFormData.confirmPassword === true &&
-      validFormData.name !== false
+      validFormData.name === true
     ) {
       return true
     } else {
