@@ -18,22 +18,29 @@ const LoginPage = () => {
   const [flashMsg] = useState(location.state?.message || '')
 
   return (
-    <main>
+    <main className={styles.main}>
       <title>Textura | Login</title>
 
       <div className={styles.login}>
         <div className={styles.loginWrapper}>
           {/* Login icon  */}
           <div className={styles.imgContainer}>
-            <img src={loginIcon} alt="" width={40} height={40} />
+            <img
+              className={styles.loginIcon}
+              src={loginIcon}
+              alt=""
+              width={40}
+              height={40}
+            />
           </div>
           {/* Heading section  */}
           <div className={styles.headingContainer}>
             <h2 className={styles.heading}>Login</h2>
+            {/* Show signup success or default message */}
             {flashMsg ? (
               <p>{flashMsg}</p>
             ) : (
-              <p>Login to access your account and more features</p>
+              <p>Login to access your account</p>
             )}
           </div>
 
