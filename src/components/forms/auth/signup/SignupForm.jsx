@@ -107,6 +107,7 @@ const SignupForm = () => {
     )
   }
 
+  // TODO: Refactor this function based on the similar function in LoginForm component
   const validateForm = () => {
     displayEmptyInputErrors(signupFormData, setValidFormData, setErrorMessages)
 

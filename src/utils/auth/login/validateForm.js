@@ -1,22 +1,25 @@
-/* Function to check for empty inputs on form submission */
-export function displayEmptyInputErrors(
+/* Function to check for empty log-in form inputs */
+export function validateForm(
   loginFormData,
+  validFormData,
   setValidFormData,
-  setErrorMessages,
+  setErrorMsgs,
 ) {
   // Update state if input fields are empty
   if (!loginFormData.email.trim()) {
     setValidFormData((prevValid) => ({ ...prevValid, email: false }))
-    setErrorMessages((prevErrors) => ({
+    setErrorMsgs((prevErrors) => ({
       ...prevErrors,
       email: 'Please enter your email address',
     }))
   }
   if (!loginFormData.password.trim()) {
     setValidFormData((prevValid) => ({ ...prevValid, password: false }))
-    setErrorMessages((prevErrors) => ({
+    setErrorMsgs((prevErrors) => ({
       ...prevErrors,
       password: 'Please enter a password',
     }))
   }
+
+  return !!validFormData.email && !!validFormData.password
 }
