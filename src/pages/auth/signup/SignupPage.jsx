@@ -11,8 +11,10 @@ import { Link } from 'react-router'
 
 /* Signup page */
 const SignupPage = () => {
+
   return (
     <main className={styles.main}>
+      <title>Textura | Signup</title>
       <div className={styles.signup}>
         <div className={styles.signupWrapper}>
           {/* Heading section  */}

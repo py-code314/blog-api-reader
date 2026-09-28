@@ -56,14 +56,6 @@ const SignupForm = () => {
     if (nameInputRef.current) {
       nameInputRef.current.focus()
     }
-
-    // TODO: Add this in SignupPage
-    // Dynamically change page title
-    // if (isModalOpen) {
-    //   document.title = 'Scriblr | Sign-up'
-    // } else {
-    //   document.title = 'Scriblr'
-    // }
   }, [])
 
   // Handle form fields
