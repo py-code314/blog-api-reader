@@ -5,6 +5,7 @@ import checkIcon from '../../../../assets/icons/icon-check.svg'
 import errorIcon from '../../../../assets/icons/icon-error-2.svg'
 /* -------------------- Hooks -------------------- */
 import { useRef, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router'
 // /* -------------------- Context -------------------- */
 
 /* -------------------- Components -------------------- */
@@ -14,11 +15,13 @@ import {
   validateEmailInput,
   validatePasswordInput,
   validateForm,
+  loginUser,
 } from '../../../../utils/auth/login/index.js'
 
 /* Login form component */
 const LoginForm = () => {
   const emailInputRef = useRef(null)
+  const navigate = useNavigate()
 
   // State variables
   const defaultLoginFormData = {
@@ -90,6 +93,35 @@ const LoginForm = () => {
     if (!isValid) {
       setIsFormSubmitted(false)
       return
+    }
+
+    try {
+      // Send log-in data to server
+      const response = await loginUser(loginFormData)
+      console.log('🚀 ~ handleFormSubmit ~ response:', response)
+
+      // This will be error object or data from backend
+      const data = await response.json()
+      console.log('🚀 ~ handleFormSubmit ~ data:', data)
+
+      // Successful submission
+      if (data && data.success) {
+        // Reset state
+        setIsFormSubmitted(false)
+        setLoginFormData(defaultLoginFormData)
+        setValidFormData(defaultValidFormData)
+        setErrorMsgs(defaultErrorMsgs)
+
+        // Navigate to home page
+        navigate('/home')
+      } else {
+        setIsFormSubmitted(false)
+        setLoginErrorMsg(
+          data?.errorMessage || 'Login failed. Please try again.',
+        )
+      }
+    } catch (err) {
+      console.error(err)
     }
   }
 
