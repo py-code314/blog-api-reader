@@ -10,6 +10,10 @@ import { useRef, useEffect, useState } from 'react'
 /* -------------------- Components -------------------- */
 import Button from '../../../core/button/Button'
 /* -------------------- Functions -------------------- */
+import {
+  validateEmailInput,
+  validatePasswordInput,
+} from '../../../../utils/auth/signup/index.js'
 
 /* Login form component */
 const LoginForm = () => {
@@ -52,6 +56,7 @@ const LoginForm = () => {
       ...prevFormData,
       email,
     }))
+    validateEmailInput(email, setValidFormData, setErrorMsgs)
   }
 
   const handlePasswordChange = (e) => {
@@ -61,6 +66,8 @@ const LoginForm = () => {
       ...prevFormData,
       password,
     }))
+
+    validatePasswordInput(password, setValidFormData, setErrorMsgs)
   }
 
   // Handle form submission
