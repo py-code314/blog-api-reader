@@ -6,7 +6,7 @@ import loginIcon from '../../../assets/icons/icon-login-10.svg'
 import { useState } from 'react'
 import { useLocation } from 'react-router'
 /* -------------------- Components -------------------- */
-// import LoginForm from '../../../components/forms/auth/login/LoginForm'
+import LoginForm from '../../../components/forms/auth/login/LoginForm'
 import { Link } from 'react-router'
 
 /* Login page */
@@ -46,8 +46,8 @@ const LoginPage = () => {
 
           {/* Login form  */}
           <div className={styles.formContainer}>
-            {/* <loginForm /> */}
-            <div>Login Form</div>
+            <LoginForm />
+            {/* <div>Login Form</div> */}
             <p className={`${styles.textSmall} ${styles.textSignup}`}>
               Don't have an account?{' '}
               <Link className={styles.linkSignup} to={'/signup'}>
