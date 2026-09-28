@@ -1,0 +1,24 @@
+/* Function to display server errors for invalid login form data */
+export function displayServerValidationErrors(errors, setValidFormData, setErrorMsgs) {
+  errors.forEach((error) => {
+    if (error.path === 'email') {
+      setValidFormData((prevValid) => ({
+        ...prevValid,
+        email: false,
+      }))
+      setErrorMsgs((prevErrors) => ({
+        ...prevErrors,
+        email: error.msg,
+      }))
+    } else if (error.path === 'password') {
+      setValidFormData((prevValid) => ({
+        ...prevValid,
+        password: false,
+      }))
+      setErrorMsgs((prevErrors) => ({
+        ...prevErrors,
+        password: error.msg,
+      }))
+    }
+  })
+}
