@@ -4,8 +4,8 @@ import styles from './SignupForm.module.css'
 import checkIcon from '../../../../assets/icons/icon-check.svg'
 import errorIcon from '../../../../assets/icons/icon-error-2.svg'
 /* -------------------- Hooks -------------------- */
-import { useRef, useEffect, useState, useNavigate } from 'react'
-
+import { useRef, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router'
 /* -------------------- Components -------------------- */
 import Button from '../../../core/button/Button'
 /* -------------------- Functions -------------------- */
@@ -21,6 +21,7 @@ import {
 
 const SignupForm = () => {
   const nameInputRef = useRef(null)
+  const navigate = useNavigate()
 
   // State variables
   const defaultSignupFormData = {
@@ -49,9 +50,9 @@ const SignupForm = () => {
 
   const [signupErrorMsg, setSignupErrorMsg] = useState('')
   const [isFormSubmitted, setIsFormSubmitted] = useState(false)
-  // TODO: Add 'isSuccess' state
 
   useEffect(() => {
+    // Focus in name field after page load
     if (nameInputRef.current) {
       nameInputRef.current.focus()
     }
@@ -146,13 +147,12 @@ const SignupForm = () => {
 
     try {
       // Send sign-up data to server
-
       const response = await registerUser(signupFormData)
       // console.log('🚀 ~ handleFormSubmit ~ response:', response)
 
       // This will be error object or data from backend
       const data = await response.json()
-      console.log('🚀 ~ handleFormSubmit ~ data:', data)
+      // console.log('🚀 ~ handleFormSubmit ~ data:', data)
 
       if (!response.ok) {
         setIsFormSubmitted(false)
@@ -191,7 +191,14 @@ const SignupForm = () => {
         setSignupFormData(defaultSignupFormData)
         setValidFormData(defaultValidFormData)
         setErrorMessages(defaultErrorMessages)
-        // TODO: Show 'Signup successful' message on the screen with link to Login
+
+        // Navigate to login page and show success message
+        navigate('/login', {
+          replace: true,
+          state: {
+            message: '✅ Signup successful! Please log in to continue.',
+          },
+        })
       } else {
         setIsFormSubmitted(false)
         setSignupErrorMsg(
@@ -210,8 +217,6 @@ const SignupForm = () => {
       setIsFormSubmitted(false)
     }
   }
-
- 
 
   return (
     <div className={styles.signupForm}>
