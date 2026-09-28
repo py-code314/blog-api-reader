@@ -13,8 +13,8 @@ import Button from '../../../core/button/Button'
 import {
   validateEmailInput,
   validatePasswordInput,
-} from '../../../../utils/auth/signup/index.js'
-import { displayEmptyInputErrors } from '../../../../utils/auth/login/index.js'
+  displayEmptyInputErrors,
+} from '../../../../utils/auth/login/index.js'
 
 /* Login form component */
 const LoginForm = () => {
@@ -72,17 +72,14 @@ const LoginForm = () => {
   }
 
   const validateForm = () => {
-      displayEmptyInputErrors(loginFormData, setValidFormData, setErrorMsgs)
-  
-      if (
-        validFormData.email === true &&
-        validFormData.password === true 
-      ) {
-        return true
-      } else {
-        return false
-      }
+    displayEmptyInputErrors(loginFormData, setValidFormData, setErrorMsgs)
+
+    if (validFormData.email === true && validFormData.password === true) {
+      return true
+    } else {
+      return false
     }
+  }
 
   // Handle form submission
   const handleFormSubmit = async (e) => {
