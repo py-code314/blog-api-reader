@@ -1,0 +1,19 @@
+/* Default button styles */
+.btn {
+  background-color: transparent;
+  border: transparent;
+  cursor: pointer;
+  font-family: var(--ff-secondary), sans-serif;
+  font-size: var(--fs-20, 1.125rem);
+}
+
+.btnSignup {
+  composes: btn;
+  background-color: var(--clr-accent-1, firebrick);
+  color: var(--clr-white, white);
+  padding: var(--space-8, 0.5rem) var(--space-16, 1rem);
+  border-radius: var(--radius-small, 0.3125rem);
+  width: 90%;
+  margin-block-start: var(--space-16, 1rem);
+  letter-spacing: 0.05em;
+}

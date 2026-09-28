@@ -219,7 +219,7 @@ const SignupForm = () => {
   }
 
   return (
-    <div className={styles.signupForm}>
+    <div className={styles.formWrapper}>
       {/* Display server and network errors  */}
       {signupErrorMsg && (
         <p className={styles.signupError} aria-live="polite" id="signup-error">
@@ -267,8 +267,8 @@ const SignupForm = () => {
                 aria-hidden="true"
                 src={errorIcon}
                 alt=""
-                width={25}
-                height={25}
+                width={18}
+                height={18}
               />
               <p
                 className={styles.formErrorMsg}
@@ -320,8 +320,8 @@ const SignupForm = () => {
                 aria-hidden="true"
                 src={errorIcon}
                 alt=""
-                width={25}
-                height={25}
+                width={18}
+                height={18}
               />
               <p
                 className={styles.formErrorMsg}
@@ -374,8 +374,8 @@ const SignupForm = () => {
                 aria-hidden="true"
                 src={errorIcon}
                 alt=""
-                width={25}
-                height={25}
+                width={18}
+                height={18}
               />
               <p
                 className={styles.formErrorMsg}
@@ -422,8 +422,8 @@ const SignupForm = () => {
                 aria-hidden="true"
                 src={errorIcon}
                 alt=""
-                width={25}
-                height={25}
+                width={18}
+                height={18}
               />
               <p
                 className={styles.formErrorMsg}

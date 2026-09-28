@@ -108,18 +108,34 @@ a {
 @font-face {
   font-family: 'Quattrocento Sans Bold';
   src:
-    url('/src/assets/fonts/quattrocento-sans/QuattrocentoSans-Bold.woff2') format('woff2'),
-    url('/src/assets/fonts/quattrocento-sans/QuattrocentoSans-Bold.woff') format('woff');
+    url('/src/assets/fonts/quattrocento-sans/QuattrocentoSans-Bold.woff2')
+      format('woff2'),
+    url('/src/assets/fonts/quattrocento-sans/QuattrocentoSans-Bold.woff')
+      format('woff');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
+  font-family: 'Quattrocento Sans Bold Italic';
+  src:
+    url('/src/assets/fonts/quattrocento-sans/QuattrocentoSans-BoldItalic.woff2')
+      format('woff2'),
+    url('/src/assets/fonts/quattrocento-sans/QuattrocentoSans-BoldItalic.woff')
+      format('woff');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
   font-family: 'Quattrocento Sans Regular';
   src:
-    url('/src/assets/fonts/quattrocento-sans/QuattrocentoSans.woff2') format('woff2'),
-    url('/src/assets/fonts/quattrocento-sans/QuattrocentoSans.woff') format('woff');
+    url('/src/assets/fonts/quattrocento-sans/QuattrocentoSans.woff2')
+      format('woff2'),
+    url('/src/assets/fonts/quattrocento-sans/QuattrocentoSans.woff')
+      format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -128,8 +144,10 @@ a {
 @font-face {
   font-family: 'Quattrocento Sans Regular Italic';
   src:
-    url('/src/assets/fonts/quattrocento-sans/QuattrocentoSans-Italic.woff2') format('woff2'),
-    url('/src/assets/fonts/quattrocento-sans/QuattrocentoSans-Italic.woff') format('woff');
+    url('/src/assets/fonts/quattrocento-sans/QuattrocentoSans-Italic.woff2')
+      format('woff2'),
+    url('/src/assets/fonts/quattrocento-sans/QuattrocentoSans-Italic.woff')
+      format('woff');
   font-weight: normal;
   font-style: italic;
   font-display: swap;
@@ -147,6 +165,8 @@ a {
   /* Fonts */
   --ff-primary: 'Quattrocento Sans Regular';
   --ff-secondary: 'Quattrocento Sans Bold';
+  --ff-quaternary: 'Quattrocento Sans Bold Italic';
+  --ff-tertiary: 'Quattrocento Sans Regular Italic';
   --ff-title: 'Cinzel Bold';
 
   /* Font sizes */
@@ -160,6 +180,8 @@ a {
   --fs-18: calc(var(--font-base-unit) * 4.5);
   --fs-20: calc(var(--font-base-unit) * 5);
   --fs-24: calc(var(--font-base-unit) * 6);
+  --fs-28: calc(var(--font-base-unit) * 7);
+  --fs-30: calc(var(--font-base-unit) * 7.5);
   --fs-32: calc(var(--font-base-unit) * 8);
   --fs-40: calc(var(--font-base-unit) * 10);
   --fs-48: calc(var(--font-base-unit) * 12);
@@ -212,8 +234,8 @@ a {
   --clr-white: #fff;
   --clr-black: #000;
   --clr-red: #ff0000;
-  --clr-accent-1: #9C2007;
-  --clr-accent-2: #006CE0;
+  --clr-accent-1: #9c2007;
+  --clr-accent-2: #006ce0;
 
   /* Border
   ========== */
@@ -226,9 +248,13 @@ a {
   --radius-round: 50%;
 
   /* Box shadow */
-  --shadow-1: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+  --shadow-1:
+    rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px,
+    rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px,
+    rgba(0, 0, 0, 0.07) 0px 16px 16px;
   --shadow-2: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
-  --shadow-3: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+  --shadow-3:
+    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 

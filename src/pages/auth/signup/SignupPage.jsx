@@ -17,13 +17,13 @@ const SignupPage = () => {
         <div className={styles.signupWrapper}>
           {/* Heading section  */}
           <div className={styles.headingContainer}>
-            <h2>Create account</h2>
+            <h2 className={styles.heading}>Create account</h2>
             <p className={styles.textSmall}>Join our 100% free blog network</p>
           </div>
           {/* Signup form  */}
           <div className={styles.formContainer}>
             <SignupForm />
-            <p className={styles.textSmall}>
+            <p className={`${styles.textSmall} ${styles.textLogin}`}>
               Already have an account?{' '}
               <Link className={styles.linkLogin} to={'/login'}>
                 Login
