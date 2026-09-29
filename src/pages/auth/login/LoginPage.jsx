@@ -37,24 +37,19 @@ const LoginPage = () => {
           <div className={styles.headingContainer}>
             <h2 className={styles.heading}>Login</h2>
             {/* Show signup success or default message */}
-            {flashMsg ? (
-              <p>{flashMsg}</p>
-            ) : (
-              <p>Login to access your account</p>
-            )}
+            {flashMsg ? <p>{flashMsg}</p> : <p>Login to access your account</p>}
           </div>
 
           {/* Login form  */}
           <div className={styles.formContainer}>
             <LoginForm />
-            {/* <div>Login Form</div> */}
-            <p className={`${styles.textSmall} ${styles.textSignup}`}>
-              Don't have an account?{' '}
-              <Link className={styles.linkSignup} to={'/signup'}>
-                Register Now
-              </Link>
-            </p>
           </div>
+          <p className={`${styles.textSmall} ${styles.textSignup}`}>
+            Don't have an account?{' '}
+            <Link className={styles.linkSignup} to={'/signup'}>
+              Register Now
+            </Link>
+          </p>
         </div>
       </div>
     </main>

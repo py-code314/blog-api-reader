@@ -91,7 +91,7 @@ const LoginForm = () => {
       setValidFormData,
       setErrorMsgs,
     )
-    console.log('🚀 ~ handleFormSubmit ~ isValid:', isValid)
+    // console.log('🚀 ~ handleFormSubmit ~ isValid:', isValid)
 
     if (!isValid) {
       setIsFormSubmitted(false)
@@ -101,12 +101,12 @@ const LoginForm = () => {
     try {
       // Send log-in data to server
       const response = await loginUser(loginFormData)
-      console.log('🚀 ~ handleFormSubmit ~ response:', response)
+      // console.log('🚀 ~ handleFormSubmit ~ response:', response)
 
       // This will be error object or data from backend
       const data = await response.json()
-      console.log('🚀 ~ handleFormSubmit ~ data:', data)
-      console.log('🚀 ~ handleFormSubmit ~ data token:', data.token)
+      // console.log('🚀 ~ handleFormSubmit ~ data:', data)
+      // console.log('🚀 ~ handleFormSubmit ~ data token:', data.token)
 
       if (!response.ok) {
         setIsFormSubmitted(false)
@@ -182,125 +182,123 @@ const LoginForm = () => {
 
   return (
     <div className={styles.login}>
-      {/* Display server and network errors  */}
-      {loginErrorMsg && (
-        <p className={styles.loginError} aria-live="polite" id="login-error">
-          {loginErrorMsg}
-        </p>
-      )}
-
-      {/* Log-in form */}
-      <form className={styles.form} noValidate onSubmit={handleFormSubmit}>
-        {/* Email input */}
-        <div className={styles.formControl}>
-          <label htmlFor="email" className={styles.formLabel}>
-            Email (required)
-          </label>
-
-          <div className={styles.formValid}>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="cosmo.kramer@protonmail.com"
-              className={styles.formInput}
-              autoComplete="email"
-              inputMode="email"
-              required
-              value={loginFormData.email}
-              onChange={handleEmailChange}
-              ref={emailInputRef}
-            />
-            {validFormData.email && (
-              <img
-                className={styles.formCheckmark}
-                aria-hidden="true"
-                src={checkIcon}
-                alt=""
-                width={25}
-                height={25}
+      <div className={styles.formWrapper}>
+        {/* Display server and network errors  */}
+        {loginErrorMsg && (
+          <p className={styles.loginError} aria-live="polite" id="login-error">
+            {loginErrorMsg}
+          </p>
+        )}
+        {/* Log-in form */}
+        <form className={styles.form} noValidate onSubmit={handleFormSubmit}>
+          {/* Email input */}
+          <div className={styles.formControl}>
+            <label htmlFor="email" className={styles.formLabel}>
+              Email (required)
+            </label>
+            <div className={styles.formValid}>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="cosmo.kramer@protonmail.com"
+                className={styles.formInput}
+                pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+                autoComplete="email"
+                inputMode="email"
+                required
+                value={loginFormData.email}
+                onChange={handleEmailChange}
+                ref={emailInputRef}
               />
+              {validFormData.email && (
+                <img
+                  className={styles.formCheckmark}
+                  aria-hidden="true"
+                  src={checkIcon}
+                  alt=""
+                  width={25}
+                  height={25}
+                />
+              )}
+            </div>
+            {validFormData.email === false && (
+              <div className={styles.formError}>
+                <img
+                  className={styles.formErrorIcon}
+                  aria-hidden="true"
+                  src={errorIcon}
+                  alt=""
+                  width={18}
+                  height={18}
+                />
+                <p
+                  className={styles.formErrorMsg}
+                  aria-live="polite"
+                  id="invalid-email">
+                  {errorMsgs.email}
+                </p>
+              </div>
             )}
           </div>
-          {validFormData.email === false && (
-            <div className={styles.formError}>
-              <img
-                className={styles.formErrorIcon}
-                aria-hidden="true"
-                src={errorIcon}
-                alt=""
-                width={18}
-                height={18}
+          {/* Password */}
+          <div className={styles.formControl}>
+            <label className={styles.formLabel} htmlFor="password">
+              Password (required)
+            </label>
+            <div className={styles.formValid}>
+              <input
+                className={styles.formInput}
+                id="password"
+                name="password"
+                type="password"
+                min={8}
+                placeholder="Seinfeld#89"
+                // pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$"
+                required
+                value={loginFormData.password}
+                onChange={handlePasswordChange}
               />
-              <p
-                className={styles.formErrorMsg}
-                aria-live="polite"
-                id="invalid-email">
-                {errorMsgs.email}
-              </p>
+              {validFormData.password && (
+                <img
+                  className={styles.formCheckmark}
+                  aria-hidden="true"
+                  src={checkIcon}
+                  alt=""
+                  width={25}
+                  height={25}
+                />
+              )}
             </div>
-          )}
-        </div>
-
-        {/* Password */}
-        <div className={styles.formControl}>
-          <label className={styles.formLabel} htmlFor="password">
-            Password (required)
-          </label>
-
-          <div className={styles.formValid}>
-            <input
-              className={styles.formInput}
-              id="password"
-              name="password"
-              type="password"
-              min={8}
-              placeholder="Seinfeld#89"
-              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$"
-              required
-              value={loginFormData.password}
-              onChange={handlePasswordChange}
-            />
-            {validFormData.password && (
-              <img
-                className={styles.formCheckmark}
-                aria-hidden="true"
-                src={checkIcon}
-                alt=""
-                width={25}
-                height={25}
-              />
+            {validFormData.password === false && (
+              <div className={styles.formError}>
+                <img
+                  className={styles.formErrorIcon}
+                  aria-hidden="true"
+                  src={errorIcon}
+                  alt=""
+                  width={18}
+                  height={18}
+                />
+                <p
+                  className={styles.formErrorMsg}
+                  aria-live="polite"
+                  id="invalid-password">
+                  {errorMsgs.password}
+                </p>
+              </div>
             )}
           </div>
-          {validFormData.password === false && (
-            <div className={styles.formError}>
-              <img
-                className={styles.formErrorIcon}
-                aria-hidden="true"
-                src={errorIcon}
-                alt=""
-                width={18}
-                height={18}
-              />
-              <p
-                className={styles.formErrorMsg}
-                aria-live="polite"
-                id="invalid-password">
-                {errorMsgs.password}
-              </p>
-            </div>
-          )}
-        </div>
-
-        {/* Log-in button */}
-        <Button
-          className="btnLogin"
-          title="Login"
-          type="submit"
-          disabled={isFormSubmitted}>
-          {isFormSubmitted ? 'Logging in...' : 'Get Started'}
-        </Button>
-      </form>
+          {/* Log-in button */}
+          <Button
+            className="btnLogin"
+            title="Login"
+            type="submit"
+            disabled={isFormSubmitted}>
+            {isFormSubmitted ? 'Logging in...' : 'Get Started'}
+          </Button>
+        </form>
+      </div>
     </div>
   )
 }

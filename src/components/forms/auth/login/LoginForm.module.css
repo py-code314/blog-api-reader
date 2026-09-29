@@ -1,0 +1,60 @@
+.formWrapper {
+  text-align: left;
+  padding: var(--space-16, 1rem);
+}
+
+.loginError {
+  color: var(--clr-red, red);
+  font-family: var(--ff-quaternary), sans-serif;
+  margin-block-end: var(--space-6, 0.375rem);
+}
+
+.form {
+  display: grid;
+  gap: var(--space-12, 0.75rem);
+  width: 100%;
+}
+
+.formLabel,
+.formInput,
+.formHint {
+  width: 95%;
+}
+
+.formLabel {
+  display: block;
+  font-family: var(--ff-secondary), sans-serif;
+  font-size: var(--fs-20, 1.125rem);
+}
+
+.formHint {
+  font-size: var(--fs-16, 1rem);
+  line-height: 1;
+}
+
+.formInput {
+  display: block;
+  margin-block-start: var(--space-6, 0.375rem);
+  padding: var(--space-8, 0.5rem);
+  border: 1px solid var(--clr-black, black);
+  border-radius: var(--radius-small, 0.3125rem);
+  background-color: var(--clr-gray-1, ghostwhite);
+}
+
+.formValid {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8, 0.5rem);
+}
+
+.formError {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8, 0.5rem);
+  padding-block-start: var(--space-8, 0.5rem);
+}
+
+.formErrorMsg {
+  color: var(--clr-red, red);
+  font-family: var(--ff-tertiary), sans-serif;
+}

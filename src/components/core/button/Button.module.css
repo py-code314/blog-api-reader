@@ -17,3 +17,8 @@
   margin-block-start: var(--space-16, 1rem);
   letter-spacing: 0.05em;
 }
+
+.btnLogin {
+   composes: btnSignup;
+   width: 95%;
+}
