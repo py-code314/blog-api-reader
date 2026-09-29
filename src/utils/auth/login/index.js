@@ -3,6 +3,7 @@ import { validatePasswordInput } from './validatePassword'
 import { validateForm } from './validateForm'
 import { loginUser } from './loginUser'
 import { displayServerValidationErrors } from './serverValidation'
+import { displayAuthErrors } from './authErrors'
 
 export {
   validateEmailInput,
@@ -10,4 +11,5 @@ export {
   validateForm,
   loginUser,
   displayServerValidationErrors,
+  displayAuthErrors,
 }

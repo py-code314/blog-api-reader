@@ -17,6 +17,7 @@ import {
   validateForm,
   loginUser,
   displayServerValidationErrors,
+  displayAuthErrors,
 } from '../../../../utils/auth/login/index.js'
 
 /* Login form component */
@@ -109,6 +110,7 @@ const LoginForm = () => {
         setIsFormSubmitted(false)
 
         if (response.status === 400 && data?.errors?.length > 0) {
+          // Bad request and invalid form data
           displayServerValidationErrors(
             data.errors,
             setValidFormData,
@@ -118,11 +120,20 @@ const LoginForm = () => {
             data.errorMessage || 'Check form fields and try again.',
           )
         } else if (response.status === 400) {
+          // Bad request
           setLoginErrorMsg(
             data?.errorMessage ||
               'Bad request. Please check input and try again.',
           )
+        } else if (response.status === 401) {
+          // Authentication error
+          displayAuthErrors(data?.errorMsg, setValidFormData, setErrorMsgs)
+          setLoginErrorMsg(
+            data?.errorMessage ||
+              'Authentication error. Recheck credentials and try again.',
+          )
         } else if (response.status >= 500) {
+          // Server error
           setLoginErrorMsg(
             data?.errorMessage || 'Server error. Please try again.',
           )
@@ -153,8 +164,7 @@ const LoginForm = () => {
       }
     } catch (err) {
       console.error(err)
-      
-    } 
+    }
   }
 
   return (
