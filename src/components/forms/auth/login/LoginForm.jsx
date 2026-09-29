@@ -153,6 +153,7 @@ const LoginForm = () => {
         setLoginFormData(defaultLoginFormData)
         setValidFormData(defaultValidFormData)
         setErrorMsgs(defaultErrorMsgs)
+        // TODO: Set user, set token
 
         // Navigate to home page
         navigate('/home')
@@ -162,8 +163,16 @@ const LoginForm = () => {
           data?.errorMessage || 'Login failed. Please try again.',
         )
       }
-    } catch (err) {
-      console.error(err)
+    } catch (error) {
+      // Network errors, DNS errors or other system errors are caught here
+      console.error('Error:', error)
+      setIsFormSubmitted(false)
+
+      setLoginErrorMsg(
+        'A network or unexpected error occurred. Please try again.',
+      )
+    } finally {
+      setIsFormSubmitted(false)
     }
   }
 
