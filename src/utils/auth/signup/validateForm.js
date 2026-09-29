@@ -1,6 +1,7 @@
 /* Function to check for empty inputs on form submission */
-export function displayEmptyInputErrors(
+export function validateForm(
   signupFormData,
+  validFormData,
   setValidFormData,
   setErrorMessages,
 ) {
@@ -36,4 +37,11 @@ export function displayEmptyInputErrors(
       confirmPassword: 'Please re-enter your password',
     }))
   }
+
+  return (
+    !!validFormData.name &&
+    !!validFormData.email &&
+    !!validFormData.password &&
+    !!validFormData.confirmPassword
+  )
 }

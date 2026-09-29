@@ -14,7 +14,7 @@ import {
   validateEmailInput,
   validatePasswordInput,
   validateConfirmPasswordInput,
-  displayEmptyInputErrors,
+  validateForm,
   registerUser,
   displayServerValidationErrors,
 } from '../../../../utils/auth/signup/index.js'
@@ -46,7 +46,7 @@ const SignupForm = () => {
     password: '',
     confirmPassword: '',
   }
-  const [errorMessages, setErrorMessages] = useState(defaultErrorMessages)
+  const [errorMsgs, setErrorMsgs] = useState(defaultErrorMessages)
 
   const [signupErrorMsg, setSignupErrorMsg] = useState('')
   const [isFormSubmitted, setIsFormSubmitted] = useState(false)
@@ -66,7 +66,7 @@ const SignupForm = () => {
       name,
     }))
 
-    validateNameInput(name, setValidFormData, setErrorMessages)
+    validateNameInput(name, setValidFormData, setErrorMsgs)
   }
 
   const handleEmailChange = (e) => {
@@ -77,7 +77,7 @@ const SignupForm = () => {
       email,
     }))
 
-    validateEmailInput(email, setValidFormData, setErrorMessages)
+    validateEmailInput(email, setValidFormData, setErrorMsgs)
   }
 
   const handlePasswordChange = (e) => {
@@ -88,7 +88,7 @@ const SignupForm = () => {
       password,
     }))
 
-    validatePasswordInput(password, setValidFormData, setErrorMessages)
+    validatePasswordInput(password, setValidFormData, setErrorMsgs)
   }
 
   const handleConfirmPasswordChange = (e) => {
@@ -102,25 +102,9 @@ const SignupForm = () => {
     validateConfirmPasswordInput(
       confirmPassword,
       setValidFormData,
-      setErrorMessages,
+      setErrorMsgs,
       password,
     )
-  }
-
-  // TODO: Refactor this function based on the similar function in LoginForm component
-  const validateForm = () => {
-    displayEmptyInputErrors(signupFormData, setValidFormData, setErrorMessages)
-
-    if (
-      validFormData.email === true &&
-      validFormData.password === true &&
-      validFormData.confirmPassword === true &&
-      validFormData.name === true
-    ) {
-      return true
-    } else {
-      return false
-    }
   }
 
   // Handle form submission
@@ -130,7 +114,13 @@ const SignupForm = () => {
     setSignupErrorMsg('')
 
     // const isValid = true
-    const isValid = validateForm()
+    // Check for empty form inputs
+        const isValid = validateForm(
+          signupFormData,
+          validFormData,
+          setValidFormData,
+          setErrorMsgs,
+        )
     // console.log('🚀 ~ handleFormSubmit ~ isValid:', isValid)
 
     if (!isValid) {
@@ -154,7 +144,7 @@ const SignupForm = () => {
           displayServerValidationErrors(
             data.errors,
             setValidFormData,
-            setErrorMessages,
+            setErrorMsgs,
           )
           setSignupErrorMsg(
             data.errorMessage || 'Check form fields and try again.',
@@ -183,7 +173,7 @@ const SignupForm = () => {
         setIsFormSubmitted(false)
         setSignupFormData(defaultSignupFormData)
         setValidFormData(defaultValidFormData)
-        setErrorMessages(defaultErrorMessages)
+        setErrorMsgs(defaultErrorMessages)
 
         // Navigate to login page and show success message
         navigate('/login', {
@@ -267,7 +257,7 @@ const SignupForm = () => {
                 className={styles.formErrorMsg}
                 aria-live="polite"
                 id="invalid-name">
-                {errorMessages.name}
+                {errorMsgs.name}
               </p>
             </div>
           )}
@@ -320,7 +310,7 @@ const SignupForm = () => {
                 className={styles.formErrorMsg}
                 aria-live="polite"
                 id="invalid-email">
-                {errorMessages.email}
+                {errorMsgs.email}
               </p>
             </div>
           )}
@@ -374,7 +364,7 @@ const SignupForm = () => {
                 className={styles.formErrorMsg}
                 aria-live="polite"
                 id="invalid-password">
-                {errorMessages.password}
+                {errorMsgs.password}
               </p>
             </div>
           )}
@@ -422,7 +412,7 @@ const SignupForm = () => {
                 className={styles.formErrorMsg}
                 aria-live="polite"
                 id="invalid-confirmPassword">
-                {errorMessages.confirmPassword}
+                {errorMsgs.confirmPassword}
               </p>
             </div>
           )}
