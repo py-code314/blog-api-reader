@@ -4,10 +4,10 @@ import styles from './LoginForm.module.css'
 import checkIcon from '../../../../assets/icons/icon-check.svg'
 import errorIcon from '../../../../assets/icons/icon-error-2.svg'
 /* -------------------- Hooks -------------------- */
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect, useState, useContext } from 'react'
 import { useNavigate } from 'react-router'
-// /* -------------------- Context -------------------- */
-
+ /* -------------------- Context -------------------- */
+import { AuthContext } from '../../../../contexts/auth/AuthContext.jsx'
 /* -------------------- Components -------------------- */
 import Button from '../../../core/button/Button'
 /* -------------------- Functions -------------------- */
@@ -24,6 +24,7 @@ import {
 const LoginForm = () => {
   const emailInputRef = useRef(null)
   const navigate = useNavigate()
+  const {setToken} = useContext(AuthContext)
 
   // State variables
   const defaultLoginFormData = {
@@ -105,6 +106,7 @@ const LoginForm = () => {
       // This will be error object or data from backend
       const data = await response.json()
       console.log('🚀 ~ handleFormSubmit ~ data:', data)
+      console.log('🚀 ~ handleFormSubmit ~ data token:', data.token)
 
       if (!response.ok) {
         setIsFormSubmitted(false)
@@ -153,7 +155,9 @@ const LoginForm = () => {
         setLoginFormData(defaultLoginFormData)
         setValidFormData(defaultValidFormData)
         setErrorMsgs(defaultErrorMsgs)
-        // TODO: Set user, set token
+
+        // Save token in local storage 
+        setToken(data.token)
 
         // Navigate to home page
         navigate('/home')

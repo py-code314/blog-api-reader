@@ -3,6 +3,7 @@
   gap: var(--space-32, 2rem);
 }
 
+/* TODO FIX: Not taking up whole height when there is error in Recent Posts  */
 .main {
   display: grid;
   gap: var(--space-32, 2rem);

@@ -35,7 +35,7 @@ const ErrorMessage = ({ error }) => {
             <p>Server error.</p>
           </>
         ) : (
-          <p>An unexpected error occurred {error.message}.</p>
+          <p>An unexpected error occurred: {error.message}.</p>
         )}
       </div>
     </div>
