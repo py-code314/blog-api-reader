@@ -2,7 +2,6 @@
 import styles from './RecentPosts.module.css'
 /* -------------------- Icons -------------------- */
 import readMoreIcon from '../../../assets/icons/icon-chevron-right.svg'
-// import errorIcon from '../../../assets/icons/icon-error.svg'
 /* -------------------- Hooks -------------------- */
 import { useFetchData } from '../../../hooks/useFetchData.js'
 /* -------------------- Components -------------------- */

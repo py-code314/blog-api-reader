@@ -21,7 +21,7 @@ const Sidebar = () => {
           <ul className={styles.navList}>
             <li className={styles.navItem}>
               {/* Posts link  */}
-              <Link className={styles.link} to={`/home`}>
+              <Link className={styles.link} to={`/home/posts`}>
                 <img
                   className={styles.blogsIcon}
                   src={postsIcon}
