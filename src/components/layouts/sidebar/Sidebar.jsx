@@ -34,7 +34,7 @@ const Sidebar = () => {
             </li>
             <li className={styles.navItem}>
               {/* Authors link  */}
-              <Link className={styles.link} to={`/home`}>
+              <Link className={styles.link} to={`/home/authors`}>
                 <img
                   className={styles.authorsIcon}
                   src={authorsIcon}
