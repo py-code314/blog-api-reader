@@ -1,7 +1,6 @@
-/* TODO FIX: Fix sidebar width  */
 .sidebar {
   border-right: 1px solid var(--clr-black, black);
-  width: var(--space-250, 15.625rem);
+  padding-inline-end: var(--space-32, 2rem);
 }
 
 .navbar {

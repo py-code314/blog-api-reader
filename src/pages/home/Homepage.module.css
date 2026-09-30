@@ -3,3 +3,7 @@
   display: flex;
   gap: var(--space-32, 2rem);
 }
+
+.main {
+  flex: 1;
+}
