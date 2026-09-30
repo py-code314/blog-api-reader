@@ -29,10 +29,10 @@ const RecentPosts = () => {
   // Show error message upon failure to fetch the data
   if (error)
     return (
-      <div className={styles.recentPosts}>
+      <section className={styles.recentPosts}>
         <h2 className={styles.heading}>Recent Posts</h2>
         <ErrorMessage error={error} />
-      </div>
+      </section>
     )
 
   return (

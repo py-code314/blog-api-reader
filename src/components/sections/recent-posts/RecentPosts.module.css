@@ -1,3 +1,9 @@
+.recentPosts {
+  padding: var(--space-32, 2rem);
+  border: 1px solid var(--clr-black, black);
+  display: grid;
+  gap: var(--space-16, 1rem);
+}
 
 .loader {
   width: 50px;
@@ -7,13 +13,10 @@
   border-right-color: orange;
   animation: l2 1s infinite linear;
 }
-@keyframes l2 {to{transform: rotate(1turn)}}
-
-.recentPosts {
-  padding: var(--space-32, 2rem);
-  border: 1px solid var(--clr-black, black);
-  display: grid;
-  gap: var(--space-16, 1rem);
+@keyframes l2 {
+  to {
+    transform: rotate(1turn);
+  }
 }
 
 .heading {
