@@ -1,7 +1,8 @@
 /* -------------------- Styles -------------------- */
 import styles from './Posts.module.css'
-/* -------------------- Icons -------------------- */
+/* -------------------- Icons/Images -------------------- */
 import readMoreIcon from '../../../assets/icons/icon-chevron-right.svg'
+import typewriterImg from '../../../assets/images/typewriter.jpg'
 /* -------------------- Hooks -------------------- */
 import { useFetchData } from '../../../hooks/useFetchData.js'
 /* -------------------- Components -------------------- */
@@ -43,13 +44,22 @@ const Posts = () => {
         <ul className={styles.list}>
           {data?.posts.map((post) => (
             <li className={styles.card} key={post.id}>
-              <div className={styles.imgContainer}></div>
+              <div className={styles.imgContainer}>
+                <img
+                  className={styles.typewriterImg}
+                  src={typewriterImg}
+                  alt=""
+                  height={200}
+                />
+              </div>
               <div className={styles.post}>
                 <h3>{post.title}</h3>
                 {/* Use <div> here because first element in 'post.content' is <p> and a <p> element can not be a descendant of another <p> */}
                 <div className={styles.content}>{parse(post.content)}</div>
                 {/* Link to view full post  */}
-                <Link className={styles.readMoreLink} to={`/home/posts/${post.id}`}>
+                <Link
+                  className={styles.readMoreLink}
+                  to={`/home/posts/${post.id}`}>
                   Read more
                   <img src={readMoreIcon} alt="" width={18} height={18} />
                 </Link>
