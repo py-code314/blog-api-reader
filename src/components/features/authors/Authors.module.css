@@ -1,0 +1,66 @@
+.authors {
+  padding: 0 var(--space-32, 2rem) var(--space-32, 2rem) var(--space-32, 2rem);
+  display: grid;
+  gap: var(--space-32, 2rem);
+}
+
+.heading {
+  font-family: var(--ff-title), serif;
+}
+
+/* Loading animation */
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid lightblue;
+  border-right-color: orange;
+  animation: l2 1s infinite linear;
+}
+@keyframes l2 {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--space-32, 2rem);
+}
+
+.linkAuthor {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1; /* All cards get same height */
+  font-family: var(--ff-secondary), sans-serif;
+  font-size: var(--fs-28, 1.75rem);
+  color: var(--clr-white, white);
+  border-radius: var(--radius-20, 1.25rem);
+  padding: var(--space-32, 2rem);
+  box-shadow: var(
+    --shadow-5,
+    rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px
+  );
+  transition: transform 250ms;
+
+  /* Add background image */
+  background: var(--clr-accent-1) url('../../../assets/icons/icon-confetti.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+

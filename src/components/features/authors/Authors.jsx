@@ -1,15 +1,10 @@
 /* -------------------- Styles -------------------- */
 import styles from './Authors.module.css'
-/* -------------------- Icons/Images -------------------- */
-// import readMoreIcon from '../../../assets/icons/icon-chevron-right.svg'
-// import typewriterImg from '../../../assets/images/typewriter.jpg'
 /* -------------------- Hooks -------------------- */
 import { useFetchData } from '../../../hooks/useFetchData.js'
 /* -------------------- Components -------------------- */
 import { Link } from 'react-router'
 import ErrorMessage from '../../core/error/ErrorMessage.jsx'
-/* -------------------- Functions -------------------- */
-// import parse from 'html-react-parser'
 
 /* Show authors names */
 const Authors = () => {
@@ -43,11 +38,9 @@ const Authors = () => {
       ) : (
         <ul className={styles.list}>
           {data?.authors.map((author) => (
-            <li className={styles.tab} key={author.id}>
-              <div className={styles.authorContainer}>
-                <Link>{author.name}</Link>
-              </div>
-            </li>
+            <Link className={styles.linkAuthor} key={author.id}>
+              <li className={styles.card}>{author.name}</li>
+            </Link>
           ))}
         </ul>
       )}

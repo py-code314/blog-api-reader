@@ -179,6 +179,7 @@ a {
   --fs-16: calc(var(--font-base-unit) * 4);
   --fs-18: calc(var(--font-base-unit) * 4.5);
   --fs-20: calc(var(--font-base-unit) * 5);
+  --fs-22: calc(var(--font-base-unit) * 5.5);
   --fs-24: calc(var(--font-base-unit) * 6);
   --fs-28: calc(var(--font-base-unit) * 7);
   --fs-30: calc(var(--font-base-unit) * 7.5);
@@ -260,6 +261,7 @@ a {
   --shadow-4:
     rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  --shadow-5: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 /* Page styles  */
