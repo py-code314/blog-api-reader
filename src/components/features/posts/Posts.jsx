@@ -6,17 +6,24 @@ import typewriterImg from '../../../assets/images/typewriter.jpg'
 /* -------------------- Hooks -------------------- */
 import { useFetchData } from '../../../hooks/useFetchData.js'
 /* -------------------- Components -------------------- */
-import { Link } from 'react-router'
+import { Link, useParams } from 'react-router'
 import ErrorMessage from '../../core/error/ErrorMessage.jsx'
 /* -------------------- Functions -------------------- */
 import parse from 'html-react-parser'
 
 /* Show previews of posts */
 const Posts = () => {
-  // Get all published posts
-  const { data, isLoading, error } = useFetchData(
-    'http://localhost:8080/api/v1/posts/',
-  )
+  const { categoryId } = useParams()
+
+  // Update api endpoint based on category id
+  const apiEndpoint = categoryId
+    ? `http://localhost:8080/api/v1/posts/categories/${categoryId}`
+    : 'http://localhost:8080/api/v1/posts/'
+
+    // Get  posts
+  const { data, isLoading, error } = useFetchData(apiEndpoint)
+  // console.log("🚀 ~ Posts ~ data:", data)
+
 
   // Show loading spinner while fetching the data
   if (isLoading)

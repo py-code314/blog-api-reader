@@ -39,7 +39,7 @@ const Categories = () => {
       ) : (
         <ul className={styles.list}>
           {data?.categories.map((category) => (
-            <Link className={styles.linkCategory} key={category.id}>
+            <Link className={styles.linkCategory} key={category.id} to={`/home/categories/${category.id}`}>
               <li className={styles.tab}>{category.name}</li>
             </Link>
           ))}

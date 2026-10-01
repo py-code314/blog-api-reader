@@ -24,6 +24,7 @@ const routes = [
           {path: 'posts', element: <Posts/>},
           {path: 'authors', element: <Authors/>},
           {path: 'categories', element: <Categories/>},
+          {path: 'categories/:categoryId', element: <Posts/>},
         ]
        },
       { path: 'signup', element: <SignupPage /> },
