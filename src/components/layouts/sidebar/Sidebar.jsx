@@ -47,7 +47,7 @@ const Sidebar = () => {
             </li>
             <li className={styles.navItem}>
               {/* Categories link  */}
-              <Link className={styles.link} to={`/home`}>
+              <Link className={styles.link} to={`/home/categories`}>
                 <img
                   className={styles.categoriesIcon}
                   src={categoriesIcon}

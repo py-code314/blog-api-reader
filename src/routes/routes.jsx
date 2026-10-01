@@ -7,6 +7,7 @@ import LoginPage from '../pages/auth/login/LoginPage'
 import DefaultMainLayout from '../components/features/main-default/DefaultMainLayout'
 import Posts from '../components/features/posts/Posts'
 import Authors from '../components/features/authors/Authors'
+import Categories from '../components/features/categories/Categories'
 
 /* Array of routes */
 const routes = [
@@ -22,6 +23,7 @@ const routes = [
           { index: true, element: <DefaultMainLayout /> },
           {path: 'posts', element: <Posts/>},
           {path: 'authors', element: <Authors/>},
+          {path: 'categories', element: <Categories/>},
         ]
        },
       { path: 'signup', element: <SignupPage /> },
