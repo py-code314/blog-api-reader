@@ -21,10 +21,10 @@ const Posts = () => {
   // Show loading spinner while fetching the data
   if (isLoading)
     return (
-      <section className={styles.posts}>
+      <div className={styles.posts}>
         <h2 className={styles.heading}>Posts</h2>
         <div className={styles.loader}></div>
-      </section>
+      </div>
     )
 
   // Show error message upon failure to fetch the data
