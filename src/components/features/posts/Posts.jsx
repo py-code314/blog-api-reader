@@ -13,17 +13,18 @@ import parse from 'html-react-parser'
 
 /* Show previews of posts */
 const Posts = () => {
-  const { categoryId } = useParams()
+  const { categoryId, tagId } = useParams()
 
   // Update api endpoint based on category id
   const apiEndpoint = categoryId
     ? `http://localhost:8080/api/v1/posts/categories/${categoryId}`
-    : 'http://localhost:8080/api/v1/posts/'
+    : tagId
+      ? `http://localhost:8080/api/v1/posts/tags/${tagId}`
+      : 'http://localhost:8080/api/v1/posts/'
 
-    // Get  posts
+  // Get  posts
   const { data, isLoading, error } = useFetchData(apiEndpoint)
   // console.log("🚀 ~ Posts ~ data:", data)
-
 
   // Show loading spinner while fetching the data
   if (isLoading)
