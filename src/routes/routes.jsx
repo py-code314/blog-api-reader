@@ -8,6 +8,7 @@ import DefaultMainLayout from '../components/features/main-default/DefaultMainLa
 import Posts from '../components/features/posts/Posts'
 import Authors from '../components/features/authors/Authors'
 import Categories from '../components/features/categories/Categories'
+import Tags from '../components/features/tags/Tags'
 
 /* Array of routes */
 const routes = [
@@ -25,6 +26,7 @@ const routes = [
           {path: 'authors', element: <Authors/>},
           {path: 'categories', element: <Categories/>},
           {path: 'categories/:categoryId', element: <Posts/>},
+          {path: 'tags', element: <Tags/>},
         ]
        },
       { path: 'signup', element: <SignupPage /> },

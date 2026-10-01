@@ -12,7 +12,7 @@ const Categories = () => {
   const { data, isLoading, error } = useFetchData(
     'http://localhost:8080/api/v1/categories/all',
   )
-  console.log("🚀 ~ Categories ~ data:", data)
+  // console.log("🚀 ~ Categories ~ data:", data)
 
   // Show loading spinner while fetching the data
   if (isLoading)

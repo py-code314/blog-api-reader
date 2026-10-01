@@ -60,7 +60,7 @@ const Sidebar = () => {
             </li>
             {/* Tags link  */}
             <li className={styles.navItem}>
-              <Link className={styles.link} to={`/home`}>
+              <Link className={styles.link} to={`/home/tags`}>
                 <img
                   className={styles.tagsIcon}
                   src={tagsIcon}
