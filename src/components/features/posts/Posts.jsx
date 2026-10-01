@@ -13,14 +13,16 @@ import parse from 'html-react-parser'
 
 /* Show previews of posts */
 const Posts = () => {
-  const { categoryId, tagId } = useParams()
+  const { authorId, categoryId, tagId } = useParams()
 
   // Update api endpoint based on category id
-  const apiEndpoint = categoryId
-    ? `http://localhost:8080/api/v1/posts/categories/${categoryId}`
-    : tagId
-      ? `http://localhost:8080/api/v1/posts/tags/${tagId}`
-      : 'http://localhost:8080/api/v1/posts/'
+  const apiEndpoint = authorId
+    ? `http://localhost:8080/api/v1/posts/authors/${authorId}`
+    : categoryId
+      ? `http://localhost:8080/api/v1/posts/categories/${categoryId}`
+      : tagId
+        ? `http://localhost:8080/api/v1/posts/tags/${tagId}`
+        : 'http://localhost:8080/api/v1/posts/'
 
   // Get  posts
   const { data, isLoading, error } = useFetchData(apiEndpoint)
@@ -45,6 +47,7 @@ const Posts = () => {
     )
   return (
     <div className={styles.posts}>
+      {/* // TODO: Add Back button with navigate(-1) */}
       <h2 className={styles.heading}>Posts</h2>
       {data?.posts.length === 0 ? (
         <p>🔴 No posts to show yet.</p>

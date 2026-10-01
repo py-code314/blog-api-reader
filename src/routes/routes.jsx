@@ -19,17 +19,19 @@ const routes = [
     children: [
       { index: true, element: <Homepage /> },
       {
-        path: 'home', element: <Homepage />,
+        path: 'home',
+        element: <Homepage />,
         children: [
           { index: true, element: <DefaultMainLayout /> },
-          {path: 'posts', element: <Posts/>},
-          {path: 'authors', element: <Authors/>},
-          {path: 'categories', element: <Categories/>},
-          {path: 'categories/:categoryId', element: <Posts/>},
-          {path: 'tags', element: <Tags/>},
-          {path: 'tags/:tagId', element: <Posts/>},
-        ]
-       },
+          { path: 'posts', element: <Posts /> },
+          { path: 'authors', element: <Authors /> },
+          { path: 'authors/:authorId', element: <Posts /> },
+          { path: 'categories', element: <Categories /> },
+          { path: 'categories/:categoryId', element: <Posts /> },
+          { path: 'tags', element: <Tags /> },
+          { path: 'tags/:tagId', element: <Posts /> },
+        ],
+      },
       { path: 'signup', element: <SignupPage /> },
       { path: 'login', element: <LoginPage /> },
     ],

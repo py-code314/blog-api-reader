@@ -38,7 +38,10 @@ const Authors = () => {
       ) : (
         <ul className={styles.list}>
           {data?.authors.map((author) => (
-            <Link className={styles.linkAuthor} key={author.id}>
+            <Link
+              className={styles.linkAuthor}
+              key={author.id}
+              to={`/home/authors/${author.id}`}>
               <li className={styles.card}>{author.name}</li>
             </Link>
           ))}
