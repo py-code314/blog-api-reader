@@ -53,7 +53,7 @@
   transition: transform 250ms;
 
   /* Add background image */
-  background: var(--clr-accent-1) url('../../../assets/icons/icon-confetti.svg');
+  background: var(--clr-accent-1, firebrick) url('../../../assets/icons/icon-confetti.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
