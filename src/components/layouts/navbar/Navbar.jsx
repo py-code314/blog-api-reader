@@ -1,11 +1,14 @@
 /* -------------------- Styles -------------------- */
 import styles from './Navbar.module.css'
-
+/* -------------------- Context -------------------- */
+import { AuthContext } from '../../../contexts/auth/AuthContext'
 /* -------------------- Components -------------------- */
 import { Link } from 'react-router'
+import { useContext } from 'react'
 
 /* Component for navigation links */
 const Navbar = () => {
+  const {token} = useContext(AuthContext)
   return (
     <>
       <nav className={styles.navbar}>
@@ -24,18 +27,29 @@ const Navbar = () => {
           <li className={styles.navItem}>
             <span className={styles.linkInactive}>Membership</span>
           </li>
-          <li className={styles.navItem}>
-            <Link className={styles.link} to={`/login`}>
-              Log in
-            </Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link
-              className={`${styles.link} ${styles.linkSignup}`}
-              to={`/signup`}>
-              Sign up
-            </Link>
-          </li>
+
+          {token ? (
+            <li className={styles.navItem}>
+              <Link className={styles.link} to={`/logout`}>
+                Log out
+              </Link>
+            </li>
+          ) : (
+            <>
+              <li className={styles.navItem}>
+                <Link className={styles.link} to={`/login`}>
+                  Log in
+                </Link>
+              </li>
+              <li className={styles.navItem}>
+                <Link
+                  className={`${styles.link} ${styles.linkSignup}`}
+                  to={`/signup`}>
+                  Sign up
+                </Link>
+              </li>
+            </>
+          )}
         </ul>
       </nav>
     </>
@@ -43,3 +57,54 @@ const Navbar = () => {
 }
 
 export default Navbar
+
+
+
+
+
+
+
+// /* -------------------- Styles -------------------- */
+// import styles from './Navbar.module.css'
+// /* -------------------- Components -------------------- */
+// import { Link } from 'react-router'
+
+// /* Component for navigation links */
+// const Navbar = () => {
+//   return (
+//     <>
+//       <nav className={styles.navbar}>
+//         {/* // TODO: Change navbar links based on login status */}
+//         {/* Navigation links */}
+//         <ul className={styles.navList}>
+//           <li className={styles.navItem}>
+//             <Link className={styles.link} to={`/home`}>
+//               Home
+//             </Link>
+//           </li>
+
+//           <li className={styles.navItem}>
+//             <span className={styles.linkInactive}>Our Story</span>
+//           </li>
+//           <li className={styles.navItem}>
+//             <span className={styles.linkInactive}>Membership</span>
+//           </li>
+//           <li className={styles.navItem}>
+//             <Link className={styles.link} to={`/login`}>
+//               Log in
+//             </Link>
+//           </li>
+//           <li className={styles.navItem}>
+//             <Link
+//               className={`${styles.link} ${styles.linkSignup}`}
+//               to={`/signup`}>
+//               Sign up
+//             </Link>
+//           </li>
+//         </ul>
+//       </nav>
+//     </>
+//   )
+// }
+
+// export default Navbar

@@ -51,7 +51,6 @@ const RecentPosts = () => {
                   {/* Use <div> here because first element in 'post.content' is <p> and a <p> element can not be a descendant of another <p> */}
                   <div className={styles.content}>{parse(post.content)}</div>
                   {/* Link to view full post  */}
-                  {/* // TODO: Add functionality to the link  */}
                   <Link
                     className={styles.readMoreLink}
                     to={`/home/posts/${post.id}`}>
