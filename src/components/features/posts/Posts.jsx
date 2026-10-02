@@ -2,20 +2,24 @@
 import styles from './Posts.module.css'
 /* -------------------- Icons/Images -------------------- */
 import readMoreIcon from '../../../assets/icons/icon-chevron-right.svg'
+import backIcon from '../../../assets/icons/icon-back-3.svg'
 import typewriterImg from '../../../assets/images/typewriter.jpg'
 /* -------------------- Hooks -------------------- */
+import { useNavigate } from 'react-router'
 import { useFetchData } from '../../../hooks/useFetchData.js'
 /* -------------------- Components -------------------- */
 import { Link, useParams } from 'react-router'
 import ErrorMessage from '../../core/error/ErrorMessage.jsx'
 /* -------------------- Functions -------------------- */
 import parse from 'html-react-parser'
+import Button from '../../core/button/Button.jsx'
 
 /* Show previews of posts */
 const Posts = () => {
+  const navigate = useNavigate()
   const { authorId, categoryId, tagId } = useParams()
 
-  // Update api endpoint based on category id
+  // Update api endpoint based on author id / category id / tag id
   const apiEndpoint = authorId
     ? `http://localhost:8080/api/v1/posts/authors/${authorId}`
     : categoryId
@@ -27,6 +31,14 @@ const Posts = () => {
   // Get  posts
   const { data, isLoading, error } = useFetchData(apiEndpoint)
   // console.log("🚀 ~ Posts ~ data:", data)
+
+  const isBtn = !!authorId || !!categoryId || !!tagId
+  // console.log('🚀 ~ Posts ~ isBtn:', isBtn)
+
+  // Go back one page when Back btn is clicked
+  const handleBackClick = () => {
+    navigate(-1)
+  }
 
   // Show loading spinner while fetching the data
   if (isLoading)
@@ -47,8 +59,21 @@ const Posts = () => {
     )
   return (
     <div className={styles.posts}>
-      {/* // TODO: Add Back button with navigate(-1) */}
-      <h2 className={styles.heading}>Posts</h2>
+      <div className={styles.headingContainer}>
+        <h2 className={styles.heading}>Posts</h2>
+        {isBtn && (
+          <Button className="btnBack" title="Go back" onClick={handleBackClick}>
+            <img
+              className={styles.backIcon}
+              src={backIcon}
+              alt=""
+              width={22}
+              height={22}
+            />
+            Back
+          </Button>
+        )}
+      </div>
       {data?.posts.length === 0 ? (
         <p>🔴 No posts to show yet.</p>
       ) : (
