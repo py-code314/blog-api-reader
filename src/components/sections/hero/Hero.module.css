@@ -28,7 +28,7 @@
   background-color: var(--clr-accent-2, royalblue);
   color: var(--clr-white, white);
   padding: var(--space-10, 0.625rem) var(--space-16, 1rem);
-  border-radius: var(--radius-small, 00.3125rem);
+  border-radius: var(--radius-5, 00.3125rem);
   font-family: var(--ff-secondary), sans-serif;
   display: flex;
   align-items: center;

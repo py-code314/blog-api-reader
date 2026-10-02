@@ -2,7 +2,7 @@
 import styles from './Posts.module.css'
 /* -------------------- Icons/Images -------------------- */
 import readMoreIcon from '../../../assets/icons/icon-chevron-right.svg'
-import backIcon from '../../../assets/icons/icon-back-3.svg'
+import backIcon from '../../../assets/icons/icon-back.svg'
 import typewriterImg from '../../../assets/images/typewriter.jpg'
 /* -------------------- Hooks -------------------- */
 import { useNavigate } from 'react-router'

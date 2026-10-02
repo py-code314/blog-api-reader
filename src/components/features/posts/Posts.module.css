@@ -4,6 +4,12 @@
   gap: var(--space-16, 1rem);
 }
 
+.headingContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .heading {
   font-family: var(--ff-title), serif;
 }
