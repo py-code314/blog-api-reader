@@ -54,7 +54,7 @@ const RecentPosts = () => {
                   {/* // TODO: Add functionality to the link  */}
                   <Link
                     className={styles.readMoreLink}
-                    to={`/posts/${post.id}`}>
+                    to={`/home/posts/${post.id}`}>
                     Read more
                     <img src={readMoreIcon} alt="" width={18} height={18} />
                   </Link>
