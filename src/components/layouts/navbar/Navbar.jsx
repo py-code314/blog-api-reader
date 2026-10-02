@@ -9,6 +9,7 @@ const Navbar = () => {
   return (
     <>
       <nav className={styles.navbar}>
+        {/* // TODO: Change navbar links based on login status */}
         {/* Navigation links */}
         <ul className={styles.navList}>
           <li className={styles.navItem}>
@@ -17,15 +18,21 @@ const Navbar = () => {
             </Link>
           </li>
 
-          <li className={styles.navItem}><span className={styles.linkInactive}>Our Story</span></li>
-          <li className={styles.navItem}><span className={styles.linkInactive}>Membership</span></li>
+          <li className={styles.navItem}>
+            <span className={styles.linkInactive}>Our Story</span>
+          </li>
+          <li className={styles.navItem}>
+            <span className={styles.linkInactive}>Membership</span>
+          </li>
           <li className={styles.navItem}>
             <Link className={styles.link} to={`/login`}>
               Log in
             </Link>
           </li>
           <li className={styles.navItem}>
-            <Link className={`${styles.link} ${styles.linkSignup}`} to={`/signup`}>
+            <Link
+              className={`${styles.link} ${styles.linkSignup}`}
+              to={`/signup`}>
               Sign up
             </Link>
           </li>

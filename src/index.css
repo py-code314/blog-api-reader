@@ -231,13 +231,16 @@ a {
   --clr-gray-1: #f9f9f9;
   --clr-gray-2: #eeeeee;
   --clr-gray-3: #d5d5d5;
+  
   --clr-gray-7: #6f6f6f;
+  --clr-gray-8: #444;
   --clr-white: #fff;
   --clr-black: #000;
   --clr-red: #ff0000;
   --clr-accent-1: #9c2007;
   --clr-accent-2: #006ce0;
   --clr-accent-3: #303031;
+  --clr-accent-4: #90caf9;
 
   /* Border
   ========== */

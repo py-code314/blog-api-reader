@@ -2,11 +2,12 @@
 import styles from './Post.module.css'
 /* -------------------- Icons -------------------- */
 import backIcon from '../../../assets/icons/icon-back.svg'
+import tagsIcon from '../../../assets/icons/icon-tags-2.svg'
 /* -------------------- Hooks -------------------- */
 import { useNavigate } from 'react-router'
 import { useFetchData } from '../../../hooks/useFetchData.js'
 /* -------------------- Components -------------------- */
-import { useParams } from 'react-router'
+import { useParams, Link } from 'react-router'
 import ErrorMessage from '../../core/error/ErrorMessage.jsx'
 import Button from '../../core/button/Button.jsx'
 /* -------------------- Functions -------------------- */
@@ -49,6 +50,7 @@ const Post = () => {
   // Add default values to prevent null errors
   const { post = {} } = data || {}
   const {
+    author = {},
     categories = [],
     title = '',
     content = '',
@@ -58,12 +60,18 @@ const Post = () => {
   } = post
 
   // Computed variables
+  // Format date created
   const dateCreated = new Date(createdAt).toLocaleString()
+  const dateCreatedArr = dateCreated.split(',')
+  const formattedDateCreated = dateCreatedArr[0]
+
+  // Format date updated
   const dateUpdated = new Date(updatedAt).toLocaleString()
+  const dateUpdatedArr = dateUpdated.split(',')
+  const formattedDateUpdated = dateUpdatedArr[0]
 
-  let postCategories = categories.map((category) => category.name)
-  postCategories = postCategories.join(', ')
-
+  // Categories & tags
+  const postCategories = categories.map((category) => category.name)
   let postTags = tags.map((tag) => tag.name)
   postTags = postTags.join(', ')
 
@@ -71,10 +79,8 @@ const Post = () => {
     <>
       <div className={styles.post}>
         <title>Textura | Post</title>
-
-        <div className={styles.headingContainer}>
-          <h2 className={styles.heading}>{title}</h2>
-
+        <div className={styles.categoriesContainer}>
+          {/* Back button  */}
           <Button className="btnBack" title="Go back" onClick={handleBackClick}>
             <img
               className={styles.backIcon}
@@ -85,23 +91,47 @@ const Post = () => {
             />
             Back
           </Button>
+          {/* Categories  */}
+          <div className={styles.categoriesWrapper}>
+            {postCategories.length > 0 &&
+              postCategories.map((category) => (
+                <span className={styles.category}>{category} </span>
+              ))}
+          </div>
         </div>
-        {/* Post details  */}
-        <div className={styles.details}>
+
+        <div className={styles.postWrapper}>
+          <h2 className={styles.heading}>{title}</h2>
+          {/* Post details  */}
+          <div className={styles.details}>
+            <p>
+              by <strong>{author.name}</strong>
+            </p>
+            <div className={styles.dates}>
+              <p>
+                Published on: <strong>{formattedDateCreated}</strong>
+              </p>
+              <p>
+                Updated on: <strong>{formattedDateUpdated}</strong>
+              </p>
+            </div>
+            <div className={styles.tagsContainer}>
+              <img src={tagsIcon} alt="" width={18} height={18} />
+              {postTags}
+            </div>
+          </div>
+          <div className={styles.content}>{parse(content)}</div>
+        </div>
+        <div className={styles.loginWrapper}>
           <p>
-            <strong>Created on:</strong> {dateCreated}
-          </p>
-          <p>
-            <strong>Updated on:</strong> {dateUpdated}
-          </p>
-          <p>
-            <strong>Categories:</strong> {postCategories}
+            Please{' '}
+            {/* Login link  */}
+            <Link className={styles.linkLogin} to={'/login'}>
+              login
+            </Link>{' '}
+            to comment.
           </p>
         </div>
-        <div className={styles.content}>{parse(content)}</div>
-        <p>
-          <strong>Tags:</strong> {postTags}
-        </p>
       </div>
     </>
   )
