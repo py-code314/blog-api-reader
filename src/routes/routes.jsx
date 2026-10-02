@@ -9,6 +9,7 @@ import Posts from '../components/features/posts/Posts'
 import Authors from '../components/features/authors/Authors'
 import Categories from '../components/features/categories/Categories'
 import Tags from '../components/features/tags/Tags'
+import Post from '../components/features/post/Post'
 
 /* Array of routes */
 const routes = [
@@ -24,6 +25,7 @@ const routes = [
         children: [
           { index: true, element: <DefaultMainLayout /> },
           { path: 'posts', element: <Posts /> },
+          { path: 'posts/:postId', element: <Post /> },
           { path: 'authors', element: <Authors /> },
           { path: 'authors/:authorId', element: <Posts /> },
           { path: 'categories', element: <Categories /> },

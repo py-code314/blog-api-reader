@@ -10,9 +10,9 @@ import { useFetchData } from '../../../hooks/useFetchData.js'
 /* -------------------- Components -------------------- */
 import { Link, useParams } from 'react-router'
 import ErrorMessage from '../../core/error/ErrorMessage.jsx'
+import Button from '../../core/button/Button.jsx'
 /* -------------------- Functions -------------------- */
 import parse from 'html-react-parser'
-import Button from '../../core/button/Button.jsx'
 
 /* Show previews of posts */
 const Posts = () => {
@@ -57,6 +57,7 @@ const Posts = () => {
         <ErrorMessage error={error} />
       </div>
     )
+  
   return (
     <div className={styles.posts}>
       <div className={styles.headingContainer}>
