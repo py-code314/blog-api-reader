@@ -4,7 +4,7 @@
   border: transparent;
   cursor: pointer;
   font-family: var(--ff-secondary), sans-serif;
-  font-size: var(--fs-20, 1.125rem);
+  font-size: var(--fs-20, 1.25rem);
 }
 
 .btnSignup {
@@ -38,4 +38,13 @@
     rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
     rgba(27, 31, 35, 0.15) 0px 0px 0px 1px
   );
+}
+
+.btnLogout {
+  composes: btn;
+  background-color: var(--clr-black, black);
+  color: var(--clr-white, white);
+  padding: var(--space-8, 0.5rem) var(--space-16, 1rem);
+  border-radius: var(--radius-small, 00.3125rem);
+  font-size: var(--fs-18, 1.125rem);
 }
