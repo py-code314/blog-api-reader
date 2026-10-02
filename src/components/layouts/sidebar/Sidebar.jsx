@@ -9,7 +9,7 @@ import profileIcon from '../../../assets/icons/icon-profile.svg'
 import settingsIcon from '../../../assets/icons/icon-settings.svg'
 import helpIcon from '../../../assets/icons/icon-help.svg'
 /* -------------------- Components -------------------- */
-import { NavLink, Link } from 'react-router'
+import { NavLink } from 'react-router'
 
 /* Component to show sidebar */
 const Sidebar = () => {
@@ -20,56 +20,93 @@ const Sidebar = () => {
         <nav className={styles.navbar}>
           <ul className={styles.navList}>
             <li className={styles.navItem}>
+              {/* Use 'NavLink' to apply active styles to the link */}
               {/* Posts link  */}
-              <Link className={styles.link} to={`/home/posts`}>
-                <img
-                  className={styles.blogsIcon}
-                  src={postsIcon}
-                  alt=""
-                  width={32}
-                  height={32}
-                />
-                <span className={styles.label}>Posts</span>
-              </Link>
+              <NavLink
+                className={({ isActive }) =>
+                  `${styles.navLink} ${isActive ? styles.activeLink : ''}`
+                }
+                to={`/home/posts`}>
+                {({ isActive }) => (
+                  <>
+                    {/* Apply active styles to icon too if the link is clicked */}
+                    <img
+                      className={`${isActive ? styles.activeIcon : ''}`}
+                      src={postsIcon}
+                      alt=""
+                      width={32}
+                      height={32}
+                    />
+                    <span className={styles.label}>Posts</span>
+                  </>
+                )}
+              </NavLink>
             </li>
             <li className={styles.navItem}>
               {/* Authors link  */}
-              <Link className={styles.link} to={`/home/authors`}>
-                <img
-                  className={styles.authorsIcon}
-                  src={authorsIcon}
-                  alt=""
-                  width={32}
-                  height={32}
-                />
-                <span className={styles.label}>Authors</span>
-              </Link>
+              <NavLink
+                className={({ isActive }) =>
+                  `${styles.navLink} ${isActive ? styles.activeLink : ''}`
+                }
+                to={`/home/authors`}>
+                {({ isActive }) => (
+                  <>
+                    {/* Apply active styles to icon too if the link is clicked */}
+                    <img
+                      className={`${isActive ? styles.activeIcon : ''}`}
+                      src={authorsIcon}
+                      alt=""
+                      width={32}
+                      height={32}
+                    />
+                    <span className={styles.label}>Authors</span>
+                  </>
+                )}
+              </NavLink>
             </li>
             <li className={styles.navItem}>
               {/* Categories link  */}
-              <Link className={styles.link} to={`/home/categories`}>
-                <img
-                  className={styles.categoriesIcon}
-                  src={categoriesIcon}
-                  alt=""
-                  width={32}
-                  height={32}
-                />
-                <span className={styles.label}>Categories</span>
-              </Link>
+              <NavLink
+                className={({ isActive }) =>
+                  `${styles.navLink} ${isActive ? styles.activeLink : ''}`
+                }
+                to={`/home/categories`}>
+                {({ isActive }) => (
+                  <>
+                    {/* Apply active styles to icon too if the link is clicked */}
+                    <img
+                      className={`${isActive ? styles.activeIcon : ''}`}
+                      src={categoriesIcon}
+                      alt=""
+                      width={32}
+                      height={32}
+                    />
+                    <span className={styles.label}>Categories</span>
+                  </>
+                )}
+              </NavLink>
             </li>
             {/* Tags link  */}
             <li className={styles.navItem}>
-              <Link className={styles.link} to={`/home/tags`}>
-                <img
-                  className={styles.tagsIcon}
-                  src={tagsIcon}
-                  alt=""
-                  width={32}
-                  height={32}
-                />
-                <span className={styles.label}>Tags</span>
-              </Link>
+              <NavLink
+                className={({ isActive }) =>
+                  `${styles.navLink} ${isActive ? styles.activeLink : ''}`
+                }
+                to={`/home/tags`}>
+                {({ isActive }) => (
+                  <>
+                    {/* Apply active styles to icon too if the link is clicked */}
+                    <img
+                      className={`${isActive ? styles.activeIcon : ''}`}
+                      src={tagsIcon}
+                      alt=""
+                      width={32}
+                      height={32}
+                    />
+                    <span className={styles.label}>Tags</span>
+                  </>
+                )}
+              </NavLink>
             </li>
           </ul>
 
@@ -77,37 +114,36 @@ const Sidebar = () => {
           <ul className={styles.navList}>
             {/* Profile  */}
             <li className={`${styles.navItem} ${styles.inactiveLink}`}>
-                <img
-                  className={styles.profileIcon}
-                  src={profileIcon}
-                  alt=""
-                  width={32}
-                  height={32}
-                />
-                <span className={styles.label}>Profile</span>
-            
+              <img
+                className={styles.profileIcon}
+                src={profileIcon}
+                alt=""
+                width={32}
+                height={32}
+              />
+              <span className={styles.label}>Profile</span>
             </li>
             {/* Settings  */}
             <li className={`${styles.navItem} ${styles.inactiveLink}`}>
-                <img
-                  className={styles.settingsIcon}
-                  src={settingsIcon}
-                  alt=""
-                  width={32}
-                  height={32}
-                />
-                <span className={styles.label}>Settings</span>
+              <img
+                className={styles.settingsIcon}
+                src={settingsIcon}
+                alt=""
+                width={32}
+                height={32}
+              />
+              <span className={styles.label}>Settings</span>
             </li>
             {/* Help  */}
             <li className={`${styles.navItem} ${styles.inactiveLink}`}>
-                <img
-                  className={styles.helpIcon}
-                  src={helpIcon}
-                  alt=""
-                  width={32}
-                  height={32}
-                />
-                <span className={styles.label}>Help</span>
+              <img
+                className={styles.helpIcon}
+                src={helpIcon}
+                alt=""
+                width={32}
+                height={32}
+              />
+              <span className={styles.label}>Help</span>
             </li>
           </ul>
         </nav>
