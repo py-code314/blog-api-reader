@@ -10,6 +10,7 @@ import { useFetchData } from '../../../hooks/useFetchData.js'
 import { useParams, Link } from 'react-router'
 import ErrorMessage from '../../core/error/ErrorMessage.jsx'
 import Button from '../../core/button/Button.jsx'
+import CommentForm from '../../forms/comment/CommentForm.jsx'
 /* -------------------- Functions -------------------- */
 import parse from 'html-react-parser'
 
@@ -95,7 +96,7 @@ const Post = () => {
           <div className={styles.categoriesWrapper}>
             {postCategories.length > 0 &&
               postCategories.map((category) => (
-                <span className={styles.category}>{category} </span>
+                <span className={styles.category} key={category}>{category} </span>
               ))}
           </div>
         </div>
@@ -124,14 +125,14 @@ const Post = () => {
         </div>
         <div className={styles.loginWrapper}>
           <p>
-            Please{' '}
-            {/* Login link  */}
+            Please {/* Login link  */}
             <Link className={styles.linkLogin} to={'/login'}>
               login
             </Link>{' '}
             to comment.
           </p>
         </div>
+        <CommentForm/>
       </div>
     </>
   )
