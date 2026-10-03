@@ -1,0 +1,35 @@
+.formContainer {
+  display: flex;
+  gap: var(--space-8, 0.5rem);
+  border: 1px solid var(--clr-black, black);
+  padding: var(--space-16, 1rem);
+  border-radius: var(--radius-5, 00.3125rem);
+}
+
+.srOnly {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.form {
+  flex: 1;
+}
+
+.commentContainer {
+  width: 100%;
+}
+
+.formInput {
+  border: transparent;
+  padding: var(--space-4, 0.25rem);
+  width: 100%;
+}
+
+.btnContainer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+}

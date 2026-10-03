@@ -48,3 +48,8 @@
   border-radius: var(--radius-small, 00.3125rem);
   font-size: var(--fs-18, 1.125rem);
 }
+
+.btnComment {
+  justify-self: end;
+  composes: btnBack;
+}

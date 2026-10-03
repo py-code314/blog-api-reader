@@ -2,13 +2,17 @@
 import styles from './CommentForm.module.css'
 /* -------------------- Icons -------------------- */
 // import profileIcon from '../../../assets/icons/icon-profile-1.svg'
-import profileIcon from '../../../assets/icons/icon-profile-2.svg'
+// import profileIcon from '../../../assets/icons/icon-profile-2.svg'
+import smileyIcon from '../../../assets/icons/icon-smiley.svg'
 /* -------------------- Hooks -------------------- */
 import { useState } from 'react'
 /* -------------------- Components -------------------- */
 import Button from '../../core/button/Button'
 /* -------------------- Functions -------------------- */
-import { validateForm, validateCommentInput } from '../../../utils/comment/index.js'
+import {
+  validateForm,
+  validateCommentInput,
+} from '../../../utils/comment/index.js'
 
 const CommentForm = () => {
   const [comment, setComment] = useState('')
@@ -34,46 +38,56 @@ const CommentForm = () => {
       setErrorMsg,
     )
     console.log('🚀 ~ handleFormSubmit ~ isValid:', isValid)
+
+    if (!isValid) return
+
+    // try {
+    // } catch (err) {
+    //   console.error(err)
+    // }
   }
   return (
     <>
-      <div>
-        <div>
+      <div className={styles.formContainer}>
+        <div className={styles.imageContainer}>
           {' '}
-          <img src={profileIcon} alt="" width={30} height={30} />
-          {/* // TODO: Get user name from 'user' */}
-          <p></p>
+          <img src={smileyIcon} alt="" width={30} height={30} />
         </div>
         <form className={styles.form} noValidate onSubmit={handleFormSubmit}>
-          <label className={styles.formLabel} htmlFor="comment">
+          <label
+            className={`${styles.formLabel} ${styles.srOnly}`}
+            htmlFor="comment">
             Comment (required)
           </label>
           {/* Comment box  */}
-          <textarea
-            className={styles.formInput}
-            name="comment"
-            id="comment"
-            rows="5"
-            cols="30"
-            placeholder="Add your comment..."
-            required
-            value={comment}
-            onChange={handleComment}></textarea>
-          {validComment === false && (
-            <div className={styles.formError}>
-              <p
-                className={styles.formErrorMsg}
-                aria-live="polite"
-                id="invalid-comment">
-                {errorMsg}
-              </p>
+          <div className={styles.commentContainer}>
+            <textarea
+              className={styles.formInput}
+              name="comment"
+              id="comment"
+              rows="5"
+              // cols="30"
+              placeholder="Add a comment..."
+              required
+              value={comment}
+              onChange={handleComment}></textarea>
+            <div className={styles.btnContainer}>
+              {validComment === false && (
+                <div className={styles.formError}>
+                  <p
+                    className={styles.formErrorMsg}
+                    aria-live="polite"
+                    id="invalid-comment">
+                    {errorMsg}
+                  </p>
+                </div>
+              )}
+              {/* Add comment button */}
+              <Button className="btnComment" title="Post comment" type="submit">
+                Post
+              </Button>
             </div>
-          )}
-
-          {/* Add comment button */}
-          <Button className="btnComment" title="Post comment" type="submit">
-            Post
-          </Button>
+          </div>
         </form>
       </div>
     </>
