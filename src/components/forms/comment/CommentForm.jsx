@@ -8,7 +8,7 @@ import { useState } from 'react'
 /* -------------------- Components -------------------- */
 import Button from '../../core/button/Button'
 /* -------------------- Functions -------------------- */
-import { validateForm } from '../../../utils/comment/validateForm'
+import { validateForm, validateCommentInput } from '../../../utils/comment/index.js'
 
 const CommentForm = () => {
   const [comment, setComment] = useState('')
@@ -20,7 +20,7 @@ const CommentForm = () => {
     const comment = e.target.value
     setComment(comment)
 
-    // validateComment(comment, setValidComment, setErrorMsg)
+    validateCommentInput(comment, setValidComment, setErrorMsg)
   }
   const handleFormSubmit = (e) => {
     e.preventDefault()
@@ -41,6 +41,7 @@ const CommentForm = () => {
         <div>
           {' '}
           <img src={profileIcon} alt="" width={30} height={30} />
+          {/* // TODO: Get user name from 'user' */}
           <p></p>
         </div>
         <form className={styles.form} noValidate onSubmit={handleFormSubmit}>
