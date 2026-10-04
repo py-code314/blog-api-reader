@@ -4,8 +4,11 @@ import styles from './Post.module.css'
 import backIcon from '../../../assets/icons/icon-back.svg'
 import tagsIcon from '../../../assets/icons/icon-tags-2.svg'
 /* -------------------- Hooks -------------------- */
+import { useContext } from 'react'
 import { useNavigate } from 'react-router'
 import { useFetchData } from '../../../hooks/useFetchData.js'
+/* -------------------- Context -------------------- */
+import { AuthContext } from '../../../contexts/auth/AuthContext'
 /* -------------------- Components -------------------- */
 import { useParams, Link } from 'react-router'
 import ErrorMessage from '../../core/error/ErrorMessage.jsx'
@@ -18,6 +21,7 @@ import parse from 'html-react-parser'
 const Post = () => {
   const { postId } = useParams()
   const navigate = useNavigate()
+  const { token } = useContext(AuthContext)
 
   // Get a single post data
   const { data, isLoading, error } = useFetchData(
@@ -96,7 +100,9 @@ const Post = () => {
           <div className={styles.categoriesWrapper}>
             {postCategories.length > 0 &&
               postCategories.map((category) => (
-                <span className={styles.category} key={category}>{category} </span>
+                <span className={styles.category} key={category}>
+                  {category}{' '}
+                </span>
               ))}
           </div>
         </div>
@@ -123,16 +129,19 @@ const Post = () => {
           </div>
           <div className={styles.content}>{parse(content)}</div>
         </div>
-        <div className={styles.loginWrapper}>
-          <p>
-            Please {/* Login link  */}
-            <Link className={styles.linkLogin} to={'/login'}>
-              login
-            </Link>{' '}
-            to comment.
-          </p>
-        </div>
-        <CommentForm/>
+        {!token ? (
+          <div className={styles.loginWrapper}>
+            <p>
+              Please {/* Login link  */}
+              <Link className={styles.linkLogin} to={'/login'}>
+                login
+              </Link>{' '}
+              to comment.
+            </p>
+          </div>
+        ) : (
+          <CommentForm />
+        )}
       </div>
     </>
   )

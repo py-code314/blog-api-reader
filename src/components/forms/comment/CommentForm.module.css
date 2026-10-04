@@ -33,3 +33,8 @@
   display: grid;
   grid-template-columns: 1fr auto;
 }
+
+.formErrorMsg {
+  color: var(--clr-red, red);
+  font-family: var(--ff-tertiary), sans-serif;
+}
