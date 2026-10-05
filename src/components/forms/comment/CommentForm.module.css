@@ -20,7 +20,7 @@
 }
 
 .submitErrorMsg {
-  padding: var(--space-16);
+  padding: var(--space-16, 1rem);
   color: var(--clr-red, red);
   font-family: var(--ff-quaternary), sans-serif;
 }

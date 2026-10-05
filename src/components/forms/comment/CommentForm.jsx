@@ -121,6 +121,7 @@ const CommentForm = ({ postId }) => {
                 <Button
                   className="btnComment"
                   title="Post comment"
+                  disabled={isSubmitting}
                   type="submit">
                   Post
                 </Button>
