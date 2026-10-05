@@ -1,24 +1,20 @@
 import { useState } from 'react'
 
 /* Use hook to submit a form */
-const useSubmitForm = () => {
+export const useSubmitForm = (url) => {
   // State variables
   const [error, setError] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [data, setData] = useState(null)
 
-  const handleSubmit = async (e, formData) => {
-    e.preventDefault()
+  const handleSubmit = async (formData) => {
     setIsSubmitting(true)
     setError(false)
 
     const authToken = localStorage.getItem('jwtToken')
-    // Get base url
-    const baseUrl = import.meta.env.VITE_REACT_APP_API_URL
-    const apiEndpoint = `${baseUrl}/comment/new`
 
     try {
-      const response = await fetch(apiEndpoint, {
+      const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -27,15 +23,21 @@ const useSubmitForm = () => {
         body: JSON.stringify(formData),
       })
 
-      if (!response.ok) {
+      const data = await response.json()
+      // console.log('🚀 ~ handleSubmit ~ data:', data)
+
+      // Don't throw error if data has errors array
+      // Add this check to make sure data doesn't become null in catch block
+      if (
+        !response.ok &&
+        !(response.status === 400 && data?.errors.length > 0)
+      ) {
         const error = new Error(`HTTP error: Status ${response.status}`)
         // Add status code to the error
         error.status = response.status
 
         throw error
       }
-
-      const data = await response.json()
 
       setData(data)
       setIsSubmitting(false)
@@ -53,5 +55,3 @@ const useSubmitForm = () => {
 
   return { handleSubmit, isSubmitting, data, error }
 }
-
-export default useSubmitForm

@@ -140,7 +140,7 @@ const Post = () => {
             </p>
           </div>
         ) : (
-          <CommentForm />
+          <CommentForm postId={postId} />
         )}
       </div>
     </>

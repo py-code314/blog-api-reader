@@ -5,47 +5,82 @@ import styles from './CommentForm.module.css'
 // import profileIcon from '../../../assets/icons/icon-profile-2.svg'
 import smileyIcon from '../../../assets/icons/icon-smiley.svg'
 /* -------------------- Hooks -------------------- */
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useSubmitForm } from '../../../hooks/useSubmitForm.js'
 /* -------------------- Components -------------------- */
 import Button from '../../core/button/Button'
 /* -------------------- Functions -------------------- */
 import {
   validateForm,
   validateCommentInput,
+  displayServerValidationErrors,
 } from '../../../utils/comment/index.js'
 
-const CommentForm = () => {
-  const [comment, setComment] = useState('')
-  const [validComment, setValidComment] = useState(null)
-  const [errorMsg, setErrorMsg] = useState('')
+const CommentForm = ({ postId }) => {
+  // Get base url
+  const baseUrl = import.meta.env.VITE_REACT_APP_API_URL
+  const apiEndpoint = `${baseUrl}/posts/${postId}/comments/new`
+
+  // Call use hook to submit form
+  const { handleSubmit, isSubmitting, data, error } = useSubmitForm(apiEndpoint)
+  console.log('🚀 ~ CommentForm ~ isSubmitting:', isSubmitting)
+  console.log('🚀 ~ CommentForm ~ data:', data)
+  console.log('🚀 ~ CommentForm ~ error:', error)
+
+  // State variables
+  const defaultCommentFormData = {
+    content: '',
+  }
+  const [commentFormData, setCommentFormData] = useState(defaultCommentFormData)
+
+  const defaultValidFormData = {
+    content: null,
+  }
+  const [validFormData, setValidFormData] = useState(defaultValidFormData)
+
+  const defaultErrorMessages = {
+    content: '',
+  }
+  const [errorMsgs, setErrorMsgs] = useState(defaultErrorMessages)
+
+  // const [submitErrorMsg, setSubmitErrorMsg] = useState('')
+
+  useEffect(() => {
+    if (data?.errors.length > 0) {
+      console.log('errors true')
+      displayServerValidationErrors(data.errors, setValidFormData, setErrorMsgs)
+    }
+  }, [data])
 
   // Handler functions
   const handleComment = (e) => {
-    const comment = e.target.value
-    setComment(comment)
+    const content = e.target.value
+    setCommentFormData((prevFormData) => ({
+      ...prevFormData,
+      content,
+    }))
 
-    validateCommentInput(comment, setValidComment, setErrorMsg)
+    validateCommentInput(content, setValidFormData, setErrorMsgs)
   }
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault()
-    setErrorMsg('')
 
     // Check for empty input field
+    // const isValid = true
     const isValid = validateForm(
-      comment,
-      validComment,
-      setValidComment,
-      setErrorMsg,
+      commentFormData,
+      validFormData,
+      setValidFormData,
+      setErrorMsgs,
     )
-    console.log('🚀 ~ handleFormSubmit ~ isValid:', isValid)
+    // console.log('🚀 ~ handleFormSubmit ~ isValid:', isValid)
 
     if (!isValid) return
 
-    // try {
-    // } catch (err) {
-    //   console.error(err)
-    // }
+    // Update variables in use hook
+    await handleSubmit(commentFormData)
   }
+
   return (
     <>
       <div className={styles.formContainer}>
@@ -63,22 +98,22 @@ const CommentForm = () => {
           <div className={styles.commentContainer}>
             <textarea
               className={styles.formInput}
-              name="comment"
+              name="content"
               id="comment"
               rows="5"
               // cols="30"
               placeholder="Add a comment..."
               required
-              value={comment}
+              value={commentFormData.content}
               onChange={handleComment}></textarea>
             <div className={styles.btnContainer}>
-              {validComment === false && (
+              {validFormData.content === false && (
                 <div className={styles.formError}>
                   <p
                     className={styles.formErrorMsg}
                     aria-live="polite"
                     id="invalid-comment">
-                    {errorMsg}
+                    {errorMsgs.content}
                   </p>
                 </div>
               )}
