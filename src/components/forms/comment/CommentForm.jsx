@@ -5,7 +5,7 @@ import styles from './CommentForm.module.css'
 // import profileIcon from '../../../assets/icons/icon-profile-2.svg'
 import smileyIcon from '../../../assets/icons/icon-smiley.svg'
 /* -------------------- Hooks -------------------- */
-import { useEffect, useState } from 'react'
+import {  useState } from 'react'
 import { useSubmitForm } from '../../../hooks/useSubmitForm.js'
 /* -------------------- Components -------------------- */
 import Button from '../../core/button/Button'
@@ -13,7 +13,6 @@ import Button from '../../core/button/Button'
 import {
   validateForm,
   validateCommentInput,
-  displayServerValidationErrors,
 } from '../../../utils/comment/index.js'
 
 const CommentForm = ({ postId }) => {
@@ -22,10 +21,11 @@ const CommentForm = ({ postId }) => {
   const apiEndpoint = `${baseUrl}/posts/${postId}/comments/new`
 
   // Call use hook to submit form
-  const { handleSubmit, isSubmitting, data, error } = useSubmitForm(apiEndpoint)
-  console.log('🚀 ~ CommentForm ~ isSubmitting:', isSubmitting)
-  console.log('🚀 ~ CommentForm ~ data:', data)
-  console.log('🚀 ~ CommentForm ~ error:', error)
+  const { handleSubmit, isSubmitting, data, errorMsg } =
+    useSubmitForm(apiEndpoint)
+  // console.log('🚀 ~ CommentForm ~ isSubmitting:', isSubmitting)
+  // console.log('🚀 ~ CommentForm ~ data:', data)
+  // console.log('🚀 ~ CommentForm ~ errorMsg:', errorMsg)
 
   // State variables
   const defaultCommentFormData = {
@@ -43,14 +43,11 @@ const CommentForm = ({ postId }) => {
   }
   const [errorMsgs, setErrorMsgs] = useState(defaultErrorMessages)
 
-  // const [submitErrorMsg, setSubmitErrorMsg] = useState('')
-
-  useEffect(() => {
-    if (data?.errors.length > 0) {
-      console.log('errors true')
-      displayServerValidationErrors(data.errors, setValidFormData, setErrorMsgs)
-    }
-  }, [data])
+  let fieldErrors = {}
+  if (data?.errors?.length > 0) {
+    const { errors } = data
+    errors.forEach((error) => (fieldErrors[error.path] = error.msg))
+  }
 
   // Handler functions
   const handleComment = (e) => {
@@ -83,47 +80,54 @@ const CommentForm = ({ postId }) => {
 
   return (
     <>
-      <div className={styles.formContainer}>
-        <div className={styles.imageContainer}>
-          {' '}
-          <img src={smileyIcon} alt="" width={30} height={30} />
-        </div>
-        <form className={styles.form} noValidate onSubmit={handleFormSubmit}>
-          <label
-            className={`${styles.formLabel} ${styles.srOnly}`}
-            htmlFor="comment">
-            Comment (required)
-          </label>
-          {/* Comment box  */}
-          <div className={styles.commentContainer}>
-            <textarea
-              className={styles.formInput}
-              name="content"
-              id="comment"
-              rows="5"
-              // cols="30"
-              placeholder="Add a comment..."
-              required
-              value={commentFormData.content}
-              onChange={handleComment}></textarea>
-            <div className={styles.btnContainer}>
-              {validFormData.content === false && (
-                <div className={styles.formError}>
-                  <p
-                    className={styles.formErrorMsg}
-                    aria-live="polite"
-                    id="invalid-comment">
-                    {errorMsgs.content}
-                  </p>
-                </div>
-              )}
-              {/* Add comment button */}
-              <Button className="btnComment" title="Post comment" type="submit">
-                Post
-              </Button>
-            </div>
+      <div className={styles.comment}>
+        {errorMsg && <p className={styles.submitErrorMsg}>{errorMsg}</p>}
+        <div className={styles.formContainer}>
+          <div className={styles.imageContainer}>
+            {' '}
+            <img src={smileyIcon} alt="" width={30} height={30} />
           </div>
-        </form>
+          <form className={styles.form} noValidate onSubmit={handleFormSubmit}>
+            <label
+              className={`${styles.formLabel} ${styles.srOnly}`}
+              htmlFor="comment">
+              Comment (required)
+            </label>
+            {/* Comment box  */}
+            <div className={styles.commentContainer}>
+              <textarea
+                className={styles.formInput}
+                name="content"
+                id="comment"
+                rows="5"
+                // cols="30"
+                placeholder="Add a comment..."
+                required
+                value={commentFormData.content}
+                onChange={handleComment}></textarea>
+              <div className={styles.btnContainer}>
+                {fieldErrors?.content && <p className={styles.fieldErrorMsg}>{fieldErrors.content}</p>}
+                {validFormData.content === false && (
+                  <div className={styles.formError}>
+                    <p
+                      className={styles.formErrorMsg}
+                      aria-live="polite"
+                      id="invalid-comment">
+                      {errorMsgs.content}
+                    </p>
+                  </div>
+                )}
+                {/* Add comment button */}
+                <Button
+                  className="btnComment"
+                  title="Post comment"
+                  type="submit">
+                  Post
+                </Button>
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </>
   )
