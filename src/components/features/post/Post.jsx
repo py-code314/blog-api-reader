@@ -14,6 +14,7 @@ import { useParams, Link } from 'react-router'
 import ErrorMessage from '../../core/error/ErrorMessage.jsx'
 import Button from '../../core/button/Button.jsx'
 import CommentForm from '../../forms/comment/CommentForm.jsx'
+import Comments from '../../sections/comments/Comments.jsx'
 /* -------------------- Functions -------------------- */
 import parse from 'html-react-parser'
 
@@ -27,6 +28,7 @@ const Post = () => {
   const { data, isLoading, error } = useFetchData(
     `http://localhost:8080/api/v1/posts/${postId}`,
   )
+  console.log("🚀 ~ Post ~ data:", data)
 
   // Show loading spinner while fetching the data
   if (isLoading)
@@ -62,6 +64,7 @@ const Post = () => {
     createdAt = '',
     updatedAt = '',
     tags = [],
+    comments = []
   } = post
 
   // Computed variables
@@ -142,6 +145,7 @@ const Post = () => {
         ) : (
           <CommentForm postId={postId} />
         )}
+        <Comments comments={comments} author={author} />
       </div>
     </>
   )

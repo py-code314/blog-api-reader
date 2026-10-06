@@ -1,5 +1,4 @@
-import { validateForm } from "./validateForm";
-import { validateCommentInput } from "./validateComment";
-import { displayServerValidationErrors } from "./serverValidation";
+import { validateForm } from './validateForm'
+import { validateCommentInput } from './validateComment'
 
-export { validateForm, validateCommentInput, displayServerValidationErrors }
+export { validateForm, validateCommentInput }
