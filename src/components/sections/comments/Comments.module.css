@@ -1,0 +1,19 @@
+.comments {
+  padding: var(--space-16, 1rem);
+  border: 1px solid var(--clr-black, black);
+  border-radius: var(--radius-5, 0.3125rem);
+}
+
+.list {
+  display: grid;
+  gap: var(--space-32, 2rem);
+}
+
+.card {
+  display: flex;
+  gap: var(--space-16, 1rem);
+}
+
+.content {
+  padding: var(--space-8, 0.5rem) 0;
+}
