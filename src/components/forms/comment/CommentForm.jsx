@@ -75,7 +75,14 @@ const CommentForm = ({ postId }) => {
     if (!isValid) return
 
     // Update variables in use hook
-    await handleSubmit(commentFormData)
+    const data = await handleSubmit(commentFormData)
+    // console.log("🚀 ~ handleFormSubmit ~ data:", data)
+
+    if (data?.success) {
+      setCommentFormData(defaultCommentFormData)
+      setValidFormData(defaultValidFormData)
+      setErrorMsgs(defaultErrorMessages)
+    }
   }
 
   return (

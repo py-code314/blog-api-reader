@@ -32,12 +32,12 @@ export const useSubmitForm = (url) => {
         setData(data)
         setIsSubmitting(false)
 
-        if (response.status === '400') {
+        if (response.status === 400) {
           setErrorMsg(
             data?.errorMessage ||
               'Bad request. Please check inputs and try again.',
           )
-        } else if (response.status === '401') {
+        } else if (response.status === 401) {
           setErrorMsg(
             data?.errorMessage ||
               'Authentication error. Please login to post a comment.',
@@ -54,10 +54,12 @@ export const useSubmitForm = (url) => {
       // Request is successful with 200 response status code
       setData(data)
       setIsSubmitting(false)
-      setErrorMsg(false)
+      setErrorMsg('')
+
+      return data
     } catch (err) {
       console.error('Submission error:', err)
-
+      // Handle network errors and other system errors
       setData(null)
       setIsSubmitting(false)
       // Catch request failure error and send a generic error message
