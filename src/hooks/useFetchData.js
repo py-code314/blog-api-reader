@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 
-export const useFetchData = (url) => {
+export const useFetchData = (url, options = {}) => {
+  const { isSubmitted } = options
+
   const [isLoading, setIsLoading] = useState(false)
   const [data, setData] = useState(null)
   const [error, setError] = useState(false)
@@ -16,6 +18,7 @@ export const useFetchData = (url) => {
       setError(false)
       try {
         const response = await fetch(url, { signal })
+        // console.log('🚀 ~ fetchData ~ response:', response)
         /* To catch 301, 400, 404, 403, 500, etc
         Nonexistent pages: 404
         Unauthorized errors: 403
@@ -28,6 +31,7 @@ export const useFetchData = (url) => {
         }
 
         const data = await response.json()
+        // console.log('🚀 ~ fetchData ~ data:', data)
 
         setData(data)
         setIsLoading(false)
@@ -53,7 +57,7 @@ export const useFetchData = (url) => {
     fetchData()
 
     return () => controller.abort()
-  }, [url])
+  }, [url, isSubmitted])
 
   return { isLoading, data, error }
 }

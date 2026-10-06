@@ -4,7 +4,7 @@ import styles from './Post.module.css'
 import backIcon from '../../../assets/icons/icon-back.svg'
 import tagsIcon from '../../../assets/icons/icon-tags-2.svg'
 /* -------------------- Hooks -------------------- */
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router'
 import { useFetchData } from '../../../hooks/useFetchData.js'
 /* -------------------- Context -------------------- */
@@ -24,11 +24,16 @@ const Post = () => {
   const navigate = useNavigate()
   const { token } = useContext(AuthContext)
 
+  // State to re-render post component
+  const [isSubmitted, setIsSubmitted] = useState(false)
+
+  // API endpoint
+  const baseUrl = import.meta.env.VITE_REACT_APP_API_URL
+  const apiEndpoint = `${baseUrl}/posts/${postId}`
   // Get a single post data
-  const { data, isLoading, error } = useFetchData(
-    `http://localhost:8080/api/v1/posts/${postId}`,
-  )
-  console.log("🚀 ~ Post ~ data:", data)
+  // Pass 'isSubmitted' to refetch post data
+  const { data, isLoading, error } = useFetchData(apiEndpoint, { isSubmitted })
+  // console.log('🚀 ~ Post ~ data:', data)
 
   // Show loading spinner while fetching the data
   if (isLoading)
@@ -64,7 +69,7 @@ const Post = () => {
     createdAt = '',
     updatedAt = '',
     tags = [],
-    comments = []
+    comments = [],
   } = post
 
   // Computed variables
@@ -143,7 +148,7 @@ const Post = () => {
             </p>
           </div>
         ) : (
-          <CommentForm postId={postId} />
+          <CommentForm postId={postId} setIsSubmitted={setIsSubmitted} />
         )}
         <Comments comments={comments} author={author} />
       </div>

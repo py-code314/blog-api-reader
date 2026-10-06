@@ -1,11 +1,9 @@
 /* -------------------- Styles -------------------- */
 import styles from './CommentForm.module.css'
 /* -------------------- Icons -------------------- */
-// import profileIcon from '../../../assets/icons/icon-profile-1.svg'
-// import profileIcon from '../../../assets/icons/icon-profile-2.svg'
 import smileyIcon from '../../../assets/icons/icon-smiley.svg'
 /* -------------------- Hooks -------------------- */
-import {  useState } from 'react'
+import { useState } from 'react'
 import { useSubmitForm } from '../../../hooks/useSubmitForm.js'
 /* -------------------- Components -------------------- */
 import Button from '../../core/button/Button'
@@ -15,8 +13,8 @@ import {
   validateCommentInput,
 } from '../../../utils/comment/index.js'
 
-const CommentForm = ({ postId }) => {
-  // Get base url
+const CommentForm = ({ postId, setIsSubmitted }) => {
+  // API endpoint
   const baseUrl = import.meta.env.VITE_REACT_APP_API_URL
   const apiEndpoint = `${baseUrl}/posts/${postId}/comments/new`
 
@@ -76,12 +74,14 @@ const CommentForm = ({ postId }) => {
 
     // Update variables in use hook
     const data = await handleSubmit(commentFormData)
-    // console.log("🚀 ~ handleFormSubmit ~ data:", data)
+    // console.log('🚀 ~ handleFormSubmit ~ data:', data)
 
     if (data?.success) {
       setCommentFormData(defaultCommentFormData)
       setValidFormData(defaultValidFormData)
       setErrorMsgs(defaultErrorMessages)
+      // Update state to re-render post component
+      setIsSubmitted(true)
     }
   }
 
@@ -113,7 +113,9 @@ const CommentForm = ({ postId }) => {
                 value={commentFormData.content}
                 onChange={handleComment}></textarea>
               <div className={styles.btnContainer}>
-                {fieldErrors?.content && <p className={styles.fieldErrorMsg}>{fieldErrors.content}</p>}
+                {fieldErrors?.content && (
+                  <p className={styles.fieldErrorMsg}>{fieldErrors.content}</p>
+                )}
                 {validFormData.content === false && (
                   <div className={styles.formError}>
                     <p
