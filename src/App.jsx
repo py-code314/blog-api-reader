@@ -34,6 +34,13 @@ function App() {
     localStorage.setItem('currentUser', JSON.stringify(currentUser))
   }, [currentUser])
 
+  // Computed variables
+  const user = localStorage.getItem('currentUser')
+  const jwtToken = localStorage.getItem('jwtToken')
+
+  const isLoggedIn = Boolean(user && jwtToken)
+  // console.log("🚀 ~ App ~ isLoggedIn:", isLoggedIn)
+
   // Set and save token to local storage
   const login = (userToken, currentUser) => {
     setToken(userToken)
@@ -52,7 +59,7 @@ function App() {
   return (
     <div className={styles.page}>
       <AuthContext
-        value={{ token, login, handleLogout, currentUser, setCurrentUser }}>
+        value={{ token, login, handleLogout, currentUser, setCurrentUser, isLoggedIn }}>
         <Header />
         <Outlet />
         <Footer />

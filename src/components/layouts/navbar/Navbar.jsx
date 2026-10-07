@@ -10,7 +10,7 @@ import Button from '../../core/button/Button'
 
 /* Component for navigation links */
 const Navbar = () => {
-  const { token, handleLogout } = useContext(AuthContext)
+  const { isLoggedIn, handleLogout } = useContext(AuthContext)
 
   return (
     <>
@@ -29,7 +29,7 @@ const Navbar = () => {
             <span className={styles.linkInactive}>Membership</span>
           </li>
           {/* Show links based on login status  */}
-          {token ? (
+          {isLoggedIn ? (
             <Button className="btnLogout" title="Logout" onClick={handleLogout}>
               Log out
             </Button>

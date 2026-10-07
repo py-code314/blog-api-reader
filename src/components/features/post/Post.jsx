@@ -22,7 +22,7 @@ import parse from 'html-react-parser'
 const Post = () => {
   const { postId } = useParams()
   const navigate = useNavigate()
-  const { token } = useContext(AuthContext)
+  const { isLoggedIn } = useContext(AuthContext)
 
   // State to re-render post component
   const [isSubmitted, setIsSubmitted] = useState(false)
@@ -137,7 +137,9 @@ const Post = () => {
           </div>
           <div className={styles.content}>{parse(content)}</div>
         </div>
-        {!token ? (
+        {isLoggedIn ? (
+          <CommentForm postId={postId} setIsSubmitted={setIsSubmitted} />
+        ) : (
           <div className={styles.loginWrapper}>
             <p>
               Please {/* Login link  */}
@@ -147,10 +149,8 @@ const Post = () => {
               to comment.
             </p>
           </div>
-        ) : (
-          <CommentForm postId={postId} setIsSubmitted={setIsSubmitted} />
         )}
-        <Comments comments={comments} author={author} />
+        <Comments comments={comments} />
       </div>
     </>
   )

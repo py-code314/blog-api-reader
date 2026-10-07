@@ -4,14 +4,18 @@ import styles from './Comments.module.css'
 import profileIcon from '../../../assets/icons/icon-profile-2.svg'
 import expandIcon from '../../../assets/icons/icon-expand.svg'
 /* -------------------- Hooks -------------------- */
-import { useState } from 'react'
+import { useContext, useState } from 'react'
+/* -------------------- Contexts -------------------- */
+import { AuthContext } from '../../../contexts/auth/AuthContext'
 /* -------------------- Components -------------------- */
 import Button from '../../core/button/Button'
 import EditCommentForm from '../../forms/comment/edit-comment-form/EditCommentForm'
 
 /* Show list of comments */
-const Comments = ({ comments, author }) => {
+const Comments = ({ comments,  }) => {
   // console.log('🚀 ~ Comments ~ comments:', comments)
+  const { currentUser } = useContext(AuthContext)
+  // console.log("🚀 ~ Comments ~ currentUser:", currentUser)
 
   // State variables
   const [isActive, setIsActive] = useState(false)
@@ -51,47 +55,48 @@ const Comments = ({ comments, author }) => {
                 <div className={styles.commentContainer}>
                   <div className={styles.nameContainer}>
                     <p>
-                      <strong>{author.name}</strong>
+                      <strong>{comment?.author?.name}</strong>
                     </p>
-                    {/* // TODO: Show this div only if author id matches user id  */}
-                    <div className={styles.commentOptions}>
-                      {/* Button to toggle Edit and Delete buttons  */}
-                      <Button
-                        onClick={() => handleBtnClick(comment.id)}
-                        className="btnToggle"
-                        title="Buttons"
-                        ariaLabel="Comment options">
-                        <img src={expandIcon} alt="" width={20} height={20} />
-                      </Button>
+                    {comment.authorId === currentUser?.id && (
+                      <div className={styles.commentOptions}>
+                        {/* Button to toggle Edit and Delete buttons  */}
+                        <Button
+                          onClick={() => handleBtnClick(comment.id)}
+                          className="btnToggle"
+                          title="Buttons"
+                          ariaLabel="Comment options">
+                          <img src={expandIcon} alt="" width={20} height={20} />
+                        </Button>
 
-                      {/* Dropdown buttons */}
-                      {/* Show buttons only for the matching comment  */}
-                      <ul
-                        className={
-                          isActive && comment.id === commentId
-                            ? styles.open
-                            : styles.dropdownList
-                        }>
-                        <li className={styles.dropdownItem}>
-                          {/* Edit button  */}
-                          <Button
-                            className="btnEdit"
-                            title="Edit comment"
-                            onClick={() => handleEditComment(comment.id)}>
-                            Edit
-                          </Button>
-                        </li>
-                        <li className={styles.dropdownItem}>
-                          {/* Delete button  */}
-                          <Button
-                            className="btnDelete"
-                            title="Delete comment"
-                            onClick={() => handleDeleteComment(comment.id)}>
-                            Delete
-                          </Button>
-                        </li>
-                      </ul>
-                    </div>
+                        {/* Dropdown buttons */}
+                        {/* Show buttons only for the matching comment  */}
+                        <ul
+                          className={
+                            isActive && comment.id === commentId
+                              ? styles.open
+                              : styles.dropdownList
+                          }>
+                          <li className={styles.dropdownItem}>
+                            {/* Edit button  */}
+                            <Button
+                              className="btnEdit"
+                              title="Edit comment"
+                              onClick={() => handleEditComment(comment.id)}>
+                              Edit
+                            </Button>
+                          </li>
+                          <li className={styles.dropdownItem}>
+                            {/* Delete button  */}
+                            <Button
+                              className="btnDelete"
+                              title="Delete comment"
+                              onClick={() => handleDeleteComment(comment.id)}>
+                              Delete
+                            </Button>
+                          </li>
+                        </ul>
+                      </div>
+                    )}
                   </div>
                   {isEdit && comment.id === commentId ? (
                     <EditCommentForm />
