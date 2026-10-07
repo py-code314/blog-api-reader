@@ -53,6 +53,7 @@ const Comments = ({ comments, author }) => {
                     <p>
                       <strong>{author.name}</strong>
                     </p>
+                    {/* // TODO: Show this div only if author id matches user id  */}
                     <div className={styles.commentOptions}>
                       {/* Button to toggle Edit and Delete buttons  */}
                       <Button
