@@ -13,7 +13,7 @@ import { AuthContext } from '../../../contexts/auth/AuthContext'
 import { useParams, Link } from 'react-router'
 import ErrorMessage from '../../core/error/ErrorMessage.jsx'
 import Button from '../../core/button/Button.jsx'
-import CommentForm from '../../forms/comment/CommentForm.jsx'
+import CommentForm from '../../forms/comment/comment-form/CommentForm.jsx'
 import Comments from '../../sections/comments/Comments.jsx'
 /* -------------------- Functions -------------------- */
 import parse from 'html-react-parser'

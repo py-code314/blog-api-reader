@@ -1,17 +1,17 @@
 /* -------------------- Styles -------------------- */
 import styles from './CommentForm.module.css'
 /* -------------------- Icons -------------------- */
-import smileyIcon from '../../../assets/icons/icon-smiley.svg'
+import smileyIcon from '../../../../assets/icons/icon-smiley.svg'
 /* -------------------- Hooks -------------------- */
 import { useState } from 'react'
-import { useSubmitForm } from '../../../hooks/useSubmitForm.js'
+import { useSubmitForm } from '../../../../hooks/useSubmitForm.js'
 /* -------------------- Components -------------------- */
-import Button from '../../core/button/Button'
+import Button from '../../../core/button/Button.jsx'
 /* -------------------- Functions -------------------- */
 import {
   validateForm,
   validateCommentInput,
-} from '../../../utils/comment/index.js'
+} from '../../../../utils/comment/index.js'
 
 const CommentForm = ({ postId, setIsSubmitted }) => {
   // API endpoint
