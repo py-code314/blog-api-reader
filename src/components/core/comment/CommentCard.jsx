@@ -10,7 +10,7 @@ import { AuthContext } from '../../../contexts/auth/AuthContext'
 /* -------------------- Components -------------------- */
 import Button from '../../core/button/Button'
 
-const CommentCard = ({ props }) => {
+const CommentCard = (props) => {
   const { currentUser } = useContext(AuthContext)
 
   const {
@@ -39,6 +39,7 @@ const CommentCard = ({ props }) => {
             <p>
               <strong>{comment?.author?.name}</strong>
             </p>
+            {/* // TODO: Add commented on date and time */}
             {comment.authorId === currentUser?.id && (
               <div className={styles.commentOptions}>
                 {/* Button to toggle Edit and Delete buttons  */}

@@ -14,7 +14,7 @@ import { useParams, Link } from 'react-router'
 import ErrorMessage from '../../core/error/ErrorMessage.jsx'
 import Button from '../../core/button/Button.jsx'
 import CommentForm from '../../forms/comment/comment-form/CommentForm.jsx'
-import Comments from '../../sections/comments/CommentsList.jsx'
+import CommentsList from '../../sections/comments/CommentsList.jsx'
 /* -------------------- Functions -------------------- */
 import parse from 'html-react-parser'
 
@@ -150,7 +150,11 @@ const Post = () => {
             </p>
           </div>
         )}
-        <Comments comments={comments} />
+        <CommentsList
+          comments={comments}
+          postId={postId}
+          setIsSubmitted={setIsSubmitted}
+        />
       </div>
     </>
   )

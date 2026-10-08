@@ -8,8 +8,9 @@ import CommentCard from '../../core/comment/CommentCard'
 import CommentForm from '../../forms/comment/comment-form/CommentForm'
 
 /* Show list of comments */
-const CommentsList = ({ comments }) => {
+const CommentsList = (props) => {
   // console.log('🚀 ~ CommentsList ~ comments:', comments)
+  const {comments, postId, setIsSubmitted} = props
 
   // State variables
   const [isActive, setIsActive] = useState(false)
@@ -39,18 +40,17 @@ const CommentsList = ({ comments }) => {
             {comments?.map((comment) => (
               <div key={comment.id}>
                 {isEdit && comment.id === commentId ? (
-                  <CommentForm />
+                  // <EditCommentForm comment={comment} />
+                  <CommentForm comment={comment} postId={postId} setIsSubmitted={setIsSubmitted} isEdit={isEdit} />
                 ) : (
                   <CommentCard
-                    props={{
-                      comment,
-                      commentId,
-                      setCommentId,
-                      handleEditComment,
-                      handleDeleteComment,
-                      handleToggle,
-                      isActive,
-                    }}
+                    comment={comment}
+                    commentId={commentId}
+                    setCommentId={setCommentId}
+                    handleEditComment={handleEditComment}
+                    handleDeleteComment={handleDeleteComment}
+                    handleToggle={handleToggle}
+                    isActive={isActive}
                   />
                 )}
               </div>
