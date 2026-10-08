@@ -3,8 +3,10 @@ import styles from './CommentForm.module.css'
 /* -------------------- Icons -------------------- */
 import smileyIcon from '../../../../assets/icons/icon-smiley.svg'
 import profileIcon from '../../../../assets/icons/icon-profile-2.svg'
+/* -------------------- Context -------------------- */
+import { PostContext } from '../../../../contexts/post/PostContext'
 /* -------------------- Hooks -------------------- */
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useSubmitForm } from '../../../../hooks/useSubmitForm.js'
 /* -------------------- Components -------------------- */
 import Button from '../../../core/button/Button.jsx'
@@ -15,16 +17,14 @@ import {
 } from '../../../../utils/comment/index.js'
 
 const CommentForm = (props) => {
+  // Destructure
   const {
-    postId,
-    setIsSubmitted,
     comment = {},
     isEdit = false,
     setIsEdit = () => {},
   } = props
   const commentId = comment.id
-
-  // TODO: Add PostContext
+  const {postId, setIsSubmitted} = useContext(PostContext)
 
   // API endpoint
   const baseUrl = import.meta.env.VITE_REACT_APP_API_URL
@@ -154,7 +154,6 @@ const CommentForm = (props) => {
                 name="content"
                 id="comment"
                 rows="5"
-                // cols="30"
                 placeholder="Add a comment..."
                 required
                 value={commentFormData.content}

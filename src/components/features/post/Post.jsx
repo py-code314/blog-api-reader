@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router'
 import { useFetchData } from '../../../hooks/useFetchData.js'
 /* -------------------- Context -------------------- */
 import { AuthContext } from '../../../contexts/auth/AuthContext'
+import { PostContext } from '../../../contexts/post/PostContext.jsx'
 /* -------------------- Components -------------------- */
 import { useParams, Link } from 'react-router'
 import ErrorMessage from '../../core/error/ErrorMessage.jsx'
@@ -150,11 +151,11 @@ const Post = () => {
             </p>
           </div>
         )}
-        <CommentsList
-          comments={comments}
-          postId={postId}
-          setIsSubmitted={setIsSubmitted}
-        />
+        <PostContext value={{postId, setIsSubmitted}}>
+          <CommentsList
+            comments={comments}
+          />
+        </PostContext>
       </div>
     </>
   )
