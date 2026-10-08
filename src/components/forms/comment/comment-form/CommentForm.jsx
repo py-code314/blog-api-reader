@@ -59,6 +59,7 @@ const CommentForm = ({ postId, setIsSubmitted }) => {
   }
   const handleFormSubmit = async (e) => {
     e.preventDefault()
+    setIsSubmitted(true)
 
     // Check for empty input field
     // const isValid = true
@@ -81,7 +82,7 @@ const CommentForm = ({ postId, setIsSubmitted }) => {
       setValidFormData(defaultValidFormData)
       setErrorMsgs(defaultErrorMessages)
       // Update state to re-render post component
-      setIsSubmitted(true)
+      setIsSubmitted(false)
     }
   }
 
