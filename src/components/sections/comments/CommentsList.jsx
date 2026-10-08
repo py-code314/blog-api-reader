@@ -41,7 +41,7 @@ const CommentsList = (props) => {
               <div key={comment.id}>
                 {isEdit && comment.id === commentId ? (
                   // <EditCommentForm comment={comment} />
-                  <CommentForm comment={comment} postId={postId} setIsSubmitted={setIsSubmitted} isEdit={isEdit} />
+                  <CommentForm comment={comment} postId={postId} setIsSubmitted={setIsSubmitted} isEdit={isEdit} setIsEdit={setIsEdit} />
                 ) : (
                   <CommentCard
                     comment={comment}

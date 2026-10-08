@@ -15,7 +15,13 @@ import {
 } from '../../../../utils/comment/index.js'
 
 const CommentForm = (props) => {
-  const { postId, setIsSubmitted, comment = {}, isEdit = false } = props
+  const {
+    postId,
+    setIsSubmitted,
+    comment = {},
+    isEdit = false,
+    setIsEdit = () => {},
+  } = props
 
   // API endpoint
   const baseUrl = import.meta.env.VITE_REACT_APP_API_URL
@@ -39,10 +45,10 @@ const CommentForm = (props) => {
   }
   const [validFormData, setValidFormData] = useState(defaultValidFormData)
 
-  const defaultErrorMessages = {
+  const defaultErrorMsgs = {
     content: '',
   }
-  const [errorMsgs, setErrorMsgs] = useState(defaultErrorMessages)
+  const [errorMsgs, setErrorMsgs] = useState(defaultErrorMsgs)
 
   let fieldErrors = {}
   if (data?.errors?.length > 0) {
@@ -83,10 +89,18 @@ const CommentForm = (props) => {
     if (data?.success) {
       setCommentFormData(defaultCommentFormData)
       setValidFormData(defaultValidFormData)
-      setErrorMsgs(defaultErrorMessages)
+      setErrorMsgs(defaultErrorMsgs)
       // Update state to re-render post component
       setIsSubmitted(false)
     }
+  }
+
+  // Reset state if user cancels editing comment
+  const handleCancel = () => {
+    setIsEdit(false)
+    setCommentFormData(defaultCommentFormData)
+    setValidFormData(defaultValidFormData)
+    setErrorMsgs(defaultErrorMsgs)
   }
 
   return (
@@ -158,7 +172,10 @@ const CommentForm = (props) => {
                 <div className={styles.btns}>
                   {/* Show Cancel button for edit form  */}
                   {isEdit && (
-                    <Button className="btnCancel" title="Cancel edit">
+                    <Button
+                      className="btnCancel"
+                      title="Cancel edit"
+                      onClick={handleCancel}>
                       Cancel
                     </Button>
                   )}
@@ -219,10 +236,10 @@ export default CommentForm
 //   }
 //   const [validFormData, setValidFormData] = useState(defaultValidFormData)
 
-//   const defaultErrorMessages = {
+//   const defaultErrorMsgs = {
 //     content: '',
 //   }
-//   const [errorMsgs, setErrorMsgs] = useState(defaultErrorMessages)
+//   const [errorMsgs, setErrorMsgs] = useState(defaultErrorMsgs)
 
 //   let fieldErrors = {}
 //   if (data?.errors?.length > 0) {
@@ -263,7 +280,7 @@ export default CommentForm
 //     if (data?.success) {
 //       setCommentFormData(defaultCommentFormData)
 //       setValidFormData(defaultValidFormData)
-//       setErrorMsgs(defaultErrorMessages)
+//       setErrorMsgs(defaultErrorMsgs)
 //       // Update state to re-render post component
 //       setIsSubmitted(false)
 //     }
