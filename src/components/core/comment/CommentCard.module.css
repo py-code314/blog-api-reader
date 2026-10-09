@@ -12,10 +12,20 @@
   flex: 1;
 }
 
-.nameContainer {
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.nameContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16, 1rem);
+}
+
+.date {
+  font-size: var(--fs-14, 0.875rem);
 }
 
 .commentOptions {

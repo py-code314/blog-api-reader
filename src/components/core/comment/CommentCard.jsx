@@ -23,12 +23,19 @@ const CommentCard = (props) => {
     isDelete,
     deleteErrorMsg,
   } = props
-    // console.log("🚀 ~ CommentCard ~ isDelete:", isDelete)
+
+  // Date for 'datetime' attribute
+  const date = comment.createdAt
+  const validGlobalDate = date.replace('T', ' ')
+
+  // Format 'dateCreated' for display
+  const dateCreated = new Date(comment.createdAt).toLocaleString()
 
   return (
     <>
       <li className={styles.card}>
         <div className={styles.imgContainer}>
+          {/* Profile icon  */}
           <img
             className={styles.profileIcon}
             src={profileIcon}
@@ -38,11 +45,17 @@ const CommentCard = (props) => {
           />
         </div>
         <div className={styles.commentContainer}>
-          <div className={styles.nameContainer}>
-            <p>
-              <strong>{comment?.author?.name}</strong>
-            </p>
-            {/* // TODO: Add commented on date and time */}
+          <div className={styles.header}>
+            <div className={styles.nameContainer}>
+              {/* Author name  */}
+              <p>
+                <strong>{comment?.author?.name}</strong>
+              </p>
+              {/* Commented on date  */}
+              <time className={styles.date} datetime={validGlobalDate}>
+                {dateCreated}
+              </time>
+            </div>
             {comment.authorId === currentUser?.id && (
               <div className={styles.commentOptions}>
                 {/* Button to toggle Edit and Delete buttons  */}
