@@ -18,13 +18,9 @@ import {
 
 const CommentForm = (props) => {
   // Destructure
-  const {
-    comment = {},
-    isEdit = false,
-    setIsEdit = () => {},
-  } = props
+  const { comment = {}, isEdit = false, setIsEdit = () => {} } = props
   const commentId = comment.id
-  const {postId, setIsSubmitted} = useContext(PostContext)
+  const { postId, setIsSubmitted } = useContext(PostContext)
 
   // API endpoint
   const baseUrl = import.meta.env.VITE_REACT_APP_API_URL
@@ -71,21 +67,24 @@ const CommentForm = (props) => {
 
     validateCommentInput(content, setValidFormData, setErrorMsgs)
   }
+
   const handleFormSubmit = async (e) => {
     e.preventDefault()
     setIsSubmitted(true)
 
     // Check for empty input field
-    // const isValid = true
     const isValid = validateForm(
       commentFormData,
-      validFormData,
       setValidFormData,
       setErrorMsgs,
     )
+
     // console.log('🚀 ~ handleFormSubmit ~ isValid:', isValid)
 
-    if (!isValid) return
+    if (!isValid) {
+      setIsSubmitted(false)
+      return
+    }
 
     // Update variables in use hook
     const data = await handleSubmit(commentFormData)
