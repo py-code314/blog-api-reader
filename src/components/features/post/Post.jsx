@@ -139,7 +139,9 @@ const Post = () => {
           <div className={styles.content}>{parse(content)}</div>
         </div>
         {isLoggedIn ? (
-          <CommentForm postId={postId} setIsSubmitted={setIsSubmitted} />
+          <PostContext value={{ postId, setIsSubmitted }}>
+            <CommentForm />
+          </PostContext>
         ) : (
           <div className={styles.loginWrapper}>
             <p>
@@ -151,10 +153,8 @@ const Post = () => {
             </p>
           </div>
         )}
-        <PostContext value={{postId, setIsSubmitted}}>
-          <CommentsList
-            comments={comments}
-          />
+        <PostContext value={{ postId, setIsSubmitted }}>
+          <CommentsList comments={comments} />
         </PostContext>
       </div>
     </>

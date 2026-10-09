@@ -9,7 +9,7 @@ export const useSubmitForm = (url) => {
 
   const handleSubmit = async (formData) => {
     setIsSubmitting(true)
-    setErrorMsg(false)
+    setErrorMsg('')
     setData(null)
 
     const authToken = localStorage.getItem('jwtToken')
@@ -23,6 +23,7 @@ export const useSubmitForm = (url) => {
         },
         body: JSON.stringify(formData),
       })
+      // console.log("🚀 ~ handleSubmit ~ response:", response)
 
       const data = await response.json()
       // console.log('🚀 ~ handleSubmit ~ data:', data)
@@ -43,6 +44,7 @@ export const useSubmitForm = (url) => {
               'Authentication error. Please login to post a comment.',
           )
         } else if (response.status >= 500) {
+          // console.log('status 500')
           setErrorMsg(data?.errorMessage || 'Server error. Please try again.')
         } else {
           setErrorMsg(data?.errorMessage || 'Could not submit the comment. Please try again.')
