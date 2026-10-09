@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 
 export const useFetchData = (url, options = {}) => {
-  const { isSubmitted } = options
+  // States to refetch data
+  const { isSubmitted, isDelete } = options
 
   const [isLoading, setIsLoading] = useState(false)
   const [data, setData] = useState(null)
@@ -57,7 +58,7 @@ export const useFetchData = (url, options = {}) => {
     fetchData()
 
     return () => controller.abort()
-  }, [url, isSubmitted])
+  }, [url, isSubmitted, isDelete])
 
   return { isLoading, data, error }
 }

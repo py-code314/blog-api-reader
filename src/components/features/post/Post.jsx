@@ -5,13 +5,13 @@ import backIcon from '../../../assets/icons/icon-back.svg'
 import tagsIcon from '../../../assets/icons/icon-tags-2.svg'
 /* -------------------- Hooks -------------------- */
 import { useContext, useState } from 'react'
-import { useNavigate } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
 import { useFetchData } from '../../../hooks/useFetchData.js'
 /* -------------------- Context -------------------- */
 import { AuthContext } from '../../../contexts/auth/AuthContext'
 import { PostContext } from '../../../contexts/post/PostContext.jsx'
 /* -------------------- Components -------------------- */
-import { useParams, Link } from 'react-router'
+import { Link } from 'react-router'
 import ErrorMessage from '../../core/error/ErrorMessage.jsx'
 import Button from '../../core/button/Button.jsx'
 import CommentForm from '../../forms/comment/comment-form/CommentForm.jsx'
@@ -25,15 +25,20 @@ const Post = () => {
   const navigate = useNavigate()
   const { isLoggedIn } = useContext(AuthContext)
 
-  // State to re-render post component
+  // States to re-render post component
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isDelete, setIsDelete] = useState(false)
 
   // API endpoint
   const baseUrl = import.meta.env.VITE_REACT_APP_API_URL
   const apiEndpoint = `${baseUrl}/posts/${postId}`
+
   // Get a single post data
   // Pass 'isSubmitted' to refetch post data
-  const { data, isLoading, error } = useFetchData(apiEndpoint, { isSubmitted })
+  const { data, isLoading, error } = useFetchData(apiEndpoint, {
+    isSubmitted,
+    isDelete,
+  })
   // console.log('🚀 ~ Post ~ data:', data)
 
   // Show loading spinner while fetching the data
@@ -153,8 +158,15 @@ const Post = () => {
             </p>
           </div>
         )}
+        {/* Wrap with PostContext to use values in CommentForm inside
+         CommentsList (grandchild) */}
         <PostContext value={{ postId, setIsSubmitted }}>
-          <CommentsList comments={comments} />
+          <CommentsList
+            comments={comments}
+            isDelete={isDelete}
+            setIsDelete={setIsDelete}
+            postId={postId}
+          />
         </PostContext>
       </div>
     </>

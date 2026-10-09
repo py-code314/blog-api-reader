@@ -20,7 +20,10 @@ const CommentCard = (props) => {
     handleDeleteComment,
     handleToggle,
     isActive,
+    isDelete,
+    deleteErrorMsg,
   } = props
+    // console.log("🚀 ~ CommentCard ~ isDelete:", isDelete)
 
   return (
     <>
@@ -83,6 +86,10 @@ const CommentCard = (props) => {
           </div>
           {/* Content  */}
           <p className={styles.content}>{comment.content}</p>
+          {/* Error message  */}
+          {isDelete === false && comment.id === commentId && (
+            <p className={styles.errorMsg}>{deleteErrorMsg}</p>
+          )}
         </div>
       </li>
     </>
