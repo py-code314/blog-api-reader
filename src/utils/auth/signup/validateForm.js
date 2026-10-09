@@ -6,6 +6,8 @@ export function validateForm(
   setValidFormData,
   setErrorMessages,
 ) {
+  let isValid = true
+
   // Update state if input fields are empty
   if (!signupFormData.name.trim()) {
     setValidFormData((prevValid) => ({ ...prevValid, name: false }))
@@ -13,21 +15,45 @@ export function validateForm(
       ...prevErrors,
       name: 'Please enter your name',
     }))
+    isValid = false
+  } else {
+    setValidFormData((prevValid) => ({ ...prevValid, name: true }))
+    setErrorMessages((prevErrors) => ({
+      ...prevErrors,
+      name: '',
+    }))
   }
+
   if (!signupFormData.email.trim()) {
     setValidFormData((prevValid) => ({ ...prevValid, email: false }))
     setErrorMessages((prevErrors) => ({
       ...prevErrors,
       email: 'Please enter your email address',
     }))
+    isValid = false
+  } else {
+    setValidFormData((prevValid) => ({ ...prevValid, email: true }))
+    setErrorMessages((prevErrors) => ({
+      ...prevErrors,
+      email: '',
+    }))
   }
+
   if (!signupFormData.password.trim()) {
     setValidFormData((prevValid) => ({ ...prevValid, password: false }))
     setErrorMessages((prevErrors) => ({
       ...prevErrors,
       password: 'Please enter a password',
     }))
+    isValid = false
+  } else {
+    setValidFormData((prevValid) => ({ ...prevValid, password: true }))
+    setErrorMessages((prevErrors) => ({
+      ...prevErrors,
+      password: '',
+    }))
   }
+  
   if (!signupFormData.confirmPassword.trim()) {
     setValidFormData((prevValid) => ({
       ...prevValid,
@@ -37,12 +63,17 @@ export function validateForm(
       ...prevErrors,
       confirmPassword: 'Please re-enter your password',
     }))
+    isValid = false
+  } else {
+    setValidFormData((prevValid) => ({
+      ...prevValid,
+      confirmPassword: true,
+    }))
+    setErrorMessages((prevErrors) => ({
+      ...prevErrors,
+      confirmPassword: '',
+    }))
   }
 
-  return (
-    !!validFormData.name &&
-    !!validFormData.email &&
-    !!validFormData.password &&
-    !!validFormData.confirmPassword
-  )
+  return isValid
 }
