@@ -1,6 +1,7 @@
 .sidebar {
+  width: var(--space-200, 12.5rem);
   border-right: 1px solid var(--clr-black, black);
-  padding-inline-end: var(--space-32, 2rem);
+  padding-inline-end: var(--space-16);
 }
 
 .navbar {
@@ -24,16 +25,10 @@
   font-family: var(--ff-secondary), sans-serif;
   box-shadow: inset 0 0 0 0 var(--clr-accent-3, dimgray);
   color: var(--clr-black, black);
-  transition: color .5s ease-in-out, box-shadow .5s ease-in-out;
-}
-
-.navLink:hover {
-  color: var(--clr-white, white);
-  box-shadow: inset 200px 0 0 0 var(--clr-accent-3, dimgray);
+  transition: all 0.5s ease-in-out;
 }
 
 /* Change black icon to white */
-.navLink:hover img,
 .activeIcon {
   -webkit-filter: invert(100%);
   filter: brightness(0) saturate(100%) invert(100%) sepia(64%) saturate(2%)
@@ -52,4 +47,27 @@
 
 .label {
   text-transform: uppercase;
+  position: relative;
+  padding-block-end: 3px;
+}
+
+/* Underline for label */
+.label::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px; /* Underline thickness */
+  background-color: var(--clr-accent-1, firebrick);
+
+  /* Start hidden by scaling horizontally to 0 */
+  transform: scaleX(0);
+  transform-origin: bottom left;
+  transition: transform 275ms ease;
+}
+
+.label:hover::after,
+.label:focus::after {
+  transform: scaleX(1);
 }

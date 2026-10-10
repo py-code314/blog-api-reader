@@ -34,8 +34,8 @@ const Sidebar = () => {
                       className={`${isActive ? styles.activeIcon : ''}`}
                       src={postsIcon}
                       alt=""
-                      width={32}
-                      height={32}
+                      width={22}
+                      height={22}
                     />
                     <span className={styles.label}>Posts</span>
                   </>
@@ -56,8 +56,8 @@ const Sidebar = () => {
                       className={`${isActive ? styles.activeIcon : ''}`}
                       src={authorsIcon}
                       alt=""
-                      width={32}
-                      height={32}
+                      width={22}
+                      height={22}
                     />
                     <span className={styles.label}>Authors</span>
                   </>
@@ -78,8 +78,8 @@ const Sidebar = () => {
                       className={`${isActive ? styles.activeIcon : ''}`}
                       src={categoriesIcon}
                       alt=""
-                      width={32}
-                      height={32}
+                      width={22}
+                      height={22}
                     />
                     <span className={styles.label}>Categories</span>
                   </>
@@ -100,8 +100,8 @@ const Sidebar = () => {
                       className={`${isActive ? styles.activeIcon : ''}`}
                       src={tagsIcon}
                       alt=""
-                      width={32}
-                      height={32}
+                      width={22}
+                      height={22}
                     />
                     <span className={styles.label}>Tags</span>
                   </>
@@ -118,8 +118,8 @@ const Sidebar = () => {
                 className={styles.profileIcon}
                 src={profileIcon}
                 alt=""
-                width={32}
-                height={32}
+                width={22}
+                height={22}
               />
               <span className={styles.label}>Profile</span>
             </li>
@@ -129,8 +129,8 @@ const Sidebar = () => {
                 className={styles.settingsIcon}
                 src={settingsIcon}
                 alt=""
-                width={32}
-                height={32}
+                width={22}
+                height={22}
               />
               <span className={styles.label}>Settings</span>
             </li>
@@ -140,8 +140,8 @@ const Sidebar = () => {
                 className={styles.helpIcon}
                 src={helpIcon}
                 alt=""
-                width={32}
-                height={32}
+                width={22}
+                height={22}
               />
               <span className={styles.label}>Help</span>
             </li>
