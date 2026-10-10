@@ -18,7 +18,12 @@ const routes = [
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
-      { index: true, element: <Homepage /> },
+      // Render Homepage with DefaultMainLayout on root path
+      {
+        path: '/',
+        element: <Homepage />,
+        children: [{ index: true, element: <DefaultMainLayout /> }],
+      },
       {
         path: 'home',
         element: <Homepage />,
