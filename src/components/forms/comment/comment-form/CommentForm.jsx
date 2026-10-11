@@ -4,9 +4,10 @@ import styles from './CommentForm.module.css'
 import smileyIcon from '../../../../assets/icons/icon-smiley.svg'
 import profileIcon from '../../../../assets/icons/icon-profile-2.svg'
 /* -------------------- Context -------------------- */
+import { AuthContext } from '../../../../contexts/auth/AuthContext.jsx'
 import { PostContext } from '../../../../contexts/post/PostContext'
 /* -------------------- Hooks -------------------- */
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useSubmitForm } from '../../../../hooks/useSubmitForm.js'
 /* -------------------- Components -------------------- */
 import Button from '../../../core/button/Button.jsx'
@@ -15,12 +16,23 @@ import {
   validateForm,
   validateCommentInput,
 } from '../../../../utils/comment/index.js'
+import { validateToken } from '../../../../utils/auth/login/tokenValidation.js'
 
 const CommentForm = (props) => {
   // Destructure
   const { comment = {}, isEdit = false, setIsEdit = () => {} } = props
   const commentId = comment.id
+  const { setToken } = useContext(AuthContext)
   const { postId, setIsSubmitted } = useContext(PostContext)
+
+  // Check for valid token before rendering the form
+  useEffect(() => {
+    const validToken = validateToken()
+    if (!validToken) {
+      console.log('Token expired or invalid')
+      setToken(null)
+    }
+  }, [setToken])
 
   // API endpoint
   const baseUrl = import.meta.env.VITE_REACT_APP_API_URL
@@ -31,9 +43,6 @@ const CommentForm = (props) => {
   // Call use hook to submit form
   const { handleSubmit, isSubmitting, data, errorMsg } =
     useSubmitForm(apiEndpoint)
-  // console.log('🚀 ~ CommentForm ~ isSubmitting:', isSubmitting)
-  // console.log('🚀 ~ CommentForm ~ data:', data)
-  // console.log('🚀 ~ CommentForm ~ errorMsg:', errorMsg)
 
   // State variables
   const defaultCommentFormData = {
@@ -94,6 +103,7 @@ const CommentForm = (props) => {
       setCommentFormData(defaultCommentFormData)
       setValidFormData(defaultValidFormData)
       setErrorMsgs(defaultErrorMsgs)
+
       // Update state to re-render post component
       setIsSubmitted(false)
     }

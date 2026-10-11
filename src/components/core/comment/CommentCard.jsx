@@ -52,7 +52,7 @@ const CommentCard = (props) => {
                 <strong>{comment?.author?.name}</strong>
               </p>
               {/* Commented on date  */}
-              <time className={styles.date} datetime={validGlobalDate}>
+              <time className={styles.date} dateTime={validGlobalDate}>
                 {dateCreated}
               </time>
             </div>
