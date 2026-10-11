@@ -7,7 +7,8 @@ import profileIcon from '../../../../assets/icons/icon-profile-2.svg'
 import { AuthContext } from '../../../../contexts/auth/AuthContext.jsx'
 import { PostContext } from '../../../../contexts/post/PostContext'
 /* -------------------- Hooks -------------------- */
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useState } from 'react'
+import { useNavigate } from 'react-router'
 import { useSubmitForm } from '../../../../hooks/useSubmitForm.js'
 /* -------------------- Components -------------------- */
 import Button from '../../../core/button/Button.jsx'
@@ -24,15 +25,7 @@ const CommentForm = (props) => {
   const commentId = comment.id
   const { setToken } = useContext(AuthContext)
   const { postId, setIsSubmitted } = useContext(PostContext)
-
-  // Check for valid token before rendering the form
-  useEffect(() => {
-    const validToken = validateToken()
-    if (!validToken) {
-      console.log('Token expired or invalid')
-      setToken(null)
-    }
-  }, [setToken])
+  const navigate = useNavigate()
 
   // API endpoint
   const baseUrl = import.meta.env.VITE_REACT_APP_API_URL
@@ -81,13 +74,24 @@ const CommentForm = (props) => {
     e.preventDefault()
     setIsSubmitted(true)
 
+    // Check for valid token
+    const validToken = validateToken()
+    if (!validToken) {
+      console.log('Token expired or invalid')
+      setToken(null)
+      navigate('/login', {
+        state: {
+          message: '🚩 Your session is expired or invalid',
+        },
+      })
+    }
+
     // Check for empty input field
     const isValid = validateForm(
       commentFormData,
       setValidFormData,
       setErrorMsgs,
     )
-
     // console.log('🚀 ~ handleFormSubmit ~ isValid:', isValid)
 
     if (!isValid) {
