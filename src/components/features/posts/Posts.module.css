@@ -1,7 +1,7 @@
 .posts {
   padding: 0 var(--space-32, 2rem) var(--space-32, 2rem) var(--space-32, 2rem);
   display: grid;
-  gap: var(--space-16, 1rem);
+  gap: var(--space-32, 2rem);
 }
 
 .headingContainer {
@@ -12,6 +12,10 @@
 
 .heading {
   font-family: var(--ff-title), serif;
+}
+
+.disclaimer {
+  margin-block-start: var(--space-8, 0.5rem);
 }
 
 /* Loading animation */
