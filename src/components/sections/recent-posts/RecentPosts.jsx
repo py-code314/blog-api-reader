@@ -14,7 +14,7 @@ import parse from 'html-react-parser'
 const RecentPosts = () => {
   // Get recent posts data
   const { data, isLoading, error } = useFetchData(
-    'http://localhost:8080/api/v1/posts/feed/latest',
+    'http://localhost:8080/api/v1/posts/latest',
   )
 
   // Show loading spinner while fetching the data
