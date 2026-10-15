@@ -13,7 +13,7 @@ const Hero = () => {
     <>
       <section className={styles.hero}>
         <div className={styles.content}>
-          <h2 className={styles.heading}>Thoughts, Stories, and Ideas</h2>
+          <h3 className={styles.sectionTitle}>Thoughts, Stories, and Ideas</h3>
           <p className={styles.description}>
             In-depth essays and guides designed to spark curiosity and deepen
             your understanding of the modern web.

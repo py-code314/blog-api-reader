@@ -20,8 +20,9 @@
   align-content: center;
 }
 
-.heading {
+.sectionTitle {
   font-family: var(--ff-title), serif;
+  font-size: var(--fs-26, 1.625rem);
 }
 
 .postsLink {

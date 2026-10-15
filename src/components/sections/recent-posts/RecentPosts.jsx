@@ -21,7 +21,7 @@ const RecentPosts = () => {
   if (isLoading)
     return (
       <section className={styles.recentPosts}>
-        <h2 className={styles.heading}>Recent Posts</h2>
+        <h3 className={styles.sectionTitle}>Recent Posts</h3>
         <div className={styles.loader}></div>
       </section>
     )
@@ -30,7 +30,7 @@ const RecentPosts = () => {
   if (error)
     return (
       <section className={styles.recentPosts}>
-        <h2 className={styles.heading}>Recent Posts</h2>
+        <h3 className={styles.sectionTitle}>Recent Posts</h3>
         <ErrorMessage error={error} />
       </section>
     )
@@ -38,7 +38,7 @@ const RecentPosts = () => {
   return (
     <>
       <section className={styles.recentPosts}>
-        <h2 className={styles.heading}>Recent Posts</h2>
+        <h3 className={styles.sectionTitle}>Recent Posts</h3>
         {data?.posts.length === 0 ? (
           <p>🔴 No posts to show yet.</p>
         ) : (

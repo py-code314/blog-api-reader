@@ -4,3 +4,7 @@
   gap: var(--space-32, 2rem);
 
 }
+
+.subTitle {
+  font-family: var(--ff-title), serif;
+}

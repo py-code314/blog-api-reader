@@ -181,6 +181,7 @@ a {
   --fs-20: calc(var(--font-base-unit) * 5);
   --fs-22: calc(var(--font-base-unit) * 5.5);
   --fs-24: calc(var(--font-base-unit) * 6);
+  --fs-26: calc(var(--font-base-unit) * 6.5);
   --fs-28: calc(var(--font-base-unit) * 7);
   --fs-30: calc(var(--font-base-unit) * 7.5);
   --fs-32: calc(var(--font-base-unit) * 8);
