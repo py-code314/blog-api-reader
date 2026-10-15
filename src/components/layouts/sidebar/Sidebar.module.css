@@ -48,7 +48,6 @@
 .label {
   text-transform: uppercase;
   position: relative;
-  padding-block-end: 3px;
 }
 
 /* Underline for label */
