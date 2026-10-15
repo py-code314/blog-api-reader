@@ -10,7 +10,7 @@ import ErrorMessage from '../../core/error/ErrorMessage.jsx'
 const Tags = () => {
   // Get all tags data
   const { data, isLoading, error } = useFetchData(
-    'http://localhost:8080/api/v1/tags/public',
+    'http://localhost:8080/api/v1/tags/all',
   )
 
   // Show loading spinner while fetching the data
