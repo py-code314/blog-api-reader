@@ -1,0 +1,14 @@
+.subHeading {
+  font-size: var(--fs-20, 1.25rem);
+}
+
+/* Limit content to 3 lines */
+.para {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  margin-block-end: var(--space-8, 0.5rem);
+}
