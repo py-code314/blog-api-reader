@@ -136,10 +136,12 @@ const Post = () => {
                 Updated on: <strong>{formattedDateUpdated}</strong>
               </p>
             </div>
-            <div className={styles.tagsContainer}>
-              <img src={tagsIcon} alt="" width={18} height={18} />
-              {postTags}
-            </div>
+            {postTags.length > 0 && (
+              <div className={styles.tagsContainer}>
+                <img src={tagsIcon} alt="" width={18} height={18} />
+                {postTags}
+              </div>
+            )}
           </div>
           <div className={styles.content}>{parse(content)}</div>
         </div>
