@@ -14,10 +14,6 @@
   font-family: var(--ff-title), serif;
 }
 
-.disclaimer {
-  margin-block-start: var(--space-8, 0.5rem);
-}
-
 /* Loading animation */
 .loader {
   width: 50px;
@@ -35,7 +31,7 @@
 
 .list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: var(--space-32, 2rem);
 }
 
@@ -68,7 +64,7 @@
 }
 
 .typewriterImg {
-  object-fit: cover;
+  object-fit: contain;
   width: 100%;
   height: 100%;
 }
@@ -77,17 +73,6 @@
   display: grid;
   grid-template-rows: auto 1fr auto;
   gap: var(--space-4, 00.25rem);
-}
-
-/* Limit content to 3 lines */
-.content {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  line-clamp: 3;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  margin-block-end: 8px;
 }
 
 .readMoreLink {
