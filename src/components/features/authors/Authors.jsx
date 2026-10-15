@@ -36,16 +36,19 @@ const Authors = () => {
       {data?.authors.length === 0 ? (
         <p>🔴 No authors to show yet.</p>
       ) : (
-        <ul className={styles.list}>
-          {data?.authors.map((author) => (
-            <Link
-              className={styles.linkAuthor}
-              key={author.id}
-              to={`/home/authors/${author.id}`}>
-              <li className={styles.card}>{author.name}</li>
-            </Link>
-          ))}
-        </ul>
+        <>
+          <p>🔔 Click on the cards to see all posts by that author</p>
+          <ul className={styles.list}>
+            {data?.authors.map((author) => (
+              <Link
+                className={styles.linkAuthor}
+                key={author.id}
+                to={`/home/authors/${author.id}`}>
+                <li className={styles.card}>{author.name}</li>
+              </Link>
+            ))}
+          </ul>
+        </>
       )}
     </div>
   )
