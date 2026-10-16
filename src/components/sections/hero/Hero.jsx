@@ -19,7 +19,7 @@ const Hero = () => {
             your understanding of the modern web.
           </p>
           {/* Link to all posts  */}
-          <Link className={styles.postsLink} to={'/posts/all'}>
+          <Link className={styles.postsLink} to={'/home/posts'}>
             <img
               className={styles.blogIcon}
               src={blogIcon}

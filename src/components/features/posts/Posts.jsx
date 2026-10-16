@@ -23,7 +23,7 @@ const Posts = () => {
   const byAuthorEndpoint = `${baseURL}/posts/authors/${authorId}`
   const byCategoryEndpoint = `${baseURL}/posts/categories/slug/${categorySlug}`
   const byTagEndpoint = `${baseURL}/posts/tags/name/${tagName}`
-  const byPostsEndpoint = `${baseURL}/posts/`
+  const byPostsEndpoint = `${baseURL}/posts`
 
   // Update api endpoint based on author id / category id / tag name
   const apiEndpoint = authorId
