@@ -19,7 +19,6 @@ export const useFetchData = (url, options = {}) => {
       setError(false)
       try {
         const response = await fetch(url, { signal })
-        // console.log('🚀 ~ fetchData ~ response:', response)
         /* To catch 301, 400, 404, 403, 500, etc
         Nonexistent pages: 404
         Unauthorized errors: 403
@@ -32,7 +31,6 @@ export const useFetchData = (url, options = {}) => {
         }
 
         const data = await response.json()
-        // console.log('🚀 ~ fetchData ~ data:', data)
 
         setData(data)
         setIsLoading(false)

@@ -23,10 +23,8 @@ export const useSubmitForm = (url) => {
         },
         body: JSON.stringify(formData),
       })
-      // console.log("🚀 ~ handleSubmit ~ response:", response)
 
       const data = await response.json()
-      // console.log('🚀 ~ handleSubmit ~ data:', data)
 
       // Handle non-200 HTTP responses
       if (!response.ok) {
@@ -44,7 +42,6 @@ export const useSubmitForm = (url) => {
               'Authentication error. Please login to post a comment.',
           )
         } else if (response.status >= 500) {
-          // console.log('status 500')
           setErrorMsg(data?.errorMessage || 'Server error. Please try again.')
         } else {
           setErrorMsg(data?.errorMessage || 'Could not submit the comment. Please try again.')

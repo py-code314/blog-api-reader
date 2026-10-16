@@ -1,8 +1,6 @@
-// TODO: Refactor the function to return isValid
 /* Function to check for empty inputs on form submission */
 export function validateForm(
   signupFormData,
-  validFormData,
   setValidFormData,
   setErrorMessages,
 ) {
@@ -53,7 +51,7 @@ export function validateForm(
       password: '',
     }))
   }
-  
+
   if (!signupFormData.confirmPassword.trim()) {
     setValidFormData((prevValid) => ({
       ...prevValid,

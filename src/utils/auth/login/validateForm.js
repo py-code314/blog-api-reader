@@ -1,4 +1,3 @@
-// TODO: Refactor the function to return isValid
 /* Function to check for empty log-in form inputs */
 export function validateForm(
   loginFormData,

@@ -11,6 +11,7 @@ const Authors = () => {
   // Configure API
   const baseURL = import.meta.env.VITE_REACT_APP_API_URL
   const apiEndpoint = `${baseURL}/authors/all`
+  
   // Get all authors data
   const { data, isLoading, error } = useFetchData(apiEndpoint)
 

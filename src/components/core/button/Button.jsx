@@ -1,6 +1,7 @@
 /* -------------------- Styles -------------------- */
 import styles from './Button.module.css'
 
+/* Reusable button component */
 const Button = ({ type = 'button', children, onClick, ...rest }) => {
   const { id, className, ariaLabel, title, disabled = false } = rest
 

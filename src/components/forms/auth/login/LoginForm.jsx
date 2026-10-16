@@ -83,7 +83,6 @@ const LoginForm = () => {
     setIsFormSubmitted(true)
     setLoginErrorMsg('')
 
-    // const isValid = true
     // Check for empty form inputs
     const isValid = validateForm(
       loginFormData,
@@ -91,7 +90,6 @@ const LoginForm = () => {
       setValidFormData,
       setErrorMsgs,
     )
-    // console.log('🚀 ~ handleFormSubmit ~ isValid:', isValid)
 
     if (!isValid) {
       setIsFormSubmitted(false)
@@ -101,12 +99,9 @@ const LoginForm = () => {
     try {
       // Send log-in data to server
       const response = await loginUser(loginFormData)
-      // console.log('🚀 ~ handleFormSubmit ~ response:', response)
 
       // This will be error object or data from backend
       const data = await response.json()
-      // console.log('🚀 ~ handleFormSubmit ~ data:', data)
-      // console.log('🚀 ~ handleFormSubmit ~ data token:', data.token)
 
       if (!response.ok) {
         setIsFormSubmitted(false)

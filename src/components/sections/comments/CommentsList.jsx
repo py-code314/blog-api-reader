@@ -8,7 +8,6 @@ import CommentForm from '../../forms/comment/comment-form/CommentForm'
 
 /* Show list of comments */
 const CommentsList = (props) => {
-  // console.log('🚀 ~ CommentsList ~ comments:', comments)
   const { comments, isDelete, setIsDelete, postId } = props
 
   // State variables
@@ -49,10 +48,8 @@ const CommentsList = (props) => {
           Authorization: `Bearer ${authToken}`,
         },
       })
-      // console.log('🚀 ~ handleDeleteComment ~ response:', response)
 
       const data = await response.json()
-      // console.log('🚀 ~ handleDeleteComment ~ data:', data)
 
       if (!response.ok) {
         setCommentId(id)

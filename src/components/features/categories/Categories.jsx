@@ -16,7 +16,6 @@ const Categories = () => {
 
   // Get all categories data
   const { data, isLoading, error } = useFetchData(apiEndpoint)
-  // console.log("🚀 ~ Categories ~ data:", data)
 
   // Show loading spinner while fetching the data
   if (isLoading)
@@ -41,7 +40,6 @@ const Categories = () => {
   const filteredCategories = categories
     ? getUniqueByValue(categories, 'name')
     : []
-  // console.log("🚀 ~ Categories ~ filteredCategories:", filteredCategories)
 
   return (
     <div className={styles.categories}>

@@ -39,7 +39,6 @@ const Post = () => {
     isSubmitted,
     isDelete,
   })
-  // console.log('🚀 ~ Post ~ data:', data)
 
   // Show loading spinner while fetching the data
   if (isLoading)

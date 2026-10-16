@@ -7,6 +7,7 @@ import { AuthContext } from '../../../contexts/auth/AuthContext'
 import Hero from '../../sections/hero/Hero'
 import RecentPosts from '../../sections/recent-posts/RecentPosts'
 
+/* Content to show upon initial page load */
 const DefaultMainLayout = () => {
   const { currentUser } = useContext(AuthContext)
   

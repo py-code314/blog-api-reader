@@ -1,7 +1,7 @@
 /* -------------------- Styles -------------------- */
 import styles from './LoginPage.module.css'
 /* -------------------- Icons -------------------- */
-import loginIcon from '../../../assets/icons/icon-login-10.svg'
+import loginIcon from '../../../assets/icons/icon-login.svg'
 /* -------------------- Hooks -------------------- */
 import { useState } from 'react'
 import { useLocation } from 'react-router'

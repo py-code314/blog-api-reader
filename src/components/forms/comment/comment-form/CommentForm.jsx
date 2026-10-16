@@ -92,7 +92,6 @@ const CommentForm = (props) => {
       setValidFormData,
       setErrorMsgs,
     )
-    // console.log('🚀 ~ handleFormSubmit ~ isValid:', isValid)
 
     if (!isValid) {
       setIsSubmitted(false)
@@ -101,7 +100,6 @@ const CommentForm = (props) => {
 
     // Update variables in use hook
     const data = await handleSubmit(commentFormData)
-    // console.log('🚀 ~ handleFormSubmit ~ data:', data)
 
     if (data?.success) {
       setCommentFormData(defaultCommentFormData)

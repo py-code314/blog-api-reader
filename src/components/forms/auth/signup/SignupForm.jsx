@@ -113,7 +113,6 @@ const SignupForm = () => {
     setIsFormSubmitted(true)
     setSignupErrorMsg('')
 
-    // const isValid = true
     // Check for empty form inputs
         const isValid = validateForm(
           signupFormData,
@@ -121,7 +120,6 @@ const SignupForm = () => {
           setValidFormData,
           setErrorMsgs,
         )
-    // console.log('🚀 ~ handleFormSubmit ~ isValid:', isValid)
 
     if (!isValid) {
       setIsFormSubmitted(false)
@@ -131,11 +129,9 @@ const SignupForm = () => {
     try {
       // Send sign-up data to server
       const response = await registerUser(signupFormData)
-      // console.log('🚀 ~ handleFormSubmit ~ response:', response)
 
       // This will be error object or data from backend
       const data = await response.json()
-      // console.log('🚀 ~ handleFormSubmit ~ data:', data)
 
       if (!response.ok) {
         setIsFormSubmitted(false)
