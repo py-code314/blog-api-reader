@@ -5,6 +5,8 @@ import { useFetchData } from '../../../hooks/useFetchData.js'
 /* -------------------- Components -------------------- */
 import { Link } from 'react-router'
 import ErrorMessage from '../../core/error/ErrorMessage.jsx'
+/* -------------------- Functions -------------------- */
+import { getUniqueByValue } from '../../../utils/categories/index.js'
 
 /* Show categories */
 const Categories = () => {
@@ -31,15 +33,26 @@ const Categories = () => {
         <ErrorMessage error={error} />
       </div>
     )
+
+  const categories = data?.categories
+  // Filter categories by name
+  const filteredCategories = categories
+    ? getUniqueByValue(categories, 'name')
+    : []
+  // console.log("🚀 ~ Categories ~ filteredCategories:", filteredCategories)
+
   return (
     <div className={styles.categories}>
       <h2 className={styles.heading}>Categories</h2>
-      {data?.categories.length === 0 ? (
+      {filteredCategories?.length === 0 ? (
         <p>🔴 No categories to show yet.</p>
       ) : (
         <ul className={styles.list}>
-          {data?.categories.map((category) => (
-            <Link className={styles.linkCategory} key={category.id} to={`/home/categories/${category.id}`}>
+          {filteredCategories?.map((category) => (
+            <Link
+              className={styles.linkCategory}
+              key={category.id}
+              to={`/home/categories/${category.slug}`}>
               <li className={styles.tab}>{category.name}</li>
             </Link>
           ))}
