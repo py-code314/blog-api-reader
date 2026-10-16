@@ -30,19 +30,25 @@ const Tags = () => {
         <ErrorMessage error={error} />
       </div>
     )
+
+  const tags = data?.tags
+  const tagNamesArray = tags?.map((tag) => tag.name)
+  // Filter out duplicate names
+  const filteredTagNames = [...new Set(tagNamesArray)]
+
   return (
     <div className={styles.tags}>
       <h2 className={styles.heading}>Tags</h2>
-      {data?.tags.length === 0 ? (
+      {filteredTagNames?.length === 0 ? (
         <p>🔴 No tags to show yet.</p>
       ) : (
         <ul className={styles.list}>
-          {data?.tags.map((tag) => (
+          {filteredTagNames?.map((tagName) => (
             <Link
               className={styles.linkTag}
-              key={tag.id}
-              to={`/home/tags/${tag.id}`}>
-              <li className={styles.tab}>{tag.name}</li>
+              key={tagName}
+              to={`/home/tags/${tagName}`}>
+              <li className={styles.tab}>{tagName}</li>
             </Link>
           ))}
         </ul>

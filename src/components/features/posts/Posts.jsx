@@ -16,21 +16,21 @@ import PostContent from '../../core/post-content/PostContent'
 /* Show previews of posts */
 const Posts = () => {
   const navigate = useNavigate()
-  const { authorId, categoryId, tagId } = useParams()
+  const { authorId, categoryId, tagName } = useParams()
 
-  // Update api endpoint based on author id / category id / tag id
+  // Update api endpoint based on author id / category id / tag name
   const apiEndpoint = authorId
     ? `http://localhost:8080/api/v1/posts/authors/${authorId}`
     : categoryId
       ? `http://localhost:8080/api/v1/posts/categories/${categoryId}`
-      : tagId
-        ? `http://localhost:8080/api/v1/posts/tags/${tagId}`
+      : tagName
+        ? `http://localhost:8080/api/v1/posts/tags/name/${tagName}`
         : 'http://localhost:8080/api/v1/posts/'
 
   // Get  posts
   const { data, isLoading, error } = useFetchData(apiEndpoint)
 
-  const isBtn = !!authorId || !!categoryId || !!tagId
+  const isBtn = !!authorId || !!categoryId || !!tagName
 
   // Go back one page when Back btn is clicked
   const handleBackClick = () => {
@@ -90,7 +90,7 @@ const Posts = () => {
               </div>
               <div className={styles.post}>
                 <h3>{post.title}</h3>
-                <PostContent content={post.content}/>
+                <PostContent content={post.content} />
                 {/* Link to view full post  */}
                 <Link
                   className={styles.readMoreLink}
