@@ -27,11 +27,11 @@ const CommentForm = (props) => {
   const { postId, setIsSubmitted } = useContext(PostContext)
   const navigate = useNavigate()
 
-  // API endpoint
-  const baseUrl = import.meta.env.VITE_REACT_APP_API_URL
-  const apiEndpoint = isEdit
-    ? `${baseUrl}/posts/${postId}/comments/${commentId}/update`
-    : `${baseUrl}/posts/${postId}/comments/new`
+  // Configure API
+  const baseURL = import.meta.env.VITE_REACT_APP_API_URL
+  const updateCommentEndpoint = `${baseURL}/posts/${postId}/comments/${commentId}/update`
+  const newCommentEndpoint = `${baseURL}/posts/${postId}/comments/new`
+  const apiEndpoint = isEdit ? updateCommentEndpoint : newCommentEndpoint
 
   // Call use hook to submit form
   const { handleSubmit, isSubmitting, data, errorMsg } =

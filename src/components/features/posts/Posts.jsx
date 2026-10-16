@@ -18,14 +18,21 @@ const Posts = () => {
   const navigate = useNavigate()
   const { authorId, categorySlug, tagName } = useParams()
 
+  // Configure APIs
+  const baseURL = import.meta.env.VITE_REACT_APP_API_URL
+  const byAuthorEndpoint = `${baseURL}/posts/authors/${authorId}`
+  const byCategoryEndpoint = `${baseURL}/posts/categories/slug/${categorySlug}`
+  const byTagEndpoint = `${baseURL}/posts/tags/name/${tagName}`
+  const byPostsEndpoint = `${baseURL}/posts/`
+
   // Update api endpoint based on author id / category id / tag name
   const apiEndpoint = authorId
-    ? `http://localhost:8080/api/v1/posts/authors/${authorId}`
+    ? byAuthorEndpoint
     : categorySlug
-      ? `http://localhost:8080/api/v1/posts/categories/slug/${categorySlug}`
+      ? byCategoryEndpoint
       : tagName
-        ? `http://localhost:8080/api/v1/posts/tags/name/${tagName}`
-        : 'http://localhost:8080/api/v1/posts/'
+        ? byTagEndpoint
+        : byPostsEndpoint
 
   // Get  posts
   const { data, isLoading, error } = useFetchData(apiEndpoint)

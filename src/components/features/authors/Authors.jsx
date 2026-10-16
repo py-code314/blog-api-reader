@@ -8,10 +8,11 @@ import ErrorMessage from '../../core/error/ErrorMessage.jsx'
 
 /* Show authors names */
 const Authors = () => {
+  // Configure API
+  const baseURL = import.meta.env.VITE_REACT_APP_API_URL
+  const apiEndpoint = `${baseURL}/authors/all`
   // Get all authors data
-  const { data, isLoading, error } = useFetchData(
-    'http://localhost:8080/api/v1/authors/all',
-  )
+  const { data, isLoading, error } = useFetchData(apiEndpoint)
 
   // Show loading spinner while fetching the data
   if (isLoading)

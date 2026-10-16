@@ -8,10 +8,12 @@ import ErrorMessage from '../../core/error/ErrorMessage.jsx'
 
 /* Show tags */
 const Tags = () => {
+  // Configure API
+  const baseURL = import.meta.env.VITE_REACT_APP_API_URL
+  const apiEndpoint = `${baseURL}/tags/all`
+
   // Get all tags data
-  const { data, isLoading, error } = useFetchData(
-    'http://localhost:8080/api/v1/tags/all',
-  )
+  const { data, isLoading, error } = useFetchData(apiEndpoint)
 
   // Show loading spinner while fetching the data
   if (isLoading)

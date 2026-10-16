@@ -10,10 +10,12 @@ import { getUniqueByValue } from '../../../utils/categories/index.js'
 
 /* Show categories */
 const Categories = () => {
+  // Configure API
+  const baseURL = import.meta.env.VITE_REACT_APP_API_URL
+  const apiEndpoint = `${baseURL}/categories/all`
+
   // Get all categories data
-  const { data, isLoading, error } = useFetchData(
-    'http://localhost:8080/api/v1/categories/all',
-  )
+  const { data, isLoading, error } = useFetchData(apiEndpoint)
   // console.log("🚀 ~ Categories ~ data:", data)
 
   // Show loading spinner while fetching the data

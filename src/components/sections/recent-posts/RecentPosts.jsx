@@ -11,10 +11,12 @@ import PostContent from '../../core/post-content/PostContent.jsx'
 
 /* Show previews of recent posts */
 const RecentPosts = () => {
+  // Configure API
+  const baseURL = import.meta.env.VITE_REACT_APP_API_URL
+  const apiEndpoint = `${baseURL}/posts/latest`
+
   // Get recent posts data
-  const { data, isLoading, error } = useFetchData(
-    'http://localhost:8080/api/v1/posts/latest',
-  )
+  const { data, isLoading, error } = useFetchData(apiEndpoint)
 
   // Show loading spinner while fetching the data
   if (isLoading)
