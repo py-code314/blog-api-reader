@@ -34,7 +34,7 @@ const routes = [
           { path: 'authors', element: <Authors /> },
           { path: 'authors/:authorId', element: <Posts /> },
           { path: 'categories', element: <Categories /> },
-          { path: 'categories/:categoryId', element: <Posts /> },
+          { path: 'categories/:categorySlug', element: <Posts /> },
           { path: 'tags', element: <Tags /> },
           { path: 'tags/:tagName', element: <Posts /> },
         ],
